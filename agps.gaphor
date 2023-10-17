@@ -92,7 +92,7 @@
 </Class>
 <ClassItem id="98ee8957-69eb-11ee-915b-00155df7ccfe">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 229.48034667968759, -91.08270063907979)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 229.48034667968753, -91.08270063907979)</val>
 </matrix>
 <top-left>
 <val>(-26.0, -19.51006725589751)</val>
@@ -433,7 +433,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 520.9064035740139, 472.0)</val>
 </matrix>
 <points>
-<val>[(147.3481641144084, 240.62665149410248), (147.3481641144084, 75.76576922054664), (30.054411855673607, 75.76576922054664)]</val>
+<val>[(146.82452223715723, 240.62665149410248), (146.82452223715723, 69.2189056208673), (30.054411855673607, 69.2189056208673)]</val>
 </points>
 <head-connection>
 <ref refid="e2ea89d0-69ec-11ee-a162-00155df7ccfe"/>
@@ -477,6 +477,7 @@
 <ref refid="d90eff2b-6cd9-11ee-af0d-edca6947932b"/>
 <ref refid="df515960-6cd9-11ee-b21d-edca6947932b"/>
 <ref refid="e845d1ae-6cd9-11ee-8c83-edca6947932b"/>
+<ref refid="6dbe5041-6ced-11ee-85a6-97393de14517"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -499,7 +500,7 @@
 <val>405.0</val>
 </width>
 <height>
-<val>238.0</val>
+<val>256.0</val>
 </height>
 <diagram>
 <ref refid="9735aa8e-69eb-11ee-a158-00155df7ccfe"/>
@@ -711,7 +712,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 764.0, 372.63923556397435)</val>
 </matrix>
 <points>
-<val>[(104.04349396974067, 62.98061463032025), (104.04349396974067, 122.58952843971639), (-213.0391845703125, 122.58952843971639)]</val>
+<val>[(104.04349396974067, 80.98061463032025), (104.04349396974067, 122.58952843971639), (-213.0391845703125, 122.58952843971639)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -947,6 +948,11 @@
 <name>
 <val>addSocialPlan</val>
 </name>
+<ownedParameter>
+<reflist>
+<ref refid="b030a025-6ced-11ee-8c02-97393de14517"/>
+</reflist>
+</ownedParameter>
 </Operation>
 <Operation id="37bf9903-6cd8-11ee-bdf4-edca6947932b">
 <class_>
@@ -1662,5 +1668,40 @@
 <typeValue>
 <val>String</val>
 </typeValue>
+</Parameter>
+<Operation id="6dbe5041-6ced-11ee-85a6-97393de14517">
+<class_>
+<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
+</class_>
+<name>
+<val>addActivity</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="6dc01e25-6ced-11ee-8b69-97393de14517"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="6dc01e25-6ced-11ee-8b69-97393de14517">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>Activity activity</val>
+</name>
+<ownerFormalParam>
+<ref refid="6dbe5041-6ced-11ee-85a6-97393de14517"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="b030a025-6ced-11ee-8c02-97393de14517">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>SocialPlan plan</val>
+</name>
+<ownerFormalParam>
+<ref refid="b8742b36-6cd7-11ee-a121-23f89bd11930"/>
+</ownerFormalParam>
 </Parameter>
 </gaphor>
