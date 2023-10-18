@@ -1,4 +1,4 @@
-package ES.UPM.ETSISI.CITIT21G6;
+package ES.UPM.ETSISI.CITIT21G6.model;
 
 import java.util.*;
 
