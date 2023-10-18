@@ -6,14 +6,14 @@ public class Theater extends Activities
 {
     private static final int MAXIMUMYOUNGAGE = 25;
     private static final int MINIMUMELDERLYAGE = 65;
-    private static final Double YOUNGDISCOUNT = 0.5;
-    private static final Double ELDERLYDISCOUNT = 0.7;
+    private static final double YOUNGDISCOUNT = 0.5;
+    private static final double ELDERLYDISCOUNT = 0.7;
 
-    public Theater(String name, String description, int duration, Double cost, OptionalInt capacity)
+    public Theater(String name, String description, int duration, double cost, OptionalInt capacity)
     {
         super(name, description, duration, cost, capacity);
     }
-    public Theater(String name, String description, int duration, Double cost)
+    public Theater(String name, String description, int duration, double cost)
     {
         super(name, description, duration, cost);
     }
@@ -23,7 +23,7 @@ public class Theater extends Activities
      * @param age
      * @return
      */
-    public Double getPrice(int age)
+    public double getPrice(int age)
     {
         if (age < MAXIMUMYOUNGAGE)
         {

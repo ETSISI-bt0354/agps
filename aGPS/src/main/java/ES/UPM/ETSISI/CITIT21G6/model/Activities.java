@@ -7,10 +7,10 @@ public class Activities
     private String name;
     private String description;
     private int duration;
-    private Double cost;
+    private double cost;
     private OptionalInt capacity;
 
-    public Activities(String name, String description, int duration, Double cost, OptionalInt capacity)
+    public Activities(String name, String description, int duration, double cost, OptionalInt capacity)
     {
         this.name = name;
         this.description = description;
@@ -18,7 +18,7 @@ public class Activities
         this.cost = cost;
         this.capacity = capacity;
     }
-    public Activities(String name, String description, int duration, Double cost)
+    public Activities(String name, String description, int duration, double cost)
     {
         this.name = name;
         this.description = description;
@@ -41,7 +41,7 @@ public class Activities
         return duration;
     }
 
-    public Double getPrice()
+    public double getPrice()
     {
         return cost;
     }

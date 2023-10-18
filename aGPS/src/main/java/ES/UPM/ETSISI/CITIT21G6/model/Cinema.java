@@ -5,13 +5,13 @@ import java.util.*;
 public class Cinema extends Activities
 {
     private static final int MAXIMUMYOUNGAGE = 21;
-    private static final Double YOUNGDISCOUNT = 0.5;
+    private static final double YOUNGDISCOUNT = 0.5;
 
-    public Cinema(String name, String description, int duration, Double cost, OptionalInt capacity)
+    public Cinema(String name, String description, int duration, double cost, OptionalInt capacity)
     {
         super(name, description, duration, cost, capacity);
     }
-    public Cinema(String name, String description, int duration, Double cost)
+    public Cinema(String name, String description, int duration, double cost)
     {
         super(name, description, duration, cost);
     }
@@ -22,7 +22,7 @@ public class Cinema extends Activities
      * @return price
      */
 
-    public Double getPrice(int age)
+    public double getPrice(int age)
     {
         if (age < MAXIMUMYOUNGAGE)
         {
