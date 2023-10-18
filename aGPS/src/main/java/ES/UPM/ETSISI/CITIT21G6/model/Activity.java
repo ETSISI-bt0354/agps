@@ -7,10 +7,9 @@ public class Activity
     private String name;
     private String description;
     private int duration;
-    private Double cost;
+    private double cost;
     private PriceCalculator priceCalculator;
     private OptionalInt capacity;
-    private String type;
 
     public Activity(String name, String description, int duration, Double basePrice, PriceCalculator priceCalculator)
     {
@@ -36,7 +35,7 @@ public class Activity
         return duration;
     }
 
-    public Double getPrice(int age)
+    public double getPrice(int age)
     {
         return priceCalculator.calculatePrice(age);
     }

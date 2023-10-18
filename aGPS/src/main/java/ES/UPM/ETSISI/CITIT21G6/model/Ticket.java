@@ -4,11 +4,6 @@ abstract class Ticket
 {
     private int score;
 
-    public Ticket()
-    {
-        score = -1;
-    }
-
     public void setScore(int score)
     {
         this.score = score;
