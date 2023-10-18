@@ -1,29 +1,24 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
-import java.util.*;
+import java.util.OptionalInt;
 
-public class Activities
+public class Activity
 {
     private String name;
     private String description;
     private int duration;
     private Double cost;
+    private PriceCalculator priceCalculator;
     private OptionalInt capacity;
+    private String type;
 
-    public Activities(String name, String description, int duration, Double cost, OptionalInt capacity)
+    public Activity(String name, String description, int duration, Double basePrice, PriceCalculator priceCalculator)
     {
         this.name = name;
         this.description = description;
         this.duration = duration;
-        this.cost = cost;
-        this.capacity = capacity;
-    }
-    public Activities(String name, String description, int duration, Double cost)
-    {
-        this.name = name;
-        this.description = description;
-        this.duration = duration;
-        this.cost = cost;
+        this.cost = basePrice;
+        this.priceCalculator = priceCalculator;
     }
 
     public String getName()
@@ -41,13 +36,18 @@ public class Activities
         return duration;
     }
 
-    public Double getPrice()
+    public Double getPrice(int age)
     {
-        return cost;
+        return priceCalculator.calculatePrice(age);
     }
 
     public OptionalInt getCapacity()
     {
         return capacity;
+    }
+
+    public void setCapacity(OptionalInt capacity)
+    {
+        this.capacity = capacity;
     }
 }
