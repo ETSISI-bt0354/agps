@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Theater extends Activities
 {
-    private final int MAXIMUMYOUNGAGE = 25;
-    private final int MINIMUMELDERLYAGE = 65;
-    private final Double YOUNGDISCOUNT = 0.5;
-    private final Double ELDERLYDISCOUNT = 0.7;
+    private static final int MAXIMUMYOUNGAGE = 25;
+    private static final int MINIMUMELDERLYAGE = 65;
+    private static final Double YOUNGDISCOUNT = 0.5;
+    private static final Double ELDERLYDISCOUNT = 0.7;
 
     public Theater(String name, String description, int duration, Double cost, OptionalInt capacity)
     {

@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Cinema extends Activities
 {
-    private final int MAXIMUMYOUNGAGE = 21;
-    private final Double YOUNGDISCOUNT = 0.5;
+    private static final int MAXIMUMYOUNGAGE = 21;
+    private static final Double YOUNGDISCOUNT = 0.5;
 
     public Cinema(String name, String description, int duration, Double cost, OptionalInt capacity)
     {
