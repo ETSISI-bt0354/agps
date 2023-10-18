@@ -1,6 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
-import java.util.*;
+import java.util.Date;
+import java.util.OptionalInt;
 
 public class SocialPlan
 {
