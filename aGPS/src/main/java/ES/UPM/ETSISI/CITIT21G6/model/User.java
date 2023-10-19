@@ -10,25 +10,6 @@ public class User
     private static final int MINIMUMAGE = 14;
     private static final int MAXIMUMAGE = 100;
 
-    private final String name;
-    private String password;
-    private final LocalDate birthday;
-    private String phoneNumber;
-    private List<SocialPlan> socialPlans;
-    private List<Ticket> joinedEvents;
-
-    public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
-    {
-        validateAge(birthday);
-
-        this.name = name;
-        this.password = password;
-        this.birthday = birthday;
-        this.phoneNumber = phoneNumber;
-        this.socialPlans = new ArrayList<>();
-        this.joinedEvents = new ArrayList<>();
-    }
-
     private static void validateAge(LocalDate birthday) throws Exception
     {
         LocalDate currentDate = LocalDate.now();
@@ -55,12 +36,32 @@ public class User
         }
     }
 
-    public void addSocialPlan(SocialPlan plan)
+    private final String name;
+    private String password;
+    private final LocalDate birthday;
+    private String phoneNumber;
+    private List<SocialPlan> socialPlans;
+    private List<Ticket> joinedEvents;
+
+    public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
     {
-        if (socialPlans.contains(plan))
+        validateAge(birthday);
+
+        this.name = name;
+        this.password = password;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.socialPlans = new ArrayList<>();
+        this.joinedEvents = new ArrayList<>();
+    }
+
+
+    public void addSocialPlan(SocialPlan socialPlan)
+    {
+        if (socialPlans.contains(socialPlan))
             throw new IllegalArgumentException("The plan is already added");
 
-        socialPlans.add(plan);
+        socialPlans.add(socialPlan);
     }
 
     public String getName()

@@ -8,8 +8,8 @@ public class Activity
     private String description;
     private int duration;
     private double cost;
-    private PriceCalculator priceCalculator;
     private OptionalInt capacity;
+    private PriceCalculator priceCalculator;
 
     public Activity(String name, String description, int duration, Double basePrice, PriceCalculator priceCalculator)
     {

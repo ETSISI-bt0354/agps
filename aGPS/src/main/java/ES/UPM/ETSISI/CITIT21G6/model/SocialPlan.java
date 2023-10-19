@@ -61,11 +61,6 @@ public class SocialPlan
         this.capacity = capacity;
     }
 
-    public List<Ticket> getParticipants()
-    {
-        return participants;
-    }
-
     public void addActivity(Activity activity) throws Exception
     {
         if (!activities.contains(activity))
@@ -78,5 +73,10 @@ public class SocialPlan
         {
             throw new Exception("The activity is already added!");
         }
+    }
+
+    public List<Ticket> getParticipants()
+    {
+        return participants;
     }
 }
