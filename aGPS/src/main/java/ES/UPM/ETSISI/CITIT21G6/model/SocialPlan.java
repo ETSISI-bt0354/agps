@@ -1,20 +1,20 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.OptionalInt;
 import java.util.List;
 
 public class SocialPlan
 {
     private String name;
-    private Date date;
+    private LocalDate date;
     private String location;
     private OptionalInt capacity;
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String name, Date date, String location)
+    public SocialPlan(String name, LocalDate date, String location)
     {
         this.name = name;
         this.date = date;
@@ -29,7 +29,7 @@ public class SocialPlan
         return name;
     }
 
-    public Date getDate()
+    public LocalDate getDate()
     {
         return date;
     }

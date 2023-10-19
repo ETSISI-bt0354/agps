@@ -393,7 +393,7 @@
 <val>date</val>
 </name>
 <typeValue>
-<val>Date</val>
+<val>LocalDate</val>
 </typeValue>
 <visibility>
 <val>private</val>
@@ -694,7 +694,7 @@
 <ref refid="d90eff2b-6cd9-11ee-af0d-edca6947932b"/>
 </ownerFormalParam>
 <typeValue>
-<val>Date</val>
+<val>LocalDate</val>
 </typeValue>
 </Parameter>
 <Operation id="df515960-6cd9-11ee-b21d-edca6947932b">
