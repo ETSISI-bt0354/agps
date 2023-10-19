@@ -46,16 +46,13 @@ public class SocialPlan
 
     public void setCapacity(OptionalInt capacity) throws Exception
     {
-        for (Activity activity: activities)
+        if (capacity.orElse(Integer.MAX_VALUE) <= this.capacity.orElse(Integer.MAX_VALUE))
         {
-            if (capacity.orElse(Integer.MAX_VALUE) >= activity.getCapacity().orElse(Integer.MAX_VALUE))
-            {
-                StringBuilder errorMessage = new StringBuilder();
-                errorMessage.append("The plan's minimal capacity is ");
-                errorMessage.append(activity.getCapacity().orElse(Integer.MAX_VALUE));
-                errorMessage.append(".");
-                throw new Exception(errorMessage.toString());
-            }
+            StringBuilder errorMessage = new StringBuilder();
+            errorMessage.append("The plan's minimal capacity is ");
+            errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
+            errorMessage.append(".");
+            throw new Exception(errorMessage.toString());
         }
 
         this.capacity = capacity;
