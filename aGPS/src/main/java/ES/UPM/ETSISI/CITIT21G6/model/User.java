@@ -92,7 +92,7 @@ public class User
             socialPlan = socialPlans.get(index);
         } catch (IndexOutOfBoundsException e)
         {
-            new Exception("There is no social plan in that index");
+            throw new Exception("There is no social plan in that index");
         }
 
         return socialPlan;
@@ -117,5 +117,18 @@ public class User
     public int hashCode()
     {
         return getName().hashCode();
+    }
+
+    public void addTicket(Ticket ticket) throws Exception
+    {
+        if (joinedEvents.contains(ticket))
+            throw  new Exception("The user already has that ticket");
+
+        joinedEvents.add(ticket);
+    }
+
+    protected void deleteTicket(Ticket ticket)
+    {
+        joinedEvents.remove(ticket);
     }
 }

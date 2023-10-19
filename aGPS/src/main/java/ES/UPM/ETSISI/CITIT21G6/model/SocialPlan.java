@@ -76,4 +76,18 @@ public class SocialPlan
     {
         return participants;
     }
+
+    public Ticket createTicket(User user) throws Exception
+    {
+        Ticket ticket = new Ticket(user, this);
+        if (participants.contains(ticket))
+            throw new Exception("The user already has a ticket");
+        participants.add(ticket);
+        return ticket;
+    }
+
+    protected void deleteTicket(Ticket ticket)
+    {
+        participants.remove(ticket);
+    }
 }
