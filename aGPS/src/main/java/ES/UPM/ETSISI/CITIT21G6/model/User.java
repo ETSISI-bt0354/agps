@@ -7,29 +7,29 @@ import java.util.List;
 
 public class User
 {
-    private static final int MINIMUMAGE = 14;
-    private static final int MAXIMUMAGE = 100;
+    private static final int MINIMUM_AGE = 14;
+    private static final int MAXIMUM_AGE = 100;
 
     private static void validateAge(LocalDate birthday) throws Exception
     {
         LocalDate currentDate = LocalDate.now();
         Period age = Period.between(birthday, currentDate);
 
-        if (age.getYears() < MINIMUMAGE)
+        if (age.getYears() < MINIMUM_AGE)
         {
             StringBuilder errorMessage = new StringBuilder();
             errorMessage.append("Minimum age is ");
-            errorMessage.append(MINIMUMAGE);
+            errorMessage.append(MINIMUM_AGE);
             errorMessage.append("years old");
 
             throw new Exception(errorMessage.toString());
         }
 
-        if (age.getYears() > MAXIMUMAGE)
+        if (age.getYears() > MAXIMUM_AGE)
         {
             StringBuilder errorMessage = new StringBuilder();
             errorMessage.append("Maximum age is ");
-            errorMessage.append(MAXIMUMAGE);
+            errorMessage.append(MAXIMUM_AGE);
             errorMessage.append("years old");
 
             throw new Exception(errorMessage.toString());

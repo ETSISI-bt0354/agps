@@ -4,8 +4,8 @@ import java.util.OptionalInt;
 
 public class Ticket
 {
-    private static final int MINIMUMSCORE = 0;
-    private static final int MAXIMUMSCORE = 10;
+    private static final int MINIMUM_SCORE = 0;
+    private static final int MAXIMUM_SCORE = 10;
     private final User user;
     private final SocialPlan socialPlan;
     private OptionalInt score;
@@ -39,7 +39,7 @@ public class Ticket
 
     public void setScore(OptionalInt score) throws Exception
     {
-        if (score.isPresent() && (score.getAsInt() < MINIMUMSCORE || score.getAsInt() > MAXIMUMSCORE))
+        if (score.isPresent() && (score.getAsInt() < MINIMUM_SCORE || score.getAsInt() > MAXIMUM_SCORE))
             throw new Exception("The core must be between 0 and 10");
 
         this.score = score;
