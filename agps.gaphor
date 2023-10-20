@@ -111,7 +111,7 @@
 <val>(-26.0, -91.51006725589752)</val>
 </top-left>
 <width>
-<val>418.0</val>
+<val>419.0</val>
 </width>
 <height>
 <val>454.0</val>
@@ -425,20 +425,17 @@
 <class_>
 <ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
 </class_>
-<isStatic>
-<val>1</val>
-</isStatic>
 <name>
-<val>validateAge</val>
+<val>User</val>
 </name>
 <ownedParameter>
 <reflist>
 <ref refid="b030a025-6ced-11ee-8c02-97393de14517"/>
+<ref refid="dca03048-6f8d-11ee-b3cc-9bb5a601d546"/>
+<ref refid="dcafd141-6f8d-11ee-a565-9bb5a601d546"/>
+<ref refid="dcb43f94-6f8d-11ee-bf6c-9bb5a601d546"/>
 </reflist>
 </ownedParameter>
-<visibility>
-<val>private</val>
-</visibility>
 </Operation>
 <Operation id="37bf9903-6cd8-11ee-bdf4-edca6947932b">
 <class_>
@@ -448,7 +445,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>validatePassword</val>
+<val>validateAge</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -464,7 +461,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>String password</val>
+<val>LocalDate birthday</val>
 </name>
 <ownerFormalParam>
 <ref refid="37bf9903-6cd8-11ee-bdf4-edca6947932b"/>
@@ -718,7 +715,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>validatePhoneNumber</val>
+<val>validatePassword</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -734,7 +731,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>String phoneNumber</val>
+<val>String password</val>
 </name>
 <ownerFormalParam>
 <ref refid="c47979f4-6cda-11ee-a01f-edca6947932b"/>
@@ -769,7 +766,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>LocalDate birthday</val>
+<val>String name</val>
 </name>
 <ownerFormalParam>
 <ref refid="b8742b36-6cd7-11ee-a121-23f89bd11930"/>
@@ -1067,7 +1064,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 18.12036929569183, 666.4762320030563)</val>
 </matrix>
 <points>
-<val>[(1155.507718955058, -122.44266736836721), (1155.5077189550575, -163.23486195930275), (796.8742620958623, -163.23486195930275)]</val>
+<val>[(1155.507718955058, -122.7960921560456), (1155.5077189550575, -163.23486195930275), (796.8742620958623, -163.23486195930275)]</val>
 </points>
 <head-connection>
 <ref refid="1d2bd4ea-69ec-11ee-bdba-00155df7ccfe"/>
@@ -1241,7 +1238,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 596.2460165297302, 153.43092293060073)</val>
 </matrix>
 <points>
-<val>[(218.7486148618239, -179.0195084671673), (608.7924210623619, -179.0195084671673)]</val>
+<val>[(219.74861486182385, -179.0195084671673), (608.7924210623619, -179.0195084671673)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -1370,7 +1367,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1260.8194143804008, 100.70253299872456)</val>
 </matrix>
 <points>
-<val>[(-55.78097678830886, -8.210872047439011), (-445.82478298884666, -8.210872047439011)]</val>
+<val>[(-55.78097678830886, -8.210872047439011), (-444.82478298884666, -8.210872047439011)]</val>
 </points>
 <head-connection>
 <ref refid="0c4fbff9-6dfa-11ee-93e1-834dafcfcfb6"/>
@@ -1910,7 +1907,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 815.8163719177246, -99.48048400878906)</val>
 </matrix>
 <points>
-<val>[(-0.8217405261704585, 0.8671875000000284), (993.5800775403548, 5.087327225450963)]</val>
+<val>[(0.1782594738294847, 0.8671875000000284), (993.5800775403548, 5.087327225450963)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -2035,62 +2032,21 @@
 <class_>
 <ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
 </class_>
+<isStatic>
+<val>1</val>
+</isStatic>
 <name>
-<val>user</val>
+<val>validatePhoneNumber</val>
 </name>
 <ownedParameter>
 <reflist>
-<ref refid="6b3b42e6-6f76-11ee-aa49-91b787512d32"/>
-<ref refid="6b408099-6f76-11ee-a2ab-91b787512d32"/>
-<ref refid="6b44f385-6f76-11ee-a3fd-91b787512d32"/>
-<ref refid="6b499cf5-6f76-11ee-bccb-91b787512d32"/>
+<ref refid="e70afee4-6f8d-11ee-a144-9bb5a601d546"/>
 </reflist>
 </ownedParameter>
+<visibility>
+<val>private</val>
+</visibility>
 </Operation>
-<Parameter id="6b3b42e6-6f76-11ee-aa49-91b787512d32">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>String name</val>
-</name>
-<ownerFormalParam>
-<ref refid="6b35c870-6f76-11ee-bd33-91b787512d32"/>
-</ownerFormalParam>
-</Parameter>
-<Parameter id="6b408099-6f76-11ee-a2ab-91b787512d32">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>int age</val>
-</name>
-<ownerFormalParam>
-<ref refid="6b35c870-6f76-11ee-bd33-91b787512d32"/>
-</ownerFormalParam>
-</Parameter>
-<Parameter id="6b44f385-6f76-11ee-a3fd-91b787512d32">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>String phoneNumber</val>
-</name>
-<ownerFormalParam>
-<ref refid="6b35c870-6f76-11ee-bd33-91b787512d32"/>
-</ownerFormalParam>
-</Parameter>
-<Parameter id="6b499cf5-6f76-11ee-bccb-91b787512d32">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>String password</val>
-</name>
-<ownerFormalParam>
-<ref refid="6b35c870-6f76-11ee-bd33-91b787512d32"/>
-</ownerFormalParam>
-</Parameter>
 <Operation id="83970f15-6f76-11ee-a797-91b787512d32">
 <class_>
 <ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
@@ -2479,6 +2435,50 @@
 </name>
 <ownerFormalParam>
 <ref refid="7650d46b-6f84-11ee-a38d-e93ffbc4c260"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="dca03048-6f8d-11ee-b3cc-9bb5a601d546">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>int age</val>
+</name>
+<ownerFormalParam>
+<ref refid="b8742b36-6cd7-11ee-a121-23f89bd11930"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="dcafd141-6f8d-11ee-a565-9bb5a601d546">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>String phoneNumber</val>
+</name>
+<ownerFormalParam>
+<ref refid="b8742b36-6cd7-11ee-a121-23f89bd11930"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="dcb43f94-6f8d-11ee-bf6c-9bb5a601d546">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>String password</val>
+</name>
+<ownerFormalParam>
+<ref refid="b8742b36-6cd7-11ee-a121-23f89bd11930"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="e70afee4-6f8d-11ee-a144-9bb5a601d546">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>String phoneNumber</val>
+</name>
+<ownerFormalParam>
+<ref refid="6b35c870-6f76-11ee-bd33-91b787512d32"/>
 </ownerFormalParam>
 </Parameter>
 </gaphor>

@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.OptionalInt;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import static ES.UPM.ETSISI.CITIT21G6.model.MockData.generateSocialPlan;
 import static ES.UPM.ETSISI.CITIT21G6.model.MockData.generateUsers;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TicketTest
 {
@@ -16,7 +16,7 @@ class TicketTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         User[] users = generateUsers();
-        for (User user: users)
+        for (User user : users)
         {
             Ticket ticket = new Ticket(user, socialPlan);
             socialPlan.addParticipant(ticket);

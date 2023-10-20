@@ -11,6 +11,25 @@ public class User
     private static final int MINIMUM_AGE = 14;
     private static final int MAXIMUM_AGE = 100;
     private static final int MINIMUM_PASSWORD_LENGTH = 3;
+    private final String name;
+    private final LocalDate birthday;
+    private String password;
+    private String phoneNumber;
+    private List<SocialPlan> socialPlans;
+    private List<Ticket> joinedEvents;
+    public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
+    {
+        validateAge(birthday);
+        validatePassword(password);
+        validatePhoneNumber(phoneNumber);
+
+        this.name = name;
+        this.password = password;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.socialPlans = new ArrayList<>();
+        this.joinedEvents = new ArrayList<>();
+    }
 
     private static void validateAge(LocalDate birthday) throws Exception
     {
@@ -57,27 +76,6 @@ public class User
             throw new Exception("Invalid phone number");
     }
 
-    private final String name;
-    private String password;
-    private final LocalDate birthday;
-    private String phoneNumber;
-    private List<SocialPlan> socialPlans;
-    private List<Ticket> joinedEvents;
-
-    public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
-    {
-        validateAge(birthday);
-        validatePassword(password);
-        validatePhoneNumber(phoneNumber);
-
-        this.name = name;
-        this.password = password;
-        this.birthday = birthday;
-        this.phoneNumber = phoneNumber;
-        this.socialPlans = new ArrayList<>();
-        this.joinedEvents = new ArrayList<>();
-    }
-
     public String getName()
     {
         return name;
@@ -111,14 +109,15 @@ public class User
         return socialPlans;
     }
 
-    public List<Ticket> getJoinedEvents() {
+    public List<Ticket> getJoinedEvents()
+    {
         return joinedEvents;
     }
 
     public void addJoinedEvent(Ticket ticket) throws Exception
     {
         if (joinedEvents.contains(ticket))
-            throw  new Exception("The user has already joined the social plan.");
+            throw new Exception("The user has already joined the social plan.");
 
         joinedEvents.add(ticket);
     }

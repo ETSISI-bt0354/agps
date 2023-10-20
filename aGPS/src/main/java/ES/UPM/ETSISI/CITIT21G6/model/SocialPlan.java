@@ -2,8 +2,8 @@ package ES.UPM.ETSISI.CITIT21G6.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.OptionalInt;
 import java.util.List;
+import java.util.OptionalInt;
 
 public class SocialPlan
 {
@@ -51,7 +51,7 @@ public class SocialPlan
 
         int numberOfParticipants = participants.size();
 
-        if (capacity.orElse(Integer.MAX_VALUE) <  numberOfParticipants)
+        if (capacity.orElse(Integer.MAX_VALUE) < numberOfParticipants)
         {
             StringBuilder errorMessage = new StringBuilder();
             errorMessage.append("The minimum plan capacity is ");

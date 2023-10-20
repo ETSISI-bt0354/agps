@@ -4,11 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.OptionalInt;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static ES.UPM.ETSISI.CITIT21G6.model.MockData.generateSocialPlan;
-import static ES.UPM.ETSISI.CITIT21G6.model.MockData.generateUsers;
-import static ES.UPM.ETSISI.CITIT21G6.model.MockData.generateActivities;
+import static ES.UPM.ETSISI.CITIT21G6.model.MockData.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SocialPlanTest
 {
@@ -16,8 +14,8 @@ class SocialPlanTest
     @Test
     void setNegativeCapacity()
     {
-       SocialPlan socialPlan = generateSocialPlan();
-       assertThrows(Exception.class, () -> socialPlan.setCapacity(OptionalInt.of(-3)));
+        SocialPlan socialPlan = generateSocialPlan();
+        assertThrows(Exception.class, () -> socialPlan.setCapacity(OptionalInt.of(-3)));
     }
 
     @Test
@@ -26,6 +24,7 @@ class SocialPlanTest
         SocialPlan socialPlan = generateSocialPlan();
         assertThrows(Exception.class, () -> socialPlan.setCapacity(OptionalInt.of(0)));
     }
+
     @Test
     void setCapacityTest() throws Exception
     {
@@ -41,7 +40,7 @@ class SocialPlanTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         User[] users = generateUsers();
-        for (User user: users)
+        for (User user : users)
             socialPlan.addParticipant(new Ticket(user, socialPlan));
 
         assertThrows(Exception.class, () -> socialPlan.setCapacity(OptionalInt.of(2)));
@@ -52,7 +51,7 @@ class SocialPlanTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         Activity[] activities = generateActivities();
-        for (Activity activity: activities)
+        for (Activity activity : activities)
             socialPlan.addActivity(activity);
 
         assertThrows(Exception.class, () -> socialPlan.setCapacity(OptionalInt.of(55)));
@@ -63,7 +62,7 @@ class SocialPlanTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         Activity[] activities = generateActivities();
-        for (Activity activity: activities)
+        for (Activity activity : activities)
             socialPlan.addActivity(activity);
 
         assertEquals(activities[2], socialPlan.getActivities().get(2));
@@ -75,7 +74,7 @@ class SocialPlanTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         Activity[] activities = generateActivities();
-        for (Activity activity: activities)
+        for (Activity activity : activities)
             socialPlan.addActivity(activity);
 
         assertThrows(Exception.class, () -> socialPlan.addActivity(activities[0]));
@@ -86,11 +85,11 @@ class SocialPlanTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         Activity[] activities = generateActivities();
-        for (Activity activity: activities)
+        for (Activity activity : activities)
             socialPlan.addActivity(activity);
 
         User[] users = generateUsers();
-        for (User user: users)
+        for (User user : users)
             socialPlan.addParticipant(new Ticket(user, socialPlan));
 
         Activity activity = new Activity("D", "d", 60, 60, null);

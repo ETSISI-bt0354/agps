@@ -23,7 +23,8 @@ public class Ticket
         this.score = OptionalInt.empty();
     }
 
-    public void delete() {
+    public void delete()
+    {
         user.removeJoinedEvent(this);
         socialPlan.removeParticipant(this);
     }
