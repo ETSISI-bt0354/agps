@@ -8,7 +8,7 @@ public class Ticket
     private final SocialPlan socialPlan;
     private OptionalInt score;
 
-    protected Ticket(User user, SocialPlan socialPlan)
+    public Ticket(User user, SocialPlan socialPlan)
     {
         this.user = user;
         this.socialPlan = socialPlan;
@@ -16,8 +16,8 @@ public class Ticket
     }
 
     public void delete() {
-        user.deleteTicket(this);
-        socialPlan.deleteTicket(this);
+        user.removeJoinedEvent(this);
+        socialPlan.removeParticipant(this);
     }
 
     public User getUser()

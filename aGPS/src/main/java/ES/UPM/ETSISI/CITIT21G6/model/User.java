@@ -84,22 +84,9 @@ public class User
         return phoneNumber;
     }
 
-    public SocialPlan getSocialPlan(int index) throws Exception
+    public List<SocialPlan> getSocialPlan(int index)
     {
-        SocialPlan socialPlan = null;
-        try
-        {
-            socialPlan = socialPlans.get(index);
-        } catch (IndexOutOfBoundsException e)
-        {
-            throw new Exception("There is no social plan in that index");
-        }
-
-        return socialPlan;
-    }
-
-    public List<Ticket> getJoinedEvents() {
-        return joinedEvents;
+        return socialPlans;
     }
 
     @Override
@@ -119,7 +106,11 @@ public class User
         return getName().hashCode();
     }
 
-    public void addTicket(Ticket ticket) throws Exception
+    public List<Ticket> getJoinedEvents() {
+        return joinedEvents;
+    }
+
+    public void addJoinedEvent(Ticket ticket) throws Exception
     {
         if (joinedEvents.contains(ticket))
             throw  new Exception("The user already has that ticket");
@@ -127,7 +118,7 @@ public class User
         joinedEvents.add(ticket);
     }
 
-    protected void deleteTicket(Ticket ticket)
+    protected void removeJoinedEvent(Ticket ticket)
     {
         joinedEvents.remove(ticket);
     }

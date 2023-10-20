@@ -79,9 +79,8 @@ public class SocialPlan
         return participants;
     }
 
-    public Ticket createTicket(User user) throws Exception
+    public void addParticipant(Ticket ticket) throws Exception
     {
-        Ticket ticket = new Ticket(user, this);
         if (participants.contains(ticket))
             throw new Exception("The user already has a ticket");
 
@@ -89,10 +88,9 @@ public class SocialPlan
             throw new Exception("The social plan is full");
 
         participants.add(ticket);
-        return ticket;
     }
 
-    protected void deleteTicket(Ticket ticket)
+    protected void removeParticipant(Ticket ticket)
     {
         participants.remove(ticket);
     }
