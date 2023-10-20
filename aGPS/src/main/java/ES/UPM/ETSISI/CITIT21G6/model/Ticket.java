@@ -10,8 +10,14 @@ public class Ticket
     private final SocialPlan socialPlan;
     private OptionalInt score;
 
-    public Ticket(User user, SocialPlan socialPlan)
+    public Ticket(User user, SocialPlan socialPlan) throws NullPointerException
     {
+        if (user == null)
+            throw new NullPointerException("User cannot be null");
+
+        if (socialPlan == null)
+            throw new NullPointerException("SocialPlan cannot be null");
+
         this.user = user;
         this.socialPlan = socialPlan;
         this.score = OptionalInt.empty();

@@ -53,7 +53,7 @@ public class User
 
     private static void validatePhoneNumber(String phoneNumber) throws Exception
     {
-        if (Pattern.matches("^[0-9]{9}$", phoneNumber))
+        if (!Pattern.matches("^[0-9]{9}$", phoneNumber))
             throw new Exception("Invalid phone number");
     }
 
@@ -68,7 +68,7 @@ public class User
     {
         validateAge(birthday);
         validatePassword(password);
-        validatePassword(phoneNumber);
+        validatePhoneNumber(phoneNumber);
 
         this.name = name;
         this.password = password;

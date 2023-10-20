@@ -16,6 +16,7 @@ public class Activity
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.capacity = OptionalInt.empty();
         this.price = price;
         this.priceCalculator = priceCalculator;
     }
