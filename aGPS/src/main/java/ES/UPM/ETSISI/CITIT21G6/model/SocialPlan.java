@@ -54,7 +54,7 @@ public class SocialPlan
         if (capacity.orElse(Integer.MAX_VALUE) <  numberOfParticipants)
         {
             StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The plan's minimum capacity is ");
+            errorMessage.append("The minimum plan capacity is ");
             errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
             errorMessage.append(".");
             throw new Exception(errorMessage.toString());
@@ -68,7 +68,7 @@ public class SocialPlan
         if (capacity.orElse(Integer.MAX_VALUE) > minimumPossibleCapacity.orElse(Integer.MAX_VALUE))
         {
             StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The plan's maximum capacity is ");
+            errorMessage.append("The maximum plan capacity is ");
             errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
             errorMessage.append(".");
             throw new Exception(errorMessage.toString());
@@ -90,9 +90,9 @@ public class SocialPlan
             capacity = activity.getCapacity();
     }
 
-    public List<Ticket> getParticipants()
+    public List<Activity> getActivities()
     {
-        return participants;
+        return activities;
     }
 
     public void addParticipant(Ticket ticket) throws Exception
@@ -104,6 +104,11 @@ public class SocialPlan
             throw new Exception("The social plan is full.");
 
         participants.add(ticket);
+    }
+
+    public List<Ticket> getParticipants()
+    {
+        return participants;
     }
 
     protected void removeParticipant(Ticket ticket)

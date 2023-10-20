@@ -330,9 +330,10 @@
 <ref refid="e845d1ae-6cd9-11ee-8c83-edca6947932b"/>
 <ref refid="6dbe5041-6ced-11ee-85a6-97393de14517"/>
 <ref refid="ce0dfd72-6dfb-11ee-b324-834dafcfcfb6"/>
-<ref refid="973ec013-6e5f-11ee-9edb-ef656a1af08a"/>
-<ref refid="17df5651-6e63-11ee-8cd5-ef656a1af08a"/>
-<ref refid="85095baa-6e64-11ee-a393-ef656a1af08a"/>
+<ref refid="53411062-6f84-11ee-97ba-e93ffbc4c260"/>
+<ref refid="6fcaf212-6f84-11ee-83ec-e93ffbc4c260"/>
+<ref refid="73276b8c-6f84-11ee-b840-e93ffbc4c260"/>
+<ref refid="7650d46b-6f84-11ee-a38d-e93ffbc4c260"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -346,7 +347,7 @@
 </Class>
 <ClassItem id="b66a2ae5-69ed-11ee-a099-00155df7ccfe">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1863.3964494580794, -163.78341341343565)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1863.3964494580794, -163.7834134134357)</val>
 </matrix>
 <top-left>
 <val>(-54.0, -7.510067255897525)</val>
@@ -355,7 +356,7 @@
 <val>405.0</val>
 </width>
 <height>
-<val>310.0</val>
+<val>328.0</val>
 </height>
 <diagram>
 <ref refid="9735aa8e-69eb-11ee-a158-00155df7ccfe"/>
@@ -921,8 +922,8 @@
 <ref refid="1a50c4ab-6dfa-11ee-9568-834dafcfcfb6"/>
 <ref refid="11dfb1a4-6f73-11ee-9def-e9a6debc8b97"/>
 <ref refid="146f96a2-6f73-11ee-8a7f-e9a6debc8b97"/>
-<ref refid="5ef8bf25-6e5c-11ee-b5b4-ef656a1af08a"/>
 <ref refid="5810fe6c-6e5c-11ee-8846-ef656a1af08a"/>
+<ref refid="5ef8bf25-6e5c-11ee-b5b4-ef656a1af08a"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
@@ -1066,7 +1067,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 18.12036929569183, 666.4762320030563)</val>
 </matrix>
 <points>
-<val>[(1155.507718955058, -122.08798389563592), (1155.5077189550575, -163.23486195930275), (796.8742620958623, -163.23486195930275)]</val>
+<val>[(1155.507718955058, -122.44266736836721), (1155.5077189550575, -163.23486195930275), (796.8742620958623, -163.23486195930275)]</val>
 </points>
 <head-connection>
 <ref refid="1d2bd4ea-69ec-11ee-bdba-00155df7ccfe"/>
@@ -1141,7 +1142,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2189.715635118341, 161.68630070840106)</val>
 </matrix>
 <points>
-<val>[(-177.81918566026206, -22.97978137773424), (-177.81918566026206, 451.20720097553124), (-385.087546867592, 451.20720097553124)]</val>
+<val>[(-177.81918566026206, -4.979781377734241), (-177.81918566026206, 451.20720097553124), (-385.087546867592, 451.20720097553124)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -1337,7 +1338,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1979.2740154661974, 146.0204527148045)</val>
 </matrix>
 <points>
-<val>[(-169.87756600811758, -162.31393338413773), (-501.2355778741055, -162.31393338413773)]</val>
+<val>[(-169.87756600811758, -153.31393338413775), (-501.2355778741055, -153.31393338413773)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -1558,30 +1559,6 @@
 <val>private</val>
 </visibility>
 </Property>
-<Operation id="973ec013-6e5f-11ee-9edb-ef656a1af08a">
-<class_>
-<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
-</class_>
-<name>
-<val>getParticipants</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="974501c6-6e5f-11ee-beb4-ef656a1af08a"/>
-</reflist>
-</ownedParameter>
-</Operation>
-<Parameter id="974501c6-6e5f-11ee-beb4-ef656a1af08a">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="973ec013-6e5f-11ee-9edb-ef656a1af08a"/>
-</ownerFormalParam>
-<typeValue>
-<val>List&lt;Ticket&gt;</val>
-</typeValue>
-</Parameter>
 <Operation id="77fe6bde-6e62-11ee-af3a-ef656a1af08a">
 <class_>
 <ref refid="0c4eec64-6dfa-11ee-9a9c-834dafcfcfb6"/>
@@ -1725,30 +1702,6 @@
 <ref refid="efb198e5-6e62-11ee-9b49-ef656a1af08a"/>
 </ownerFormalParam>
 </Parameter>
-<Operation id="17df5651-6e63-11ee-8cd5-ef656a1af08a">
-<class_>
-<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
-</class_>
-<name>
-<val>addParticipant</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="17e686ce-6e63-11ee-955c-ef656a1af08a"/>
-</reflist>
-</ownedParameter>
-</Operation>
-<Parameter id="17e686ce-6e63-11ee-955c-ef656a1af08a">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>Ticket ticket</val>
-</name>
-<ownerFormalParam>
-<ref refid="17df5651-6e63-11ee-8cd5-ef656a1af08a"/>
-</ownerFormalParam>
-</Parameter>
 <Operation id="610b22b6-6e64-11ee-bd11-ef656a1af08a">
 <class_>
 <ref refid="0c4eec64-6dfa-11ee-9a9c-834dafcfcfb6"/>
@@ -1808,33 +1761,6 @@
 <typeValue>
 <val>int</val>
 </typeValue>
-</Parameter>
-<Operation id="85095baa-6e64-11ee-a393-ef656a1af08a">
-<class_>
-<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
-</class_>
-<name>
-<val>removeParticipant</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="8510c181-6e64-11ee-8865-ef656a1af08a"/>
-</reflist>
-</ownedParameter>
-<visibility>
-<val>protected</val>
-</visibility>
-</Operation>
-<Parameter id="8510c181-6e64-11ee-8865-ef656a1af08a">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>Ticket ticket</val>
-</name>
-<ownerFormalParam>
-<ref refid="85095baa-6e64-11ee-a393-ef656a1af08a"/>
-</ownerFormalParam>
 </Parameter>
 <Association id="510ea54d-6e5c-11ee-a644-ef656a1af08a">
 <memberEnd>
@@ -1984,7 +1910,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 815.8163719177246, -99.48048400878906)</val>
 </matrix>
 <points>
-<val>[(-0.8217405261704585, 0.8671875000000284), (993.5800775403548, 0.8671875000000284)]</val>
+<val>[(-0.8217405261704585, 0.8671875000000284), (993.5800775403548, 5.087327225450963)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -2455,5 +2381,104 @@
 <typeValue>
 <val>int</val>
 </typeValue>
+</Parameter>
+<Operation id="53411062-6f84-11ee-97ba-e93ffbc4c260">
+<class_>
+<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
+</class_>
+<name>
+<val>getActivities</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="534e43ff-6f84-11ee-bbc5-e93ffbc4c260"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="534e43ff-6f84-11ee-bbc5-e93ffbc4c260">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="53411062-6f84-11ee-97ba-e93ffbc4c260"/>
+</ownerFormalParam>
+<typeValue>
+<val>List&lt;Activity&gt;</val>
+</typeValue>
+</Parameter>
+<Operation id="6fcaf212-6f84-11ee-83ec-e93ffbc4c260">
+<class_>
+<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
+</class_>
+<name>
+<val>addParticipant</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="6fd098e4-6f84-11ee-a6e0-e93ffbc4c260"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="6fd098e4-6f84-11ee-a6e0-e93ffbc4c260">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>Ticket ticket</val>
+</name>
+<ownerFormalParam>
+<ref refid="6fcaf212-6f84-11ee-83ec-e93ffbc4c260"/>
+</ownerFormalParam>
+</Parameter>
+<Operation id="73276b8c-6f84-11ee-b840-e93ffbc4c260">
+<class_>
+<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
+</class_>
+<name>
+<val>getParticipants</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="732c5e66-6f84-11ee-b3a2-e93ffbc4c260"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="732c5e66-6f84-11ee-b3a2-e93ffbc4c260">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="73276b8c-6f84-11ee-b840-e93ffbc4c260"/>
+</ownerFormalParam>
+<typeValue>
+<val>List&lt;Ticket&gt;</val>
+</typeValue>
+</Parameter>
+<Operation id="7650d46b-6f84-11ee-a38d-e93ffbc4c260">
+<class_>
+<ref refid="b669b5b4-69ed-11ee-88c6-00155df7ccfe"/>
+</class_>
+<name>
+<val>removeParticipant</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="765656d3-6f84-11ee-b150-e93ffbc4c260"/>
+</reflist>
+</ownedParameter>
+<visibility>
+<val>protected</val>
+</visibility>
+</Operation>
+<Parameter id="765656d3-6f84-11ee-b150-e93ffbc4c260">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>Ticket ticket</val>
+</name>
+<ownerFormalParam>
+<ref refid="7650d46b-6f84-11ee-a38d-e93ffbc4c260"/>
+</ownerFormalParam>
 </Parameter>
 </gaphor>

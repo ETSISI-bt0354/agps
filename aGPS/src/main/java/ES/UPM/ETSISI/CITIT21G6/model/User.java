@@ -98,10 +98,10 @@ public class User
         return phoneNumber;
     }
 
-    public void addSocialPlan(SocialPlan socialPlan)
+    public void addSocialPlan(SocialPlan socialPlan) throws Exception
     {
         if (socialPlans.contains(socialPlan))
-            throw new IllegalArgumentException("The plan is already added.");
+            throw new Exception("The plan is already added.");
 
         socialPlans.add(socialPlan);
     }
