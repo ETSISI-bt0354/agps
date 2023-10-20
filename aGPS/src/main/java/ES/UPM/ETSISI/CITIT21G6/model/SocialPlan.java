@@ -82,6 +82,10 @@ public class SocialPlan
         Ticket ticket = new Ticket(user, this);
         if (participants.contains(ticket))
             throw new Exception("The user already has a ticket");
+
+        if (participants.size() == capacity.orElse(Integer.MAX_VALUE))
+            throw new Exception("The social plan is full");
+
         participants.add(ticket);
         return ticket;
     }
