@@ -7,16 +7,16 @@ public class Activity
     private String name;
     private String description;
     private int duration;
-    private double cost;
+    private double price;
     private OptionalInt capacity;
     private PriceCalculator priceCalculator;
 
-    public Activity(String name, String description, int duration, Double basePrice, PriceCalculator priceCalculator)
+    public Activity(String name, String description, int duration, Double price, PriceCalculator priceCalculator)
     {
         this.name = name;
         this.description = description;
         this.duration = duration;
-        this.cost = basePrice;
+        this.price = price;
         this.priceCalculator = priceCalculator;
     }
 
@@ -45,8 +45,11 @@ public class Activity
         return capacity;
     }
 
-    public void setCapacity(OptionalInt capacity)
+    public void setCapacity(OptionalInt capacity) throws Exception
     {
+        if (capacity.isPresent() && capacity.getAsInt() <= 0)
+            throw new Exception("Capacity must be greater than 0");
+
         this.capacity = capacity;
     }
 }
