@@ -60,16 +60,15 @@ public class SocialPlan
 
     public void addActivity(Activity activity) throws Exception
     {
-        if (!activities.contains(activity))
-        {
-            activities.add(activity);
-            if (activity.getCapacity().orElse(Integer.MAX_VALUE) < capacity.orElse(Integer.MAX_VALUE))
-                capacity = activity.getCapacity();
-        }
-        else
-        {
+        if (activities.contains(activity))
             throw new Exception("The activity is already added!");
-        }
+
+        if (activity.getCapacity().orElse(Integer.MAX_VALUE) < participants.size())
+            throw new Exception("There are too many user on the plan for this activity");
+
+        activities.add(activity);
+        if (activity.getCapacity().orElse(Integer.MAX_VALUE) < capacity.orElse(Integer.MAX_VALUE))
+            capacity = activity.getCapacity();
     }
 
     public List<Ticket> getParticipants()
