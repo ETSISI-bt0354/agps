@@ -7,8 +7,8 @@ public class Activity
     private String name;
     private String description;
     private int duration;
-    private double price;
     private OptionalInt capacity;
+    private double price;
     private PriceCalculator priceCalculator;
 
     public Activity(String name, String description, int duration, double price, PriceCalculator priceCalculator)
@@ -35,11 +35,6 @@ public class Activity
         return duration;
     }
 
-    public double getPrice(int age)
-    {
-        return priceCalculator.calculatePrice(age);
-    }
-
     public OptionalInt getCapacity()
     {
         return capacity;
@@ -51,5 +46,15 @@ public class Activity
             throw new Exception("Capacity must be greater than 0.");
 
         this.capacity = capacity;
+    }
+
+    public double getPrice()
+    {
+        return price;
+    }
+
+    public double calculatePrice(int age)
+    {
+        return priceCalculator.calculatePrice(price, age);
     }
 }
