@@ -47,12 +47,28 @@ public class SocialPlan
     public void setCapacity(OptionalInt capacity) throws Exception
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new Exception("Capacity must be greater than 0");
+            throw new Exception("Capacity must be greater than 0.");
 
-        if (capacity.orElse(Integer.MAX_VALUE) <= this.capacity.orElse(Integer.MAX_VALUE))
+        int numberOfParticipants = participants.size();
+
+        if (capacity.orElse(Integer.MAX_VALUE) <  numberOfParticipants)
         {
             StringBuilder errorMessage = new StringBuilder();
             errorMessage.append("The plan's minimum capacity is ");
+            errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
+            errorMessage.append(".");
+            throw new Exception(errorMessage.toString());
+        }
+
+        OptionalInt minimumPossibleCapacity = activities.stream()
+                .map(Activity::getCapacity)
+                .flatMapToInt(OptionalInt::stream)
+                .min();
+
+        if (capacity.orElse(Integer.MAX_VALUE) > minimumPossibleCapacity.orElse(Integer.MAX_VALUE))
+        {
+            StringBuilder errorMessage = new StringBuilder();
+            errorMessage.append("The plan's maximum capacity is ");
             errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
             errorMessage.append(".");
             throw new Exception(errorMessage.toString());
@@ -64,10 +80,10 @@ public class SocialPlan
     public void addActivity(Activity activity) throws Exception
     {
         if (activities.contains(activity))
-            throw new Exception("The activity is already added!");
+            throw new Exception("The activity is already added.");
 
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < participants.size())
-            throw new Exception("There are too many user on the plan for this activity");
+            throw new Exception("There are too many user on the plan for this activity.");
 
         activities.add(activity);
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < capacity.orElse(Integer.MAX_VALUE))
@@ -82,10 +98,10 @@ public class SocialPlan
     public void addParticipant(Ticket ticket) throws Exception
     {
         if (participants.contains(ticket))
-            throw new Exception("The user already has a ticket");
+            throw new Exception("The user is already on the social plan.");
 
-        if (participants.size() == capacity.orElse(Integer.MAX_VALUE))
-            throw new Exception("The social plan is full");
+        if (capacity.isPresent() && participants.size() == capacity.getAsInt())
+            throw new Exception("The social plan is full.");
 
         participants.add(ticket);
     }

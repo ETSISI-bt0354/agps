@@ -40,7 +40,16 @@ public class Ticket
     public void setScore(OptionalInt score) throws Exception
     {
         if (score.isPresent() && (score.getAsInt() < MINIMUM_SCORE || score.getAsInt() > MAXIMUM_SCORE))
-            throw new Exception("The core must be between 0 and 10");
+        {
+            StringBuilder errorMessage = new StringBuilder();
+            errorMessage.append("The score must be between");
+            errorMessage.append(MINIMUM_SCORE);
+            errorMessage.append(" and ");
+            errorMessage.append(MAXIMUM_SCORE);
+            errorMessage.append(".");
+
+            throw new Exception(errorMessage.toString());
+        }
 
         this.score = score;
     }

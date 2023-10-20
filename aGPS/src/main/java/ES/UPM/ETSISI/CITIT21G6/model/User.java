@@ -20,7 +20,7 @@ public class User
             StringBuilder errorMessage = new StringBuilder();
             errorMessage.append("Minimum age is ");
             errorMessage.append(MINIMUM_AGE);
-            errorMessage.append("years old");
+            errorMessage.append(" years old.");
 
             throw new Exception(errorMessage.toString());
         }
@@ -30,7 +30,7 @@ public class User
             StringBuilder errorMessage = new StringBuilder();
             errorMessage.append("Maximum age is ");
             errorMessage.append(MAXIMUM_AGE);
-            errorMessage.append("years old");
+            errorMessage.append(" years old.");
 
             throw new Exception(errorMessage.toString());
         }
@@ -59,7 +59,7 @@ public class User
     public void addSocialPlan(SocialPlan socialPlan)
     {
         if (socialPlans.contains(socialPlan))
-            throw new IllegalArgumentException("The plan is already added");
+            throw new IllegalArgumentException("The plan is already added.");
 
         socialPlans.add(socialPlan);
     }
@@ -84,7 +84,7 @@ public class User
         return phoneNumber;
     }
 
-    public List<SocialPlan> getSocialPlan(int index)
+    public List<SocialPlan> getSocialPlans(int index)
     {
         return socialPlans;
     }
@@ -113,7 +113,7 @@ public class User
     public void addJoinedEvent(Ticket ticket) throws Exception
     {
         if (joinedEvents.contains(ticket))
-            throw  new Exception("The user already has that ticket");
+            throw  new Exception("The user has already joined the social plan.");
 
         joinedEvents.add(ticket);
     }

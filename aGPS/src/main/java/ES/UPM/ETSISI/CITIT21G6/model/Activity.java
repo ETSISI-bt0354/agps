@@ -11,7 +11,7 @@ public class Activity
     private OptionalInt capacity;
     private PriceCalculator priceCalculator;
 
-    public Activity(String name, String description, int duration, Double price, PriceCalculator priceCalculator)
+    public Activity(String name, String description, int duration, double price, PriceCalculator priceCalculator)
     {
         this.name = name;
         this.description = description;
@@ -48,7 +48,7 @@ public class Activity
     public void setCapacity(OptionalInt capacity) throws Exception
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new Exception("Capacity must be greater than 0");
+            throw new Exception("Capacity must be greater than 0.");
 
         this.capacity = capacity;
     }
