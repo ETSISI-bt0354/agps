@@ -10,21 +10,19 @@ public class User
 {
     private static final int MINIMUM_AGE = 14;
     private static final int MAXIMUM_AGE = 100;
-    private static final int MINIMUM_PASSWORD_LENGTH = 3;
     private final String name;
     private final LocalDate birthday;
-    private String password;
+    private Password password;
     private String phoneNumber;
     private List<SocialPlan> socialPlans;
     private List<Ticket> joinedEvents;
     public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
     {
         validateAge(birthday);
-        validatePassword(password);
         validatePhoneNumber(phoneNumber);
 
         this.name = name;
-        this.password = password;
+        this.password = new Password(password);
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
         this.socialPlans = new ArrayList<>();
@@ -57,19 +55,6 @@ public class User
         }
     }
 
-    private static void validatePassword(String password) throws Exception
-    {
-        if (password.length() < MINIMUM_PASSWORD_LENGTH)
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The password must have at least ");
-            errorMessage.append(MINIMUM_PASSWORD_LENGTH);
-            errorMessage.append(" characters.");
-
-            throw new Exception(errorMessage.toString());
-        }
-    }
-
     private static void validatePhoneNumber(String phoneNumber) throws Exception
     {
         if (!Pattern.matches("^[0-9]{9}$", phoneNumber))
@@ -83,7 +68,7 @@ public class User
 
     public String getPassword()
     {
-        return password;
+        return password.getPassword();
     }
 
     public LocalDate getBirthday()
