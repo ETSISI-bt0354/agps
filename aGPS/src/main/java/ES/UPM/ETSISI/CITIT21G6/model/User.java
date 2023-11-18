@@ -11,7 +11,7 @@ public class User
     private static final int MINIMUM_AGE = 14;
     private static final int MAXIMUM_AGE = 100;
     private final String name;
-    private final LocalDate birthday;
+    private Age birthday;
     private Password password;
     private String phoneNumber;
     private List<SocialPlan> socialPlans;
@@ -23,7 +23,7 @@ public class User
 
         this.name = name;
         this.password = new Password(password);
-        this.birthday = birthday;
+        this.birthday = new Age(birthday);
         this.phoneNumber = phoneNumber;
         this.socialPlans = new ArrayList<>();
         this.joinedEvents = new ArrayList<>();
@@ -73,7 +73,7 @@ public class User
 
     public LocalDate getBirthday()
     {
-        return birthday;
+        return birthday.getBirthday();
     }
 
     public String getPhoneNumber()
