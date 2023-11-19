@@ -6,20 +6,24 @@ public class Age
 {
     private LocalDate birthday;
 
-    public Age(LocalDate birthday) {
+    public Age(LocalDate birthday)
+    {
         this.birthday = birthday;
     }
 
-    public LocalDate getBirthday() {
+    public LocalDate getBirthday()
+    {
         return birthday;
     }
 
-    public int getAge() {
+    public int getAge()
+    {
         LocalDate currentDate = LocalDate.now();
         return currentDate.getYear() - birthday.getYear();
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(LocalDate birthday)
+    {
         this.birthday = birthday;
     }
 }

@@ -13,7 +13,7 @@ public class User
     private final String name;
     private Age birthday;
     private Password password;
-    private String phoneNumber;
+    private PhoneNumber phoneNumber;
     private List<SocialPlan> socialPlans;
     private List<Ticket> joinedEvents;
     public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
@@ -24,7 +24,7 @@ public class User
         this.name = name;
         this.password = new Password(password);
         this.birthday = new Age(birthday);
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = new PhoneNumber(phoneNumber);
         this.socialPlans = new ArrayList<>();
         this.joinedEvents = new ArrayList<>();
     }
@@ -78,7 +78,7 @@ public class User
 
     public String getPhoneNumber()
     {
-        return phoneNumber;
+        return phoneNumber.getPhoneNumber();
     }
 
     public void addSocialPlan(SocialPlan socialPlan) throws Exception
