@@ -1,4 +1,6 @@
-package ES.UPM.ETSISI.CITIT21G6.model;
+package ES.UPM.ETSISI.CITIT21G6.repository;
+
+import ES.UPM.ETSISI.CITIT21G6.model.User;
 
 public interface UserRepository
 {

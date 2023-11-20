@@ -1,4 +1,9 @@
-package ES.UPM.ETSISI.CITIT21G6.model;
+package ES.UPM.ETSISI.CITIT21G6.controller;
+
+import ES.UPM.ETSISI.CITIT21G6.model.SessionController;
+import ES.UPM.ETSISI.CITIT21G6.model.User;
+import ES.UPM.ETSISI.CITIT21G6.repository.UserRepository;
+import ES.UPM.ETSISI.CITIT21G6.view.UserView;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,9 @@
-package ES.UPM.ETSISI.CITIT21G6.model;
+package ES.UPM.ETSISI.CITIT21G6.controller;
+
+import ES.UPM.ETSISI.CITIT21G6.model.SessionController;
+import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
+import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
+import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
 import java.time.LocalDate;
 import java.util.OptionalInt;
@@ -10,11 +15,12 @@ public class SocialPlanController extends SessionController
 
     public SocialPlanController(SocialPlanRepository repository, SocialPlanView view)
     {
+        super();
         this.repository = repository;
         this.view = view;
     }
 
-    public String createSocialPlan(String[] args)
+    public String createSocialPlan(String[] args) throws Exception
     {
         String result = null;
 

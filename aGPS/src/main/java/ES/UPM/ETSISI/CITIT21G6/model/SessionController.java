@@ -4,7 +4,7 @@ public class SessionController
 {
     protected User loggedUser;
 
-    SessionController()
+    protected SessionController()
     {}
     public User getLoggedUser()
     {
