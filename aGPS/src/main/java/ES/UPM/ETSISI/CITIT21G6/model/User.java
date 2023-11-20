@@ -89,7 +89,7 @@ public class User
         socialPlans.add(socialPlan);
     }
 
-    public List<SocialPlan> getSocialPlans(int index)
+    public List<SocialPlan> getSocialPlans()
     {
         return socialPlans;
     }

@@ -1,6 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
+import ES.UPM.ETSISI.CITIT21G6.model.User;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
@@ -11,6 +12,8 @@ public class SocialPlanController extends SessionController
 {
     private SocialPlanRepository repository;
     private SocialPlanView view;
+    private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
+    private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
 
     public SocialPlanController(SocialPlanRepository repository, SocialPlanView view)
     {
@@ -19,22 +22,34 @@ public class SocialPlanController extends SessionController
         this.view = view;
     }
 
-    public String createSocialPlan(String[] args) throws Exception
+    public String createSocialPlan(String[] args)
     {
-        String result = null;
+        String result;
 
         try
         {
-            if(args.length < 3)
-                throw new Exception("You must provide at least 3 arguments to create a social plan.");
+            if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
+            {
+                StringBuilder errorMessage = new StringBuilder();
+                errorMessage.append("You must provide at least ");
+                errorMessage.append(MINIMUM_CREATION_ARGUMENT_LENGTH);
+                errorMessage.append(" arguments to create a social plan.");
+
+                throw new Exception(errorMessage.toString());
+            }
+
+            if(getLoggedUser() == null)
+                throw new Exception("You must be logged in to create a social plan");
 
             SocialPlan newPlan = new SocialPlan(args[0], LocalDate.parse(args[1]), args[2]);
 
-            if(args.length == 4)
+            if(args.length == MINIMUM_CREATION_ARGUMENT_LENGTH + 1)
             {
                 newPlan.setCapacity(OptionalInt.of(Integer.parseInt(args[3])));
             }
 
+            User loggedUser = getLoggedUser();
+            loggedUser.addSocialPlan(newPlan);
             repository.save(newPlan);
             result = view.create(newPlan);
         }
@@ -43,6 +58,38 @@ public class SocialPlanController extends SessionController
             result = e.getMessage();
         }
 
+        return result;
+    }
+
+    public String deleteSocialPlan(String[] args)
+    {
+        String result;
+
+        try
+        {
+            if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
+            {
+                StringBuilder errorMessage = new StringBuilder();
+                errorMessage.append("You must provide at least ");
+                errorMessage.append(MINIMUM_CREATION_ARGUMENT_LENGTH);
+                errorMessage.append(" arguments to delete a social plan.");
+
+                throw new Exception(errorMessage.toString());
+            }
+
+            if(getLoggedUser() == null)
+                throw new Exception("You must be logged in to delete a social plan");
+
+            SocialPlan planToDelete = repository.findByName(args[0]);
+            User loggedUser = getLoggedUser();
+            loggedUser.getSocialPlans().remove(planToDelete);
+            repository.delete(planToDelete);
+            result = view.delete(planToDelete);
+        }
+        catch (Exception e)
+        {
+            result = e.getMessage();
+        }
         return result;
     }
 }

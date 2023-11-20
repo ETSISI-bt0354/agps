@@ -19,7 +19,7 @@ public class UserController extends SessionController
     }
     public String registerUser(String[] args)
     {
-        String result = "";
+        String result;
         String name = args[0];
         String password = args[1];
         LocalDate birthday = LocalDate.parse(args[2]);
@@ -39,7 +39,7 @@ public class UserController extends SessionController
     }
     public String loginUser(String[] args)
     {
-        String result = "";
+        String result;
         String name = args[0];
         String password = args[1];
 
@@ -64,7 +64,7 @@ public class UserController extends SessionController
     public String logoutUser(String[] args)
     {
         String name = args[0];
-        String result = "";
+        String result;
         try
         {
             User user = repository.findByName(name);
