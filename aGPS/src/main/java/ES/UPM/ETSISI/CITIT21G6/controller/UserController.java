@@ -20,6 +20,7 @@ public class UserController extends SessionController
     }
     public String registerUser(String[] args)
     {
+        String result = "";
         String name = args[0];
         String password = args[1];
         LocalDate birthday = LocalDate.parse(args[2]);
@@ -29,15 +30,17 @@ public class UserController extends SessionController
         {
             User user = new User(name, password, birthday, phoneNumber);
             repository.save(user);
-            return "User registered successfully";
+            result = view.showUser(user);
         }
         catch (Exception e)
         {
-            return e.getMessage();
+            result = e.getMessage();
         }
+        return result;
     }
     public String loginUser(String[] args)
     {
+        String result = "";
         String name = args[0];
         String password = args[1];
 
@@ -46,34 +49,36 @@ public class UserController extends SessionController
             User user = repository.findByName(name);
             if (user.getPassword().equals(password))
             {
-                return "User logged in successfully";
+                result = view.loggedInUser(user);
             }
             else
             {
-                return "Wrong password";
+                result = view.passwordError();
             }
         }
         catch (Exception e)
         {
-            return e.getMessage();
+            result = e.getMessage();
         }
+        return result;
     }
     public String logoutUser(String[] args)
     {
         String name = args[0];
-
+        String result = "";
         try
         {
             User user = repository.findByName(name);
             if (user != null) {
-                return "User logged out successfully";
+                result = view.loggedOutUser(user);
             } else {
-                return "User not found";
+                result = view.userNotFound();
             }
         }
         catch (Exception e)
         {
-            return e.getMessage();
+            result = e.getMessage();
         }
+        return result;
     }
 }
