@@ -1,6 +1,5 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
-import ES.UPM.ETSISI.CITIT21G6.model.SessionController;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
