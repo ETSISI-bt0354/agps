@@ -8,8 +8,7 @@ import java.util.regex.Pattern;
 
 public class User
 {
-    private static final int MINIMUM_AGE = 14;
-    private static final int MAXIMUM_AGE = 100;
+
     private final String name;
     private Age birthday;
     private Password password;
@@ -29,31 +28,6 @@ public class User
         this.joinedEvents = new ArrayList<>();
     }
 
-    private static void validateAge(LocalDate birthday) throws Exception
-    {
-        LocalDate currentDate = LocalDate.now();
-        Period age = Period.between(birthday, currentDate);
-
-        if (age.getYears() < MINIMUM_AGE)
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("Minimum age is ");
-            errorMessage.append(MINIMUM_AGE);
-            errorMessage.append(" years old.");
-
-            throw new Exception(errorMessage.toString());
-        }
-
-        if (age.getYears() > MAXIMUM_AGE)
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("Maximum age is ");
-            errorMessage.append(MAXIMUM_AGE);
-            errorMessage.append(" years old.");
-
-            throw new Exception(errorMessage.toString());
-        }
-    }
 
     private static void validatePhoneNumber(String phoneNumber) throws Exception
     {
