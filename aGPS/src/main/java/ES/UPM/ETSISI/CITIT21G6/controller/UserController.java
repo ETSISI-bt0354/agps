@@ -1,5 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.UserAlreadyAddedException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 import ES.UPM.ETSISI.CITIT21G6.repository.UserRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.UserView;
@@ -31,10 +33,19 @@ public class UserController extends SessionController
             repository.save(user);
             result = view.showUser(user);
         }
+        catch (UserAlreadyAddedException e)
+        {
+            result = view.userAlreadyAdded(e);
+        }
+        catch (UserNotFoundException e)
+        {
+            result = view.userNotFound(e);
+        }
         catch (Exception e)
         {
             result = e.getMessage();
         }
+
         return result;
     }
     public String loginUser(String[] args)
@@ -71,7 +82,7 @@ public class UserController extends SessionController
             if (user != null) {
                 result = view.loggedOutUser(user);
             } else {
-                result = view.userNotFound();
+                result = view.noLoggedUser();
             }
         }
         catch (Exception e)
