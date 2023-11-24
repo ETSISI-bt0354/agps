@@ -1,21 +1,15 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import java.util.regex.Pattern;
+
 public class PhoneNumber
 {
     private static final int PHONE_NUMBER_LENGTH = 9;
     private String phoneNumber;
     public PhoneNumber(String phoneNumber) throws Exception
     {
-        if(phoneNumber.length() != PHONE_NUMBER_LENGTH)
-        {
-            StringBuilder errorMessage = new StringBuilder();
-
-            errorMessage.append("The phone number must have ");
-            errorMessage.append(PHONE_NUMBER_LENGTH);
-            errorMessage.append(" digits");
-
-            throw new Exception(errorMessage.toString());
-        }
+        if (!Pattern.matches("^[0-9]{9}$", phoneNumber))
+            throw new Exception("Invalid phone number");
 
         this.phoneNumber = phoneNumber;
     }
