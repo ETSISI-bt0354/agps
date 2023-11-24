@@ -10,10 +10,10 @@ import java.util.OptionalInt;
 
 public class SocialPlanController extends SessionController
 {
-    private SocialPlanRepository repository;
-    private SocialPlanView view;
     private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
+    private SocialPlanRepository repository;
+    private SocialPlanView view;
 
     public SocialPlanController(SocialPlanRepository repository, SocialPlanView view)
     {
@@ -25,6 +25,7 @@ public class SocialPlanController extends SessionController
     public String createSocialPlan(String[] args)
     {
         String result;
+        User loggedUser = getLoggedUser();
 
         try
         {
@@ -38,7 +39,7 @@ public class SocialPlanController extends SessionController
                 throw new Exception(errorMessage.toString());
             }
 
-            if(getLoggedUser() == null)
+            if(loggedUser == null)
                 throw new Exception("You must be logged in to create a social plan");
 
             SocialPlan newPlan = new SocialPlan(args[0], LocalDate.parse(args[1]), args[2]);
@@ -48,7 +49,6 @@ public class SocialPlanController extends SessionController
                 newPlan.setCapacity(OptionalInt.of(Integer.parseInt(args[3])));
             }
 
-            User loggedUser = getLoggedUser();
             loggedUser.addSocialPlan(newPlan);
             repository.save(newPlan);
             result = view.create(newPlan);
