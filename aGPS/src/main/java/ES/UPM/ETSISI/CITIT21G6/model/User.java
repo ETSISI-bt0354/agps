@@ -17,7 +17,6 @@ public class User
     private List<Ticket> joinedEvents;
     public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
     {
-        validateAge(birthday);
         validatePhoneNumber(phoneNumber);
 
         this.name = name;
