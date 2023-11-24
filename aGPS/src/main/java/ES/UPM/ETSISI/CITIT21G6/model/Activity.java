@@ -9,16 +9,16 @@ public class Activity
     private int duration;
     private OptionalInt capacity;
     private double price;
-    private PriceCalculator priceCalculator;
+    private ActivityType type;
 
-    public Activity(String name, String description, int duration, double price, PriceCalculator priceCalculator)
+    public Activity(String name, String description, int duration, double price, ActivityType type)
     {
         this.name = name;
         this.description = description;
         this.duration = duration;
         this.capacity = OptionalInt.empty();
         this.price = price;
-        this.priceCalculator = priceCalculator;
+        this.type = type;
     }
 
     public String getName()
@@ -54,8 +54,8 @@ public class Activity
         return price;
     }
 
-    public double calculatePrice(int age)
+    public ActivityType getType()
     {
-        return priceCalculator.calculatePrice(price, age);
+        return type;
     }
 }
