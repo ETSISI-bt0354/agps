@@ -33,6 +33,8 @@ public class Age
 
             throw new Exception(errorMessage.toString());
         }
+
+        this.birthday = birthday;
     }
 
     public LocalDate getBirthday()
