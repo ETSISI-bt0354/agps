@@ -17,8 +17,6 @@ public class User
     private List<Ticket> joinedEvents;
     public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
     {
-        validatePhoneNumber(phoneNumber);
-
         this.name = name;
         this.password = new Password(password);
         this.birthday = new Age(birthday);
@@ -27,12 +25,6 @@ public class User
         this.joinedEvents = new ArrayList<>();
     }
 
-
-    private static void validatePhoneNumber(String phoneNumber) throws Exception
-    {
-        if (!Pattern.matches("^[0-9]{9}$", phoneNumber))
-            throw new Exception("Invalid phone number");
-    }
 
     public String getName()
     {
