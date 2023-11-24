@@ -6,4 +6,5 @@ public interface SocialPlanView
 {
     String create(SocialPlan socialPlan);
     String delete(SocialPlan socialPlan);
+    String addActivity();
 }

@@ -1,5 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
+import ES.UPM.ETSISI.CITIT21G6.model.Activity;
+import ES.UPM.ETSISI.CITIT21G6.model.ActivityType;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
@@ -64,6 +66,7 @@ public class SocialPlanController extends SessionController
     public String deleteSocialPlan(String[] args)
     {
         String result;
+        User loggedUser = getLoggedUser();
 
         try
         {
@@ -77,11 +80,10 @@ public class SocialPlanController extends SessionController
                 throw new Exception(errorMessage.toString());
             }
 
-            if(getLoggedUser() == null)
+            if(loggedUser == null)
                 throw new Exception("You must be logged in to delete a social plan");
 
             SocialPlan planToDelete = repository.findByName(args[0]);
-            User loggedUser = getLoggedUser();
             loggedUser.getSocialPlans().remove(planToDelete);
             repository.delete(planToDelete);
             result = view.delete(planToDelete);
@@ -90,6 +92,33 @@ public class SocialPlanController extends SessionController
         {
             result = e.getMessage();
         }
+        return result;
+    }
+
+    public String addActivities(String[] args)
+    {
+        String result;
+        User loggedUser = getLoggedUser();
+
+        try
+        {
+            SocialPlan socialPlan = repository.findByName(args[0]);
+            if (!loggedUser.getSocialPlans().contains(socialPlan))
+                return "The user does not hava that social plan";
+
+            Activity activity = new Activity(args[1], args[2], Integer.parseInt(args[3]), Double.parseDouble(args[4]), ActivityType.parse(args[5]));
+            if (args.length > 6)
+                activity.setCapacity(OptionalInt.of(Integer.parseInt(args[6])));
+
+            socialPlan.addActivity(activity);
+
+            result = view.addActivity();
+        }
+        catch (Exception e)
+        {
+            result = e.getMessage();
+        }
+
         return result;
     }
 }
