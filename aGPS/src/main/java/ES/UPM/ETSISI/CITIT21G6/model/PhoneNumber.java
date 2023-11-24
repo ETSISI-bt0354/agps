@@ -8,7 +8,7 @@ public class PhoneNumber
     private String phoneNumber;
     public PhoneNumber(String phoneNumber) throws Exception
     {
-        if (!Pattern.matches("^[0-9]{9}$", phoneNumber))
+        if (!Pattern.matches(String.format("^[0-9]{%d}$", PHONE_NUMBER_LENGTH), phoneNumber))
             throw new Exception("Invalid phone number");
 
         this.phoneNumber = phoneNumber;
