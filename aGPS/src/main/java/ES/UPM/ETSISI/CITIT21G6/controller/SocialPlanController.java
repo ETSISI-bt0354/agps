@@ -93,10 +93,15 @@ public class SocialPlanController extends SessionController
         if (loggedUser == null)
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
-        SocialPlan socialPlan = repository.fetch(socialPlanId);
-        if (repository.fetch(socialPlanId) == null)
-            return "The social plan does not exist";
+        SocialPlan socialPlan;
+        try
+        {
+            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
 
         try
         {
@@ -152,14 +157,19 @@ public class SocialPlanController extends SessionController
         if (loggedUser == null)
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
-        SocialPlan socialPlan = repository.fetch(socialPlanId);
-        if (repository.fetch(socialPlanId) == null)
-            return "The social plan does not exist";
-        Ticket ticket = socialPlan.getParticipants().stream().filter(t -> t.getUserName().equals(args[1])).findFirst().orElse(null);
+        SocialPlan socialPlan;
+        try
+        {
+            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+
+        Ticket ticket = new Ticket(loggedUser.getName());
         socialPlan.removeParticipant(ticket);
-        result = view.removeUser(ticket);
-        return result;
+        return view.removeUser(ticket);
     }
 
     public String addUser(String[] args){
@@ -172,18 +182,23 @@ public class SocialPlanController extends SessionController
         if (loggedUser == null)
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
-        SocialPlan socialPlan = repository.fetch(socialPlanId);
-        if (repository.fetch(socialPlanId) == null)
-            return "The social plan does not exist";
-        Ticket ticket = new Ticket(args[1]);
+        SocialPlan socialPlan;
+        try
+        {
+            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+
+        Ticket ticket = new Ticket(loggedUser.getName());
         try{
             socialPlan.addParticipant(ticket);
         } catch (Exception e){
             return e.getMessage();
         }
-        result = view.addUser(ticket);
-        return result;
+        return view.addUser(ticket);
     }
 
 
