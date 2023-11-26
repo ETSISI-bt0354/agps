@@ -18,7 +18,7 @@ public class InMemoryUserRepository implements UserRepository
     @Override
     public void save(User user) throws UserAlreadyAddedException
     {
-        if (users.contains(user))
+        if (users.contains(user) || users.stream().anyMatch(u -> user.getPhoneNumber().equals(u.getPhoneNumber())))
             throw new UserAlreadyAddedException(user);
 
         users.add(user);
