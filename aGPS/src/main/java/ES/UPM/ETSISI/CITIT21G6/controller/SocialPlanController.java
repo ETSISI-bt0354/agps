@@ -46,13 +46,8 @@ public class SocialPlanController extends SessionController
                 return e.getMessage();
             }
         }
-        try{
-            repository.save(newPlan);
-        }
-        catch (SocialPlanAlreadyAddedException e)
-        {
-            return e.getMessage();
-        }
+
+        repository.save(newPlan);
         return  view.create(newPlan);
     }
 
@@ -73,13 +68,13 @@ public class SocialPlanController extends SessionController
         try
         {
             repository.delete(socialPlanId);
+            result = view.delete(socialPlanId);
         }
         catch (SocialPlanNotFoundException e)
         {
-            return e.getMessage();
+            result = e.getMessage();
         }
-
-        return view.delete(socialPlanId);
+        return result;
     }
 
     public String addActivities(String[] args)
