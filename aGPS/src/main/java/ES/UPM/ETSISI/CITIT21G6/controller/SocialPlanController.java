@@ -11,6 +11,7 @@ public class SocialPlanController extends SessionController
 {
     private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
     private SocialPlanRepository repository;
     private SocialPlanView view;
 
@@ -77,6 +78,9 @@ public class SocialPlanController extends SessionController
 
     public String addActivities(String[] args)
     {
+        if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
+
         String result;
         User loggedUser = getLoggedUser();
 
@@ -91,7 +95,7 @@ public class SocialPlanController extends SessionController
         try
         {
             Activity activity = new Activity(args[1], args[2], Integer.parseInt(args[3]), Double.parseDouble(args[4]), ActivityType.parse(args[5]));
-            if (args.length > 6)
+            if (args.length > MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH + 1)
                 activity.setCapacity(OptionalInt.of(Integer.parseInt(args[6])));
 
             socialPlan.addActivity(activity);
