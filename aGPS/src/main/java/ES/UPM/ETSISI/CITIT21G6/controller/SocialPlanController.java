@@ -14,7 +14,11 @@ public class SocialPlanController extends SessionController
 {
     private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
+    private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_LIST_PLANS_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 5;
     private SocialPlanRepository repository;
     private SocialPlanView view;
 
@@ -48,7 +52,14 @@ public class SocialPlanController extends SessionController
             }
         }
 
-        repository.save(newPlan);
+        try
+        {
+            repository.save(newPlan);
+        }
+        catch(SocialPlanAlreadyAddedException e)
+        {
+            return e.getMessage();
+        }
         return  view.create(newPlan);
     }
 
@@ -119,8 +130,8 @@ public class SocialPlanController extends SessionController
 
     public String checkPlanCost(String[] args)
     {
-        if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
+        if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -144,8 +155,8 @@ public class SocialPlanController extends SessionController
 
     public String removeUser(String[] args)
     {
-        if(args.length < 1)
-            return view.insufficentArguments(1);
+        if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -168,9 +179,10 @@ public class SocialPlanController extends SessionController
         return view.removeUser(ticket);
     }
 
-    public String addUser(String[] args){
-        if(args.length < 1)
-            return view.insufficentArguments(1);
+    public String addUser(String[] args)
+    {
+        if(args.length < MINIMUM_ADD_USER_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_ADD_USER_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -199,8 +211,8 @@ public class SocialPlanController extends SessionController
 
     public String listSocialPlans(String[] args)
     {
-        if(args.length < MINIMUM_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_ARGUMENT_LENGTH);
+        if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
