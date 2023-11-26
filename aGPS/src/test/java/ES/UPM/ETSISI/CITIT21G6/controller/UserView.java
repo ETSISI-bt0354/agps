@@ -22,13 +22,13 @@ public class UserView implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
     }
 
     @Override
-    public String passwordError()
+    public String loggedOutUser(User user)
     {
-        return "E";
+        return user == null ? "E":"";
     }
 
     @Override
-    public String loggedOutUser(User user)
+    public String passwordError()
     {
         return "E";
     }
