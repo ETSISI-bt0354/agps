@@ -1,5 +1,8 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
@@ -27,22 +30,33 @@ public class UserController extends SessionController
         LocalDate birthday = LocalDate.parse(args[2]);
         String phoneNumber = args[3];
 
+        User user;
         try
         {
-            User user = new User(name, password, birthday, phoneNumber);
+            user = new User(name, password, birthday, phoneNumber);
+        }
+        catch (InvalidPasswordException e)
+        {
+            return view.invalidPassword(e);
+        }
+        catch (InvalidAgeException e)
+        {
+            return view.invalidAge(e);
+        }
+        catch (InvalidPhoneNumberException e)
+        {
+            return view.invalidPhoneNumber(e);
+        }
+
+        try
+        {
             repository.save(user);
-            result = view.showUser(user);
+            return view.showUser(user);
         }
         catch (UserAlreadyAddedException e)
         {
-            result = view.userAlreadyAdded(e);
+            return view.userAlreadyAdded(e);
         }
-        catch (Exception e)
-        {
-            result = e.getMessage();
-        }
-
-        return result;
     }
     public String loginUser(String[] args)
     {
@@ -50,41 +64,48 @@ public class UserController extends SessionController
         String name = args[0];
         String password = args[1];
 
+        User user;
         try
         {
-            User user = repository.findByName(name);
-            if (user.getPassword().equals(password))
-            {
-                result = view.loggedInUser(user);
-            }
-            else
-            {
-                result = view.passwordError();
-            }
+            user = repository.findByName(name);
         }
-        catch (Exception e)
+        catch (UserNotFoundException e)
         {
-            result = e.getMessage();
+            return view.userNotFound(e);
         }
+
+        if (user.getPassword().equals(password))
+        {
+            result = view.loggedInUser(user);
+        }
+        else
+        {
+            result = view.passwordError();
+        }
+
         return result;
     }
     public String logoutUser(String[] args)
     {
         String name = args[0];
         String result;
+
+        User user;
         try
         {
-            User user = repository.findByName(name);
-            if (user != null) {
-                result = view.loggedOutUser(user);
-            } else {
-                result = view.noLoggedUser();
-            }
+            user = repository.findByName(name);
         }
-        catch (Exception e)
+        catch (UserNotFoundException e)
         {
-            result = e.getMessage();
+            return view.userNotFound(e);
         }
+
+        if (user != null) {
+            result = view.loggedOutUser(user);
+        } else {
+            result = view.noLoggedUser();
+        }
+
         return result;
     }
 }
