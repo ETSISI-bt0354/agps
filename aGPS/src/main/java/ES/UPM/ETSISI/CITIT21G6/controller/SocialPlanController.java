@@ -1,5 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNonExistant;
 import ES.UPM.ETSISI.CITIT21G6.model.*;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
@@ -22,8 +24,7 @@ public class SocialPlanController extends SessionController
         this.view = view;
     }
 
-    public String createSocialPlan(String[] args)
-    {
+    public String createSocialPlan(String[] args) {
         if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
             return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
 
@@ -45,8 +46,13 @@ public class SocialPlanController extends SessionController
                 return e.getMessage();
             }
         }
-
-        repository.save(newPlan);
+        try{
+            repository.save(newPlan);
+        }
+        catch (SocialPlanAlreadyAddedException e)
+        {
+            return e.getMessage();
+        }
         return  view.create(newPlan);
     }
 
@@ -67,13 +73,13 @@ public class SocialPlanController extends SessionController
         try
         {
             repository.delete(socialPlanId);
-            result = view.delete(socialPlanId);
         }
-        catch (Exception e)
+        catch (SocialPlanNonExistant e)
         {
-            result = e.getMessage();
+            return e.getMessage();
         }
-        return result;
+
+        return view.delete(socialPlanId);
     }
 
     public String addActivities(String[] args)
