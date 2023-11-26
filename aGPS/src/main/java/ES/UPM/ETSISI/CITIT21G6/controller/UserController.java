@@ -37,10 +37,6 @@ public class UserController extends SessionController
         {
             result = view.userAlreadyAdded(e);
         }
-        catch (UserNotFoundException e)
-        {
-            result = view.userNotFound(e);
-        }
         catch (Exception e)
         {
             result = e.getMessage();
