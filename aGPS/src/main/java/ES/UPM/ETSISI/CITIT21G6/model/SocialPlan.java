@@ -115,4 +115,21 @@ public class SocialPlan
     {
         participants.remove(ticket);
     }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SocialPlan that = (SocialPlan) o;
+
+        return getId().equals(that.getId());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return getId().hashCode();
+    }
 }
