@@ -9,7 +9,7 @@ public class Ticket
     private final String userName;
     private OptionalInt score;
 
-    public Ticket(String userName) throws NullPointerException
+    public Ticket(String userName)
     {
         this.userName = userName;
         this.score = OptionalInt.empty();
