@@ -12,7 +12,7 @@ public class ActivityPriceCalculator
     private static final double YOUNG_AGE_DISCOUNT_CINEMA = 0.5;
     public static double calculate(Activity activity, int age)
     {
-        double discount;
+        double discount = 0;
         double price = activity.getPrice();
 
         switch (activity.getType())
