@@ -28,7 +28,7 @@ public class SocialPlanView implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanVi
     }
 
     @Override
-    public String insufficientArguments(int requieredArguments) {
+    public String insufficientArguments(int requiredArguments) {
         return "E";
     }
 
