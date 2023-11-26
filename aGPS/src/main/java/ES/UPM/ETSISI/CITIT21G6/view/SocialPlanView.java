@@ -13,7 +13,7 @@ public interface SocialPlanView
     String create(SocialPlan socialPlan);
     String delete(SocialPlanId id);
     String addActivity();
-    String insufficentArguments(int requieredArguments);
+    String insufficientArguments(int requiredArguments);
     String noLoggedUser();
     String listPlans(List<SocialPlan> socialPlans, ListOrder order);
     String removeUser(Ticket ticket);

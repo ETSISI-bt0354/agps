@@ -31,7 +31,7 @@ public class SocialPlanController extends SessionController
 
     public String createSocialPlan(String[] args) {
         if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
@@ -67,7 +67,7 @@ public class SocialPlanController extends SessionController
     {
         if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
         {
-            return view.insufficentArguments(MINIMUM_DELETE_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_DELETE_ARGUMENT_LENGTH);
         }
 
         String result;
@@ -92,7 +92,7 @@ public class SocialPlanController extends SessionController
     public String addActivity(String[] args)
     {
         if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -131,7 +131,7 @@ public class SocialPlanController extends SessionController
     public String checkPlanCost(String[] args)
     {
         if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -156,7 +156,7 @@ public class SocialPlanController extends SessionController
     public String removeUser(String[] args)
     {
         if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -182,7 +182,7 @@ public class SocialPlanController extends SessionController
     public String addUser(String[] args)
     {
         if(args.length < MINIMUM_ADD_USER_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_ADD_USER_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_ADD_USER_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
@@ -212,7 +212,7 @@ public class SocialPlanController extends SessionController
     public String listSocialPlans(String[] args)
     {
         if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
