@@ -13,6 +13,6 @@ public enum ListOrder
             case "DATE" -> ListOrder.DATE;
             case "SCORE" -> SCORE;
             default -> throw new ListOrderException(s);
-        }
+        };
     }
 }
