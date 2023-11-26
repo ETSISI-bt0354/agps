@@ -977,7 +977,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2189.715635118341, 161.68630070840106)</val>
 </matrix>
 <points>
-<val>[(-380.31918566026184, 12.608286890626061), (-380.31918566026184, 421.44497498999624), (-385.087546867592, 421.44497498999624)]</val>
+<val>[(-380.31918566026184, 4.390735133576186), (-380.31918566026184, 412.68259821115396), (-385.087546867592, 412.68259821115396)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -2841,7 +2841,6 @@
 <ref refid="88d14bf4-8476-11ee-bd31-c10b697df068"/>
 <ref refid="91d9365f-8476-11ee-ae5a-c10b697df068"/>
 <ref refid="af48202b-8476-11ee-b5de-c10b697df068"/>
-<ref refid="bc3a1fd0-8476-11ee-bbea-c10b697df068"/>
 <ref refid="c9adf2d3-8476-11ee-b161-c10b697df068"/>
 <ref refid="ee3a1da7-8476-11ee-b4bf-c10b697df068"/>
 <ref refid="f8f164a3-8476-11ee-a1af-c10b697df068"/>
@@ -3836,36 +3835,6 @@
 </name>
 <ownerFormalParam>
 <ref refid="af48202b-8476-11ee-b5de-c10b697df068"/>
-</ownerFormalParam>
-<upperValue>
-<val>*</val>
-</upperValue>
-<upperValue>
-<val>*</val>
-</upperValue>
-</Parameter>
-<Operation id="bc3a1fd0-8476-11ee-bbea-c10b697df068">
-<class_>
-<ref refid="f24d3ac0-8474-11ee-ab86-c10b697df068"/>
-</class_>
-<name>
-<val>removeActivity</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="bc43ab06-8476-11ee-8655-c10b697df068"/>
-</reflist>
-</ownedParameter>
-</Operation>
-<Parameter id="bc43ab06-8476-11ee-8655-c10b697df068">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>String args</val>
-</name>
-<ownerFormalParam>
-<ref refid="bc3a1fd0-8476-11ee-bbea-c10b697df068"/>
 </ownerFormalParam>
 <upperValue>
 <val>*</val>

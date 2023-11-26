@@ -89,7 +89,7 @@ public class SocialPlanController extends SessionController
         return result;
     }
 
-    public String addActivities(String[] args)
+    public String addActivity(String[] args)
     {
         if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
             return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
