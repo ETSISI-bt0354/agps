@@ -137,5 +137,26 @@ public class SocialPlanController extends SessionController
         return result;
     }
 
+    public String removeUser(String[] args)
+    {
+        if(args.length < 1)
+            return view.insufficentArguments(1);
+
+        String result;
+        User loggedUser = getLoggedUser();
+
+        if (loggedUser == null)
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
+        SocialPlan socialPlan = repository.fetch(socialPlanId);
+        if (repository.fetch(socialPlanId) == null)
+            return "The social plan does not exist";
+        Ticket ticket = socialPlan.getParticipants().stream().filter(t -> t.getUserName().equals(args[1])).findFirst().orElse(null);
+        socialPlan.removeParticipant(ticket);
+        result = view.removeUser(ticket);
+        return result;
+    }
+
 
 }
