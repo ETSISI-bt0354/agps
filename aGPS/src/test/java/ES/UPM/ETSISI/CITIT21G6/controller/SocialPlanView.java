@@ -10,12 +10,16 @@ import java.util.List;
 public class SocialPlanView implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView {
     @Override
     public String create(SocialPlan socialPlan) {
-        return null;
+        if(socialPlan == null)
+            return "E";
+        return "";
     }
 
     @Override
     public String delete(SocialPlanId id) {
-        return null;
+        if(id == null)
+            return "E";
+        return "";
     }
 
     @Override
@@ -24,37 +28,42 @@ public class SocialPlanView implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanVi
     }
 
     @Override
-    public String insufficentArguments(int requieredArguments) {
-        return null;
+    public String insufficientArguments(int requieredArguments) {
+        return "E";
     }
 
     @Override
     public String noLoggedUser() {
-        return null;
+        return "E";
     }
 
     @Override
     public String listPlans(List<SocialPlan> socialPlans, ListOrder order) {
-        return null;
+        return "";
     }
 
     @Override
-    public String removeUser(Ticket ticket) {
-        return null;
+    public String removeUser(Ticket ticket, SocialPlan socialPlan) {
+        if(!socialPlan.getParticipants().contains(ticket))
+            return "";
+        return "E";
+
     }
 
     @Override
-    public String addUser(Ticket ticket) {
-        return null;
+    public String addUser(Ticket ticket, SocialPlan socialPlan) {
+        if(socialPlan.getParticipants().contains(ticket))
+            return "";
+        return "E";
     }
 
     @Override
     public String socialPlanNotFound(SocialPlanNotFoundException e) {
-        return null;
+        return "E";
     }
 
     @Override
     public String price(double price) {
-        return null;
+        return String.valueOf(price);
     }
 }
