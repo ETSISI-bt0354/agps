@@ -24,7 +24,6 @@ public class UserController extends SessionController
     }
     public String registerUser(String[] args)
     {
-        String result;
         String name = args[0];
         String password = args[1];
         LocalDate birthday = LocalDate.parse(args[2]);
