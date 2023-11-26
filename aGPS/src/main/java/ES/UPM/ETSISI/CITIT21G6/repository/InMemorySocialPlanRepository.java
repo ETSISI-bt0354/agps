@@ -6,14 +6,17 @@ import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 
 import java.util.ArrayList;
 import java.util.List;
-public class InMemorySocialPlanRepository implements SocialPlanRepository {
+public class InMemorySocialPlanRepository implements SocialPlanRepository
+{
     private List<SocialPlan> socialPlans;
 
-public InMemorySocialPlanRepository() {
+    public InMemorySocialPlanRepository()
+    {
         socialPlans = new ArrayList<>();
     }
 
-    public void save(SocialPlan socialPlan) throws SocialPlanAlreadyAddedException {
+    public void save(SocialPlan socialPlan) throws SocialPlanAlreadyAddedException
+    {
         if(socialPlans.contains(socialPlan))
             throw new SocialPlanAlreadyAddedException(socialPlan);
         socialPlans.add(socialPlan);
@@ -36,6 +39,12 @@ public InMemorySocialPlanRepository() {
                 .filter(socialPlan -> socialPlan.getId().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new SocialPlanNotFoundException(id));
+    }
+
+    @Override
+    public List<SocialPlan> getAllSocialPlans()
+    {
+        return this.socialPlans;
     }
 
 }

@@ -4,5 +4,12 @@ import org.junit.jupiter.api.Test;
 import java.util.OptionalInt;
 
 
-public class UserControllerTest {
+public class UserControllerTest
+{
+    @Test
+    void registerUser()
+    {
+
+    }
+
 }
