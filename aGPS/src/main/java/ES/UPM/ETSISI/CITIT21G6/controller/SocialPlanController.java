@@ -140,7 +140,10 @@ public class SocialPlanController extends SessionController
         {
             return view.activityAlreadyInSocialPlan(e);
         }
-        catch (SocialPlanNotFoundException ignored) {}
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
     }
 
     public String checkPlanCost(String[] args)
@@ -220,6 +223,9 @@ public class SocialPlanController extends SessionController
             return view.socialPlanNotFound(e);
         }
 
+        if (socialPlan.getDate().isBefore(LocalDateTime.now()))
+            return view.joinPastSocialPlan();
+
         boolean collision = repository.fetchAllSocialPlans()
                 .stream()
                 .filter(plan -> plan.getParticipants()
@@ -243,7 +249,9 @@ public class SocialPlanController extends SessionController
         {
             return view.fullSocialPlan(e);
         }
-        catch (SocialPlanNotFoundException ignored) {}
+        catch (SocialPlanNotFoundException e) {
+            return view.socialPlanNotFound(e);
+        }
     }
 
     public String listSocialPlans(String[] args)
@@ -299,6 +307,8 @@ public class SocialPlanController extends SessionController
             return view.socialPlanNotFound(e);
         }
 
+        if (socialPlan.getDate().isAfter(LocalDateTime.now()))
+            return view.setScoreFutureSocialPlan();
         try
         {
             Ticket ticket = socialPlan.getParticipants()
@@ -322,10 +332,13 @@ public class SocialPlanController extends SessionController
         {
             return view.invalidScore(e);
         }
-        catch (SocialPlanNotFoundException ignored) {}
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
     }
 
-    private static int calculateSocialPlanEndDate(SocialPlan socialPlan)
+    private static int calculateSocialPlanDuration(SocialPlan socialPlan)
     {
         int duration = 0;
         if (!socialPlan.getActivities().isEmpty())
@@ -343,10 +356,10 @@ public class SocialPlanController extends SessionController
     private static boolean socialPlancollision(SocialPlan socialPlan1, SocialPlan socialPlan2)
     {
         LocalDateTime socialPlan1StartDate = socialPlan1.getDate();
-        LocalDateTime socialPlan1EndDate = socialPlan1.getDate().plusMinutes(calculateSocialPlanEndDate(socialPlan1));
+        LocalDateTime socialPlan1EndDate = socialPlan1.getDate().plusMinutes(calculateSocialPlanDuration(socialPlan1));
 
         LocalDateTime socialPlan2StartDate = socialPlan2.getDate();
-        LocalDateTime socialPlan2EndDate = socialPlan2.getDate().plusMinutes(calculateSocialPlanEndDate(socialPlan2));
+        LocalDateTime socialPlan2EndDate = socialPlan2.getDate().plusMinutes(calculateSocialPlanDuration(socialPlan2));
 
         return socialPlan1StartDate.isBefore(socialPlan2EndDate)
                 && socialPlan1EndDate.isAfter(socialPlan2StartDate);

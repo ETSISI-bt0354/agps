@@ -36,4 +36,6 @@ public interface SocialPlanView
     String invalidScore(InvalidScoreException e);
     String setScore(OptionalInt score);
     String colisionWithOtherSocialPlan();
+    String joinPastSocialPlan();
+    String setScoreFutureSocialPlan();
 }
