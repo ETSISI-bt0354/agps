@@ -10,52 +10,62 @@ import ES.UPM.ETSISI.CITIT21G6.model.User;
 public class UserView implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
 
     @Override
-    public String showUser(User user) {
-        return null;
+    public String showUser(User user)
+    {
+        return user == null ? "E":"";
     }
 
     @Override
-    public String loggedInUser(User user) {
-        return null;
+    public String loggedInUser(User user)
+    {
+        return user == null ? "E":"";
     }
 
     @Override
-    public String passwordError() {
-        return null;
+    public String passwordError()
+    {
+        return "E";
     }
 
     @Override
-    public String loggedOutUser(User user) {
-        return null;
+    public String loggedOutUser(User user)
+    {
+        return "E";
     }
 
     @Override
-    public String userNotFound(UserNotFoundException exception) {
-        return null;
+    public String userNotFound(UserNotFoundException exception)
+    {
+        return "E";
     }
 
     @Override
-    public String userAlreadyAdded(UserAlreadyAddedException exception) {
-        return null;
+    public String userAlreadyAdded(UserAlreadyAddedException exception)
+    {
+        return "E";
     }
 
     @Override
-    public String noLoggedUser() {
-        return null;
+    public String noLoggedUser()
+    {
+        return "E";
     }
 
     @Override
-    public String invalidPassword(InvalidPasswordException exception) {
-        return null;
+    public String invalidPassword(InvalidPasswordException exception)
+    {
+        return "E";
     }
 
     @Override
-    public String invalidAge(InvalidAgeException exception) {
-        return null;
+    public String invalidAge(InvalidAgeException exception)
+    {
+        return "E";
     }
 
     @Override
-    public String invalidPhoneNumber(InvalidPhoneNumberException exception) {
-        return null;
+    public String invalidPhoneNumber(InvalidPhoneNumberException exception)
+    {
+        return "E";
     }
 }
