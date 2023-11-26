@@ -14,7 +14,6 @@ public class User
     private Age birthday;
     private Password password;
     private PhoneNumber phoneNumber;
-    private List<Ticket> joinedEvents;
 
     public User(String name, String password, LocalDate birthday, String phoneNumber)
             throws InvalidPasswordException, InvalidAgeException, InvalidPhoneNumberException
@@ -23,7 +22,6 @@ public class User
         this.password = new Password(password);
         this.birthday = new Age(birthday);
         this.phoneNumber = new PhoneNumber(phoneNumber);
-        this.joinedEvents = new ArrayList<>();
     }
 
 
@@ -45,24 +43,6 @@ public class User
     public String getPhoneNumber()
     {
         return phoneNumber.getPhoneNumber();
-    }
-
-    public List<Ticket> getJoinedEvents()
-    {
-        return joinedEvents;
-    }
-
-    public void addJoinedEvent(Ticket ticket) throws Exception
-    {
-        if (joinedEvents.contains(ticket))
-            throw new Exception("The user has already joined the social plan.");
-
-        joinedEvents.add(ticket);
-    }
-
-    protected void removeJoinedEvent(Ticket ticket)
-    {
-        joinedEvents.remove(ticket);
     }
 
     @Override

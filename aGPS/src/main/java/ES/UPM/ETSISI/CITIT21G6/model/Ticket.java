@@ -6,37 +6,18 @@ public class Ticket
 {
     private static final int MINIMUM_SCORE = 0;
     private static final int MAXIMUM_SCORE = 10;
-    private final User user;
-    private final SocialPlan socialPlan;
+    private final String userName;
     private OptionalInt score;
 
-    public Ticket(User user, SocialPlan socialPlan) throws NullPointerException
+    public Ticket(String userName) throws NullPointerException
     {
-        if (user == null)
-            throw new NullPointerException("User cannot be null");
-
-        if (socialPlan == null)
-            throw new NullPointerException("SocialPlan cannot be null");
-
-        this.user = user;
-        this.socialPlan = socialPlan;
+        this.userName = userName;
         this.score = OptionalInt.empty();
     }
 
-    public void delete()
+    public String getUserName()
     {
-        user.removeJoinedEvent(this);
-        socialPlan.removeParticipant(this);
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public SocialPlan getSocialPlan()
-    {
-        return socialPlan;
+        return userName;
     }
 
     public OptionalInt getScore()
@@ -69,15 +50,12 @@ public class Ticket
 
         Ticket ticket = (Ticket) o;
 
-        if (!getUser().equals(ticket.getUser())) return false;
-        return getSocialPlan().equals(ticket.getSocialPlan());
+        return getUserName().equals(ticket.getUserName());
     }
 
     @Override
     public int hashCode()
     {
-        int result = getUser().hashCode();
-        result = 31 * result + getSocialPlan().hashCode();
-        return result;
+        return getUserName().hashCode();
     }
 }

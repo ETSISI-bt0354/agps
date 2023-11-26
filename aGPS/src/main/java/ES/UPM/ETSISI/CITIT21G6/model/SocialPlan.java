@@ -121,7 +121,7 @@ public class SocialPlan
         return participants;
     }
 
-    protected void removeParticipant(Ticket ticket)
+    public void removeParticipant(Ticket ticket)
     {
         participants.remove(ticket);
     }
