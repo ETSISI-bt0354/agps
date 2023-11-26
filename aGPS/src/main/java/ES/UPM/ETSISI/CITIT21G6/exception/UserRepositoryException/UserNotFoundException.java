@@ -1,8 +1,8 @@
-package ES.UPM.ETSISI.CITIT21G6.exception;
+package ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException;
 
 public class UserNotFoundException extends Exception
 {
-    private String userName;
+    private final String userName;
 
     public UserNotFoundException(String userName)
     {

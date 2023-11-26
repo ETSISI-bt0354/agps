@@ -1,7 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.repository;
 
-import ES.UPM.ETSISI.CITIT21G6.exception.UserAlreadyAddedException;
-import ES.UPM.ETSISI.CITIT21G6.exception.UserNotFoundException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
 import java.util.ArrayList;
