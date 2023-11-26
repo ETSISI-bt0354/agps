@@ -6,13 +6,13 @@ public class InvalidCapacityException extends Exception
 {
     private final InvalidCapacity reason;
     private final OptionalInt capacity;
-    private final OptionalInt minimumCapacity;
+    private final OptionalInt problemCapacity;
 
     public InvalidCapacityException(InvalidCapacity reason, OptionalInt capacity, OptionalInt minimumCapacity)
     {
         this.reason = reason;
         this.capacity = capacity;
-        this.minimumCapacity = minimumCapacity;
+        this.problemCapacity = minimumCapacity;
     }
 
     public InvalidCapacity getReason()
@@ -25,8 +25,8 @@ public class InvalidCapacityException extends Exception
         return capacity;
     }
 
-    public OptionalInt getMinimumCapacity()
+    public OptionalInt getProblemCapacity()
     {
-        return minimumCapacity;
+        return problemCapacity;
     }
 }

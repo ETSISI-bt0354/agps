@@ -1,5 +1,8 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacity;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacityException;
+
 import java.util.OptionalInt;
 
 public class Activity
@@ -41,10 +44,10 @@ public class Activity
         return capacity;
     }
 
-    public void setCapacity(OptionalInt capacity) throws Exception
+    public void setCapacity(OptionalInt capacity) throws InvalidCapacityException
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new Exception("Capacity must be greater than 0.");
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVE, capacity, OptionalInt.of(Integer.MAX_VALUE));
 
         this.capacity = capacity;
     }

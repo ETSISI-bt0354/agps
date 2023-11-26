@@ -1,5 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,21 +56,15 @@ public class SocialPlan
         return capacity;
     }
 
-    public void setCapacity(OptionalInt capacity) throws Exception
+    public void setCapacity(OptionalInt capacity) throws InvalidCapacityException
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new Exception("Capacity must be greater than 0.");
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVE, capacity, this.capacity);
 
         int numberOfParticipants = participants.size();
 
         if (capacity.orElse(Integer.MAX_VALUE) < numberOfParticipants)
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The minimum plan capacity is ");
-            errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
-            errorMessage.append(".");
-            throw new Exception(errorMessage.toString());
-        }
+            throw  new InvalidCapacityException(InvalidCapacity.TOOSMALL, capacity, this.capacity);
 
         OptionalInt minimumPossibleCapacity = activities.stream()
                 .map(Activity::getCapacity)
@@ -76,24 +72,18 @@ public class SocialPlan
                 .min();
 
         if (capacity.orElse(Integer.MAX_VALUE) > minimumPossibleCapacity.orElse(Integer.MAX_VALUE))
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The maximum plan capacity is ");
-            errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
-            errorMessage.append(".");
-            throw new Exception(errorMessage.toString());
-        }
+            throw new InvalidCapacityException(InvalidCapacity.TOOBIG, capacity, minimumPossibleCapacity);
 
         this.capacity = capacity;
     }
 
-    public void addActivity(Activity activity) throws Exception
+    public void addActivity(Activity activity) throws InvalidCapacityException, ActivityAlreadyInSocialPlanException
     {
         if (activities.contains(activity))
-            throw new Exception("The activity is already added.");
+            throw new ActivityAlreadyInSocialPlanException(activity);
 
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < participants.size())
-            throw new Exception("There are too many user on the plan for this activity.");
+            throw new InvalidCapacityException(InvalidCapacity.TOOSMALL, activity.getCapacity(), OptionalInt.of(participants.size()));
 
         activities.add(activity);
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < capacity.orElse(Integer.MAX_VALUE))
@@ -105,13 +95,13 @@ public class SocialPlan
         return activities;
     }
 
-    public void addParticipant(Ticket ticket) throws Exception
+    public void addParticipant(Ticket ticket) throws FullSocialPlanException, UserAlreadyInSocialPlanException
     {
         if (participants.contains(ticket))
-            throw new Exception("The user is already on the social plan.");
+            throw new UserAlreadyInSocialPlanException(ticket.getUserName());
 
         if (capacity.isPresent() && participants.size() == capacity.getAsInt())
-            throw new Exception("The social plan is full.");
+            throw new FullSocialPlanException();
 
         participants.add(ticket);
     }
