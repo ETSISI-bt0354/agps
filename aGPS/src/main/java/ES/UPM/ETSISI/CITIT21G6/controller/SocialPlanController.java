@@ -1,7 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
-import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNonExistant;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFound;
 import ES.UPM.ETSISI.CITIT21G6.model.*;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
@@ -74,7 +74,7 @@ public class SocialPlanController extends SessionController
         {
             repository.delete(socialPlanId);
         }
-        catch (SocialPlanNonExistant e)
+        catch (SocialPlanNotFound e)
         {
             return e.getMessage();
         }

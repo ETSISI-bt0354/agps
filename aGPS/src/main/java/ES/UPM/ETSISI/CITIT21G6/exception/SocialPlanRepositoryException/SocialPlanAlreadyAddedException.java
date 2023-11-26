@@ -7,4 +7,9 @@ public class SocialPlanAlreadyAddedException extends Exception {
     public SocialPlanAlreadyAddedException(SocialPlan socialPlan) {
         this.socialPlan = socialPlan;
     }
+
+    public SocialPlan getSocialPlan()
+    {
+        return socialPlan;
+    }
 }

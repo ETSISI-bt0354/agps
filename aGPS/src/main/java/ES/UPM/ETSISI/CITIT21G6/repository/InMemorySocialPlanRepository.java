@@ -1,6 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.repository;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
-import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNonExistant;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFound;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 
@@ -20,18 +20,22 @@ public InMemorySocialPlanRepository() {
     }
 
     @Override
-    public void delete(SocialPlanId id) throws SocialPlanNonExistant {
-        if(!socialPlans.contains(id))
-            throw new SocialPlanNonExistant(id);
-        socialPlans.remove(id);
+    public void delete(SocialPlanId id) throws SocialPlanNotFound
+    {
+        SocialPlan socialPlan = socialPlans.
+                stream()
+                .filter(plan -> id.equals(plan.getId())).findFirst()
+                .orElseThrow(() -> new SocialPlanNotFound(id));
+        socialPlans.remove(socialPlan);
     }
 
     @Override
-    public SocialPlan fetch(SocialPlanId id) {
+    public SocialPlan fetch(SocialPlanId id) throws SocialPlanNotFound
+    {
         return socialPlans.stream()
                 .filter(socialPlan -> socialPlan.getId().equals(id))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new SocialPlanNotFound(id));
     }
 
 }
