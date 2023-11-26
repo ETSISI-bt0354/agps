@@ -251,7 +251,6 @@ public class SocialPlanController extends SessionController
         if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
-        String result;
         User loggedUser = getLoggedUser();
 
         if (loggedUser == null)
@@ -261,6 +260,17 @@ public class SocialPlanController extends SessionController
         {
             ListOrder order = ListOrder.parse(args[0]);
             List<SocialPlan> socialPlans = repository.fetchAllSocialPlans();
+
+            if (args.length > MINIMUM_LIST_PLANS_ARGUMENT_LENGTH && args[1].equalsIgnoreCase("ONLY-SUBSCRIBED"))
+                socialPlans = socialPlans
+                        .stream()
+                        .filter(plan -> plan
+                                .getParticipants()
+                                .stream()
+                                .anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))
+                        )
+                        .toList();
+
             return view.listPlans(socialPlans, order);
         }
         catch (ListOrderException e)
