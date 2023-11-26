@@ -11,6 +11,6 @@ public interface SocialPlanView
     String addActivity();
     String insufficentArguments(int requieredArguments);
     String noLoggedUser();
-
     String removeUser(Ticket ticket);
+    String addUser(Ticket ticket);
 }
