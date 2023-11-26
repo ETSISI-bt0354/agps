@@ -251,7 +251,7 @@ public class SocialPlanController extends SessionController
     public String setSocialPlanScore(String[] args)
     {
         if (args.length < MINIMUM_SET_SCORE_ARGUMENT_LENGTH)
-            return view.insufficentArguments(MINIMUM_SET_SCORE_ARGUMENT_LENGTH);
+            return view.insufficientArguments(MINIMUM_SET_SCORE_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
