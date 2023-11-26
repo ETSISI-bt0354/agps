@@ -31,8 +31,9 @@ public interface SocialPlanView
     String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e);
     String fullSocialPlan(FullSocialPlanException e);
     String userAlreadyInSocialPlan(UserAlreadyInSocialPlanException e);
-    String wrongLister(ListOrderException e);
+    String wrongListOrder(ListOrderException e);
     String ticketNotFound(TicketNotFoundException e);
     String invalidScore(InvalidScoreException e);
     String setScore(OptionalInt score);
+    String colisionWithOtherSocialPlan();
 }

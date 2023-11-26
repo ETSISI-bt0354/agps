@@ -32,6 +32,15 @@ public class InMemorySocialPlanRepository implements SocialPlanRepository
         socialPlans.remove(socialPlan);
     }
 
+    public void update(SocialPlan socialPlan) throws SocialPlanNotFoundException
+    {
+        int index = socialPlans.indexOf(socialPlan);
+        if (index == -1)
+            throw new SocialPlanNotFoundException(socialPlan.getId());
+
+        socialPlans.set(index, socialPlan);
+    }
+
     @Override
     public SocialPlan fetch(SocialPlanId id) throws SocialPlanNotFoundException
     {
@@ -42,7 +51,7 @@ public class InMemorySocialPlanRepository implements SocialPlanRepository
     }
 
     @Override
-    public List<SocialPlan> getAllSocialPlans()
+    public List<SocialPlan> fetchAllSocialPlans()
     {
         return this.socialPlans;
     }

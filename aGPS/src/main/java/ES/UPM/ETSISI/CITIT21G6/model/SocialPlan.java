@@ -2,7 +2,7 @@ package ES.UPM.ETSISI.CITIT21G6.model;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
@@ -10,13 +10,13 @@ import java.util.OptionalInt;
 public class SocialPlan
 {
     private final SocialPlanId id;
-    private LocalDate date;
+    private LocalDateTime date;
     private String location;
     private OptionalInt capacity;
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String ownerName, String name, LocalDate date, String location)
+    public SocialPlan(String ownerName, String name, LocalDateTime date, String location)
     {
         this.id = new SocialPlanId(ownerName, name);
         this.date = date;
@@ -41,7 +41,7 @@ public class SocialPlan
         return id.name();
     }
 
-    public LocalDate getDate()
+    public LocalDateTime getDate()
     {
         return date;
     }
