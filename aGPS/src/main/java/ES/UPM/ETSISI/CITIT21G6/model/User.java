@@ -1,19 +1,24 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User
 {
-
     private final String name;
     private Age birthday;
     private Password password;
     private PhoneNumber phoneNumber;
     private List<SocialPlan> socialPlans;
     private List<Ticket> joinedEvents;
-    public User(String name, String password, LocalDate birthday, String phoneNumber) throws Exception
+
+    public User(String name, String password, LocalDate birthday, String phoneNumber)
+            throws InvalidPasswordException, InvalidAgeException, InvalidPhoneNumberException
     {
         this.name = name;
         this.password = new Password(password);
