@@ -109,4 +109,27 @@ public class SocialPlanController extends SessionController
 
         return result;
     }
+
+    public String checkPlanCost(String[] args)
+    {
+        if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
+
+        String result;
+        User loggedUser = getLoggedUser();
+
+        if (loggedUser == null)
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
+        SocialPlan socialPlan = repository.fetch(socialPlanId);
+        if (repository.fetch(socialPlanId) == null)
+            return "The social plan does not exist";
+
+        double price = socialPlan.getActivities().stream().reduce(0.0, (subtotal, activity) -> subtotal + activity.getPrice(), Double::sum);
+        result = String.valueOf(price);
+        return result;
+    }
+
+
 }
