@@ -19,11 +19,11 @@ public interface SocialPlanView
     String create(SocialPlan socialPlan);
     String delete(SocialPlanId id);
     String addActivity(Activity activity);
-    String insufficentArguments(int requieredArguments);
+    String insufficientArguments(int requiredArguments);
     String noLoggedUser();
     String listPlans(List<SocialPlan> socialPlans, ListOrder order);
-    String removeUser(Ticket ticket);
-    String addUser(Ticket ticket);
+    String removeUser(Ticket ticket, SocialPlan sp);
+    String addUser(Ticket ticket, SocialPlan sp);
     String socialPlanNotFound(SocialPlanNotFoundException e);
     String price(double price);
     String invalidCapacity(InvalidCapacityException e);
