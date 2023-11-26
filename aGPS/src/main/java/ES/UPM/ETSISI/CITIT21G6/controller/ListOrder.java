@@ -1,7 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.ListOrderException;
-
 public enum ListOrder
 {
     DATE, SCORE;

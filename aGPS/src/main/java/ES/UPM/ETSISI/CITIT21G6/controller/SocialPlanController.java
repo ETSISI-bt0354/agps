@@ -7,6 +7,7 @@ import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.OptionalInt;
 
 public class SocialPlanController extends SessionController
@@ -196,5 +197,28 @@ public class SocialPlanController extends SessionController
         return view.addUser(ticket);
     }
 
+    public String listSocialPlans(String[] args)
+    {
+        if(args.length < MINIMUM_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_ARGUMENT_LENGTH);
 
+        String result;
+        User loggedUser = getLoggedUser();
+
+        if (loggedUser == null)
+            return view.noLoggedUser();
+
+        try
+        {
+            ListOrder order = ListOrder.parse(args[0]);
+            List<SocialPlan> socialPlans = repository.getAllSocialPlans();
+            result = view.listPlans(socialPlans, order);
+        }
+        catch (Exception e)
+        {
+            result = e.getMessage();
+        }
+
+        return result;
+    }
 }
