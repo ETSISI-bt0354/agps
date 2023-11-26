@@ -28,7 +28,10 @@ public InMemorySocialPlanRepository() {
 
     @Override
     public SocialPlan fetch(SocialPlanId id) {
-        return null;
+        return socialPlans.stream()
+                .filter(socialPlan -> socialPlan.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
 }
