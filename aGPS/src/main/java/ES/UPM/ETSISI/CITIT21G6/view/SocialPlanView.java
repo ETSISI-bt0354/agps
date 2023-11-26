@@ -1,10 +1,13 @@
 package ES.UPM.ETSISI.CITIT21G6.view;
 
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
+import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 
 public interface SocialPlanView
 {
     String create(SocialPlan socialPlan);
-    String delete(SocialPlan socialPlan);
+    String delete(SocialPlanId id);
     String addActivity();
+    String insufficentArguments(int requieredArguments);
+    String noLoggedUser();
 }

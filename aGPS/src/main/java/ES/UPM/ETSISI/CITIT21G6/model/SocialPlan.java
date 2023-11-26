@@ -7,16 +7,16 @@ import java.util.OptionalInt;
 
 public class SocialPlan
 {
-    private String name;
+    private final SocialPlanId id;
     private LocalDate date;
     private String location;
     private OptionalInt capacity;
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String name, LocalDate date, String location)
+    public SocialPlan(String ownerName, String name, LocalDate date, String location)
     {
-        this.name = name;
+        this.id = new SocialPlanId(ownerName, name);
         this.date = date;
         this.location = location;
         this.capacity = OptionalInt.empty();
@@ -24,9 +24,19 @@ public class SocialPlan
         this.participants = new ArrayList<>();
     }
 
+    public SocialPlanId getId()
+    {
+        return id;
+    }
+
+    public String getOwnerName()
+    {
+        return id.ownerName();
+    }
+
     public String getName()
     {
-        return name;
+        return id.name();
     }
 
     public LocalDate getDate()

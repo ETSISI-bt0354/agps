@@ -1,9 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
-import ES.UPM.ETSISI.CITIT21G6.model.Activity;
-import ES.UPM.ETSISI.CITIT21G6.model.ActivityType;
-import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
-import ES.UPM.ETSISI.CITIT21G6.model.User;
+import ES.UPM.ETSISI.CITIT21G6.model.*;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
@@ -26,67 +23,50 @@ public class SocialPlanController extends SessionController
 
     public String createSocialPlan(String[] args)
     {
-        String result;
+        if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
+            return view.insufficentArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
+
         User loggedUser = getLoggedUser();
 
-        try
+        if(loggedUser == null)
+            return view.noLoggedUser();
+
+        SocialPlan newPlan = new SocialPlan(loggedUser.getName(), args[0], LocalDate.parse(args[1]), args[2]);
+
+        if(args.length == MINIMUM_CREATION_ARGUMENT_LENGTH + 1)
         {
-            if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
-            {
-                StringBuilder errorMessage = new StringBuilder();
-                errorMessage.append("You must provide at least ");
-                errorMessage.append(MINIMUM_CREATION_ARGUMENT_LENGTH);
-                errorMessage.append(" arguments to create a social plan.");
-
-                throw new Exception(errorMessage.toString());
-            }
-
-            if(loggedUser == null)
-                throw new Exception("You must be logged in to create a social plan");
-
-            SocialPlan newPlan = new SocialPlan(args[0], LocalDate.parse(args[1]), args[2]);
-
-            if(args.length == MINIMUM_CREATION_ARGUMENT_LENGTH + 1)
+            try
             {
                 newPlan.setCapacity(OptionalInt.of(Integer.parseInt(args[3])));
             }
-
-            loggedUser.addSocialPlan(newPlan);
-            repository.save(newPlan);
-            result = view.create(newPlan);
-        }
-        catch(Exception e)
-        {
-            result = e.getMessage();
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
         }
 
-        return result;
+        repository.save(newPlan);
+        return  view.create(newPlan);
     }
 
     public String deleteSocialPlan(String[] args)
     {
+        if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
+        {
+            return view.insufficentArguments(MINIMUM_DELETE_ARGUMENT_LENGTH);
+        }
+
         String result;
         User loggedUser = getLoggedUser();
 
+        if(loggedUser == null)
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
         try
         {
-            if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
-            {
-                StringBuilder errorMessage = new StringBuilder();
-                errorMessage.append("You must provide at least ");
-                errorMessage.append(MINIMUM_CREATION_ARGUMENT_LENGTH);
-                errorMessage.append(" arguments to delete a social plan.");
-
-                throw new Exception(errorMessage.toString());
-            }
-
-            if(loggedUser == null)
-                throw new Exception("You must be logged in to delete a social plan");
-
-            SocialPlan planToDelete = repository.findByName(args[0]);
-            loggedUser.getSocialPlans().remove(planToDelete);
-            repository.delete(planToDelete);
-            result = view.delete(planToDelete);
+            repository.delete(socialPlanId);
+            result = view.delete(socialPlanId);
         }
         catch (Exception e)
         {
@@ -100,12 +80,16 @@ public class SocialPlanController extends SessionController
         String result;
         User loggedUser = getLoggedUser();
 
+        if (loggedUser == null)
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
+        SocialPlan socialPlan = repository.fetch(socialPlanId);
+        if (repository.fetch(socialPlanId) == null)
+            return "The social plan does not exist";
+
         try
         {
-            SocialPlan socialPlan = repository.findByName(args[0]);
-            if (!loggedUser.getSocialPlans().contains(socialPlan))
-                return "The user does not hava that social plan";
-
             Activity activity = new Activity(args[1], args[2], Integer.parseInt(args[3]), Double.parseDouble(args[4]), ActivityType.parse(args[5]));
             if (args.length > 6)
                 activity.setCapacity(OptionalInt.of(Integer.parseInt(args[6])));

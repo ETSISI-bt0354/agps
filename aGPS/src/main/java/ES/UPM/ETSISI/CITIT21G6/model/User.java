@@ -14,7 +14,6 @@ public class User
     private Age birthday;
     private Password password;
     private PhoneNumber phoneNumber;
-    private List<SocialPlan> socialPlans;
     private List<Ticket> joinedEvents;
 
     public User(String name, String password, LocalDate birthday, String phoneNumber)
@@ -24,7 +23,6 @@ public class User
         this.password = new Password(password);
         this.birthday = new Age(birthday);
         this.phoneNumber = new PhoneNumber(phoneNumber);
-        this.socialPlans = new ArrayList<>();
         this.joinedEvents = new ArrayList<>();
     }
 
@@ -47,19 +45,6 @@ public class User
     public String getPhoneNumber()
     {
         return phoneNumber.getPhoneNumber();
-    }
-
-    public void addSocialPlan(SocialPlan socialPlan) throws Exception
-    {
-        if (socialPlans.contains(socialPlan))
-            throw new Exception("The plan is already added.");
-
-        socialPlans.add(socialPlan);
-    }
-
-    public List<SocialPlan> getSocialPlans()
-    {
-        return socialPlans;
     }
 
     public List<Ticket> getJoinedEvents()
