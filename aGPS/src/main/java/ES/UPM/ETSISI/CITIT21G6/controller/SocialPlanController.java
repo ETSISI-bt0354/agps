@@ -176,7 +176,7 @@ public class SocialPlanController extends SessionController
 
         Ticket ticket = new Ticket(loggedUser.getName());
         socialPlan.removeParticipant(ticket);
-        return view.removeUser(ticket);
+        return view.removeUser(ticket, socialPlan);
     }
 
     public String addUser(String[] args)
@@ -206,7 +206,7 @@ public class SocialPlanController extends SessionController
         } catch (Exception e){
             return e.getMessage();
         }
-        return view.addUser(ticket);
+        return view.addUser(ticket, socialPlan);
     }
 
     public String listSocialPlans(String[] args)
