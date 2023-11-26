@@ -1,4 +1,4 @@
-package ES.UPM.ETSISI.CITIT21G6.controller;
+package ES.UPM.ETSISI.CITIT21G6.view;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
@@ -6,9 +6,8 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberExcepti
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
-import ES.UPM.ETSISI.CITIT21G6.view.UserView;
 
-public class uv implements UserView {
+public class UserViewTest implements UserView {
 
     @Override
     public String showUser(User user) {

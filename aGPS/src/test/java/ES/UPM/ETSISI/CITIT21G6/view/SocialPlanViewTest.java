@@ -1,14 +1,14 @@
-package ES.UPM.ETSISI.CITIT21G6.controller;
+package ES.UPM.ETSISI.CITIT21G6.view;
 
+import ES.UPM.ETSISI.CITIT21G6.controller.ListOrder;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
-import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
 import java.util.List;
 
-public class spv implements SocialPlanView {
+public class SocialPlanViewTest implements SocialPlanView {
     @Override
     public String create(SocialPlan socialPlan) {
         return null;
