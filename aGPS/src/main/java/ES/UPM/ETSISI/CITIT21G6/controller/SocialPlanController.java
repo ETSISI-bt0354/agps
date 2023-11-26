@@ -1,7 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.controller;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
-import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFound;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.*;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
@@ -74,7 +74,7 @@ public class SocialPlanController extends SessionController
         {
             repository.delete(socialPlanId);
         }
-        catch (SocialPlanNotFound e)
+        catch (SocialPlanNotFoundException e)
         {
             return e.getMessage();
         }
@@ -127,14 +127,18 @@ public class SocialPlanController extends SessionController
         if (loggedUser == null)
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
-        SocialPlan socialPlan = repository.fetch(socialPlanId);
-        if (repository.fetch(socialPlanId) == null)
-            return "The social plan does not exist";
+        SocialPlan socialPlan;
+        try
+        {
+            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
 
         double price = socialPlan.getActivities().stream().reduce(0.0, (subtotal, activity) -> subtotal + activity.getPrice(), Double::sum);
-        result = String.valueOf(price);
-        return result;
+        return view.price(price);
     }
 
     public String removeUser(String[] args)
