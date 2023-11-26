@@ -171,38 +171,6 @@ public class SocialPlanController extends SessionController
         return view.price(price);
     }
 
-    public String removeUser(String[] args)
-    {
-        if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
-            return view.insufficientArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
-
-        User loggedUser = getLoggedUser();
-
-        if (loggedUser == null)
-            return view.noLoggedUser();
-
-        SocialPlan socialPlan;
-        try
-        {
-            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
-        }
-        catch (SocialPlanNotFoundException e)
-        {
-            return view.socialPlanNotFound(e);
-        }
-
-        Ticket ticket = new Ticket(loggedUser.getName());
-        socialPlan.removeParticipant(ticket);
-
-        try
-        {
-            repository.update(socialPlan);
-        }
-        catch (SocialPlanNotFoundException ignored) {}
-
-        return view.removeUser(ticket);
-    }
-
     public String addUser(String[] args)
     {
         if(args.length < MINIMUM_ADD_USER_ARGUMENT_LENGTH)
@@ -252,6 +220,37 @@ public class SocialPlanController extends SessionController
         catch (SocialPlanNotFoundException e) {
             return view.socialPlanNotFound(e);
         }
+    }
+    public String removeUser(String[] args)
+    {
+        if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
+
+        User loggedUser = getLoggedUser();
+
+        if (loggedUser == null)
+            return view.noLoggedUser();
+
+        SocialPlan socialPlan;
+        try
+        {
+            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+
+        Ticket ticket = new Ticket(loggedUser.getName());
+        socialPlan.removeParticipant(ticket);
+
+        try
+        {
+            repository.update(socialPlan);
+        }
+        catch (SocialPlanNotFoundException ignored) {}
+
+        return view.removeUser(ticket);
     }
 
     public String listSocialPlans(String[] args)
