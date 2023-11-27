@@ -940,7 +940,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2189.715635118341, 161.68630070840106)</val>
 </matrix>
 <points>
-<val>[(-207.16878689024065, 49.0202186222657), (-207.16878689024065, 403.5146496320641), (-385.087546867592, 403.5146496320641)]</val>
+<val>[(-291.31604953113765, 49.0202186222657), (-291.31604953113765, 383.8860796697563), (-385.087546867592, 383.8860796697563)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -2811,7 +2811,7 @@
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>242.0</val>
+<val>254.0</val>
 </width>
 <height>
 <val>158.0</val>
@@ -2858,6 +2858,7 @@
 <ref refid="62505a98-8cb5-11ee-8912-378c1cdd3322"/>
 <ref refid="6864cd9a-8cb5-11ee-8aab-378c1cdd3322"/>
 <ref refid="b729cc8a-8cbd-11ee-b65a-378c1cdd3322"/>
+<ref refid="b6d64abc-8cc7-11ee-9778-77232a3de68b"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -2880,7 +2881,7 @@
 <val>478.0</val>
 </width>
 <height>
-<val>482.0</val>
+<val>500.0</val>
 </height>
 <diagram>
 <ref refid="9735aa8e-69eb-11ee-a158-00155df7ccfe"/>
@@ -2918,7 +2919,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1911.8087545508552, -495.5558575980553)</val>
 </matrix>
 <points>
-<val>[(364.68258297313605, -148.91718117916736), (556.587694907224, -371.2419880612768)]</val>
+<val>[(364.68258297313605, -148.91718117916736), (562.587694907224, -371.2419880612768)]</val>
 </points>
 <head-connection>
 <ref refid="f24e2494-8474-11ee-bc87-c10b697df068"/>
@@ -3011,7 +3012,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2116.5714210032447, -502.87191590757374)</val>
 </matrix>
 <points>
-<val>[(-295.57930575234286, -141.60112286964892), (-461.27353051810564, -363.88459279731507)]</val>
+<val>[(-295.57930575234286, -141.60112286964892), (-461.27353051810564, -345.88459279731507)]</val>
 </points>
 <head-connection>
 <ref refid="f24e2494-8474-11ee-bc87-c10b697df068"/>
@@ -4222,7 +4223,7 @@
 <ref refid="8352d4e5-8475-11ee-adb3-c10b697df068"/>
 </interface_>
 <name>
-<val>getAllSocialPlans</val>
+<val>fetchAllSocialPlans</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -4306,7 +4307,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2617.510719870677, -712.3640824486838)</val>
 </matrix>
 <points>
-<val>[(-70.9860366802277, -154.4337632106483), (0.0, 270.2545774159523)]</val>
+<val>[(-61.111909387713695, -154.4337632106483), (0.0, 270.2545774159523)]</val>
 </points>
 <head-connection>
 <ref refid="8353b556-8475-11ee-9ec0-c10b697df068"/>
@@ -6275,6 +6276,9 @@
 <class_>
 <ref refid="f24d3ac0-8474-11ee-ab86-c10b697df068"/>
 </class_>
+<isStatic>
+<val>1</val>
+</isStatic>
 <name>
 <val>socialPlancollision</val>
 </name>
@@ -6547,5 +6551,41 @@
 <ownerFormalParam>
 <ref refid="4055fcd6-8cc2-11ee-afeb-378c1cdd3322"/>
 </ownerFormalParam>
+</Parameter>
+<Operation id="b6d64abc-8cc7-11ee-9778-77232a3de68b">
+<interface_>
+<ref refid="8ba805b8-8475-11ee-8603-c10b697df068"/>
+</interface_>
+<name>
+<val>createSocialPlanPastDate</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="b6e9ac99-8cc7-11ee-97e6-77232a3de68b"/>
+<ref refid="b96fa0f5-8cc7-11ee-a163-77232a3de68b"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="b6e9ac99-8cc7-11ee-97e6-77232a3de68b">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>PastDateException e</val>
+</name>
+<ownerFormalParam>
+<ref refid="b6d64abc-8cc7-11ee-9778-77232a3de68b"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="b96fa0f5-8cc7-11ee-a163-77232a3de68b">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="b6d64abc-8cc7-11ee-9778-77232a3de68b"/>
+</ownerFormalParam>
+<typeValue>
+<val>String</val>
+</typeValue>
 </Parameter>
 </gaphor>

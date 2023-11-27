@@ -128,4 +128,10 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
     {
         return "participantNotFound";
     }
+
+    @Override
+    public String createSocialPlanPastDate(PastDateException e)
+    {
+        return "createSocialPlanPastDate";
+    }
 }

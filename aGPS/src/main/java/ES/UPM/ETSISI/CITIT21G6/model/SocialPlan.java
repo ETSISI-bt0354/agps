@@ -16,9 +16,11 @@ public class SocialPlan
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String ownerName, String name, LocalDateTime date, String location)
+    public SocialPlan(String ownerName, String name, LocalDateTime date, String location) throws PastDateException
     {
         this.id = new SocialPlanId(ownerName, name);
+        if (date.isBefore(LocalDateTime.now()))
+            throw new PastDateException(date);
         this.date = date;
         this.location = location;
         this.capacity = OptionalInt.empty();

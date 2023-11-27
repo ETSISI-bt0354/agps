@@ -42,7 +42,15 @@ public class SocialPlanController extends SessionController
         if(loggedUser == null)
             return view.noLoggedUser();
 
-        SocialPlan newPlan = new SocialPlan(loggedUser.getName(), args[0], LocalDateTime.parse(args[1]), args[2]);
+        SocialPlan newPlan;
+        try
+        {
+             newPlan = new SocialPlan(loggedUser.getName(), args[0], LocalDateTime.parse(args[1]), args[2]);
+        }
+        catch (PastDateException e)
+        {
+            return view.createSocialPlanPastDate(e);
+        }
 
         if(args.length > MINIMUM_CREATION_ARGUMENT_LENGTH)
         {

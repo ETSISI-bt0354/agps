@@ -39,4 +39,5 @@ public interface SocialPlanView
     String joinPastSocialPlan();
     String setScoreFutureSocialPlan();
     String participantNotFound(ParticipantNotFoundException e);
+    String createSocialPlanPastDate(PastDateException e);
 }
