@@ -365,7 +365,7 @@
 </Class>
 <ClassItem id="b66a2ae5-69ed-11ee-a099-00155df7ccfe">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1861.751157519665, -163.7834134134357)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1861.7511575196652, -163.7834134134357)</val>
 </matrix>
 <top-left>
 <val>(-54.0, -7.510067255897525)</val>
@@ -1627,7 +1627,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>Ticket ticket</val>
+<val>String participantName</val>
 </name>
 <ownerFormalParam>
 <ref refid="6fcaf212-6f84-11ee-83ec-e93ffbc4c260"/>
@@ -1675,7 +1675,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>Ticket ticket</val>
+<val>String participantName</val>
 </name>
 <ownerFormalParam>
 <ref refid="7650d46b-6f84-11ee-a38d-e93ffbc4c260"/>
@@ -4633,7 +4633,7 @@
 <ref refid="8ba805b8-8475-11ee-8603-c10b697df068"/>
 </interface_>
 <name>
-<val>removeUser</val>
+<val>removeParticipant</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -4658,7 +4658,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>Ticket ticket</val>
+<val>String participantName</val>
 </name>
 <ownerFormalParam>
 <ref refid="5d4cc4bc-8caa-11ee-8f02-378c1cdd3322"/>
@@ -4669,7 +4669,7 @@
 <ref refid="8ba805b8-8475-11ee-8603-c10b697df068"/>
 </interface_>
 <name>
-<val>addUser</val>
+<val>addParticipant</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -4694,7 +4694,7 @@
 <val>in</val>
 </direction>
 <name>
-<val>Ticket ticket</val>
+<val>String participantName</val>
 </name>
 <ownerFormalParam>
 <ref refid="66521201-8caa-11ee-986b-378c1cdd3322"/>
@@ -6052,7 +6052,7 @@
 <ref refid="f24d3ac0-8474-11ee-ab86-c10b697df068"/>
 </class_>
 <name>
-<val>addUser</val>
+<val>addParticipant</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -6083,7 +6083,7 @@
 <ref refid="f24d3ac0-8474-11ee-ab86-c10b697df068"/>
 </class_>
 <name>
-<val>removeUser</val>
+<val>removeParticipant</val>
 </name>
 <ownedParameter>
 <reflist>

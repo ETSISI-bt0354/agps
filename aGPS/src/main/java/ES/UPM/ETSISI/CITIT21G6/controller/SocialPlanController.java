@@ -176,7 +176,7 @@ public class SocialPlanController extends SessionController
         return view.price(price);
     }
 
-    public String addUser(String[] args)
+    public String addParticipant(String[] args)
     {
         if(args.length < MINIMUM_ADD_USER_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_ADD_USER_ARGUMENT_LENGTH);
@@ -209,11 +209,10 @@ public class SocialPlanController extends SessionController
         if (collision)
             return view.colisionWithOtherSocialPlan();
 
-        Ticket ticket = new Ticket(loggedUser.getName());
         try{
-            socialPlan.addParticipant(ticket);
+            socialPlan.addParticipant(loggedUser.getName());
             repository.update(socialPlan);
-            return view.addUser(ticket);
+            return view.addParticipant(loggedUser.getName());
         }
         catch (UserAlreadyInSocialPlanException e){
             return view.userAlreadyInSocialPlan(e);
@@ -226,7 +225,7 @@ public class SocialPlanController extends SessionController
             return view.socialPlanNotFound(e);
         }
     }
-    public String removeUser(String[] args)
+    public String removeParticipant(String[] args)
     {
         if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
@@ -246,10 +245,9 @@ public class SocialPlanController extends SessionController
             return view.socialPlanNotFound(e);
         }
 
-        Ticket ticket = new Ticket(loggedUser.getName());
         try
         {
-            socialPlan.removeParticipant(ticket);
+            socialPlan.removeParticipant(loggedUser.getName());
         }
         catch (ParticipantNotFoundException e)
         {
@@ -262,7 +260,7 @@ public class SocialPlanController extends SessionController
         }
         catch (SocialPlanNotFoundException ignored) {}
 
-        return view.removeUser(ticket);
+        return view.removeParticipant(loggedUser.getName());
     }
 
     public String listSocialPlans(String[] args)

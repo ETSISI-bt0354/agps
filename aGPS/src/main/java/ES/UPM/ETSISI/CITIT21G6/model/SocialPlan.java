@@ -95,10 +95,11 @@ public class SocialPlan
         return activities;
     }
 
-    public void addParticipant(Ticket ticket) throws FullSocialPlanException, UserAlreadyInSocialPlanException
+    public void addParticipant(String participantName) throws FullSocialPlanException, UserAlreadyInSocialPlanException
     {
+        Ticket ticket = new Ticket(participantName);
         if (participants.contains(ticket))
-            throw new UserAlreadyInSocialPlanException(ticket.getUserName());
+            throw new UserAlreadyInSocialPlanException(participantName);
 
         if (capacity.isPresent() && participants.size() == capacity.getAsInt())
             throw new FullSocialPlanException();
@@ -111,10 +112,10 @@ public class SocialPlan
         return participants;
     }
 
-    public void removeParticipant(Ticket ticket) throws ParticipantNotFoundException
+    public void removeParticipant(String participanName) throws ParticipantNotFoundException
     {
-        if (!participants.remove(ticket))
-            throw new ParticipantNotFoundException(ticket.getUserName());
+        if (!participants.remove(new Ticket(participanName)))
+            throw new ParticipantNotFoundException(participanName);
     }
 
     @Override

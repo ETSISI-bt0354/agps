@@ -22,8 +22,8 @@ public interface SocialPlanView
     String insufficientArguments(int requiredArguments);
     String noLoggedUser();
     String listPlans(List<SocialPlan> socialPlans, ListOrder order);
-    String removeUser(Ticket ticket);
-    String addUser(Ticket ticket);
+    String removeParticipant(String participantName);
+    String addParticipant(String participantName);
     String socialPlanNotFound(SocialPlanNotFoundException e);
     String price(double price);
     String invalidCapacity(InvalidCapacityException e);
