@@ -11,7 +11,6 @@ import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.OptionalInt;
 
 
 public class SocialPlanControllerTest {
@@ -20,7 +19,7 @@ public class SocialPlanControllerTest {
     void createSocialPlan() throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException {
         User loggedUser = new User("test", "test", "test", "test", "test", "test", "test", "test");
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanView view = new SocialPlanView();
+        SocialPlanViewTest view = new SocialPlanViewTest();
         SocialPlanController controller = new SocialPlanController(repository, view);
         controller.createSocialPlan(new String[]{"test", "test", "test"});
         String[] args = {"test", "test", "test"};
@@ -33,7 +32,7 @@ public class SocialPlanControllerTest {
     {
         SocialPlan socialPlan = new SocialPlan("test", "test", LocalDate.now(), "test");
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanView view = new SocialPlanView();
+        SocialPlanViewTest view = new SocialPlanViewTest();
         SocialPlanController controller = new SocialPlanController(repository, view);
         String[] args = {"test"};
         assert controller.deleteSocialPlan(args).isEmpty();
@@ -44,7 +43,7 @@ public class SocialPlanControllerTest {
     {
         SocialPlan socialPlan = new SocialPlan("test", "test", LocalDate.now(), "test");
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanView view = new SocialPlanView();
+        SocialPlanViewTest view = new SocialPlanViewTest();
         SocialPlanController controller = new SocialPlanController(repository, view);
         String[] args = {"test", "test", "test", "test", "test"};
         assert controller.addActivity(args).isEmpty();
@@ -55,7 +54,7 @@ public class SocialPlanControllerTest {
     {
         SocialPlan socialPlan = new SocialPlan("test", "test", LocalDate.now(), "test");
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanView view = new SocialPlanView();
+        SocialPlanViewTest view = new SocialPlanViewTest();
         SocialPlanController controller = new SocialPlanController(repository, view);
         String[] args = {"test"};
         assert controller.removeUser(args).equals("E");
@@ -66,7 +65,7 @@ public class SocialPlanControllerTest {
     {
         SocialPlan socialPlan = new SocialPlan("test", "test", LocalDate.now(), "test");
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanView view = new SocialPlanView();
+        SocialPlanViewTest view = new SocialPlanViewTest();
         SocialPlanController controller = new SocialPlanController(repository, view);
         controller.addUser(new String[]{"test"});
         String[] args = {"test"};
@@ -78,7 +77,7 @@ public class SocialPlanControllerTest {
     {
         SocialPlan socialPlan = new SocialPlan("test", "test", LocalDate.now(), "test");
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanView view = new SocialPlanView();
+        SocialPlanViewTest view = new SocialPlanViewTest();
         SocialPlanController controller = new SocialPlanController(repository, view);
         String[] args = {"test"};
         assert controller.addUser(args).isEmpty();

@@ -7,65 +7,65 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAdde
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
-public class UserView implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
+public class UserViewTest implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
 
     @Override
     public String showUser(User user)
     {
-        return user == null ? "E":"";
+         return "";
     }
 
     @Override
     public String loggedInUser(User user)
     {
-        return user == null ? "E":"";
+        return "";
     }
 
     @Override
     public String loggedOutUser(User user)
     {
-        return user == null ? "E":"";
+        return "";
     }
 
     @Override
     public String passwordError()
     {
-        return "E";
+        return "passwordError";
     }
 
     @Override
     public String userNotFound(UserNotFoundException exception)
     {
-        return "E";
+        return "userNotFound";
     }
 
     @Override
     public String userAlreadyAdded(UserAlreadyAddedException exception)
     {
-        return "E";
+        return "userAlreadyAdded";
     }
 
     @Override
     public String noLoggedUser()
     {
-        return "E";
+        return "noLoggedUser";
     }
 
     @Override
     public String invalidPassword(InvalidPasswordException exception)
     {
-        return "E";
+        return "invalidPassword";
     }
 
     @Override
     public String invalidAge(InvalidAgeException exception)
     {
-        return "E";
+        return "invalidAge";
     }
 
     @Override
     public String invalidPhoneNumber(InvalidPhoneNumberException exception)
     {
-        return "E";
+        return "invalidPhoneNumber";
     }
 }

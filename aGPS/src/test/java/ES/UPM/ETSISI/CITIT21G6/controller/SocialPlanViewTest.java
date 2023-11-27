@@ -13,7 +13,7 @@ import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 import java.util.List;
 import java.util.OptionalInt;
 
-public class SocialPlanView implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView {
+public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView {
     @Override
     public String create(SocialPlan socialPlan) {
         if(socialPlan == null)
