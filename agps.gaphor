@@ -940,7 +940,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2189.715635118341, 161.68630070840106)</val>
 </matrix>
 <points>
-<val>[(-291.31604953113765, 49.0202186222657), (-291.31604953113765, 383.8860796697563), (-385.087546867592, 383.8860796697563)]</val>
+<val>[(-340.9856007004, 49.0202186222657), (-340.9856007004, 373.3852671702406), (-385.087546867592, 373.3852671702406)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -5924,7 +5924,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>MINIMUM_REMOVE_USER_ARGUMENT_LENGTH</val>
+<val>MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH</val>
 </name>
 <typeValue>
 <val>final int</val>
@@ -5941,7 +5941,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>MINIMUM_ADD_USER_ARGUMENT_LENGTH</val>
+<val>MINIMUM_ADD_PARTICIPANT_ARGUMENT_LENGTH</val>
 </name>
 <typeValue>
 <val>final int</val>
