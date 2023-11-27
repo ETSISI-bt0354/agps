@@ -59,7 +59,7 @@ public class SocialPlan
     public void setCapacity(OptionalInt capacity) throws InvalidCapacityException
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new InvalidCapacityException(InvalidCapacity.NEGATIVE, capacity, this.capacity);
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVEORZERO, capacity, this.capacity);
 
         int numberOfParticipants = participants.size();
 

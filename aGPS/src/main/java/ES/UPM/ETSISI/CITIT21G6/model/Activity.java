@@ -47,7 +47,7 @@ public class Activity
     public void setCapacity(OptionalInt capacity) throws InvalidCapacityException
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new InvalidCapacityException(InvalidCapacity.NEGATIVE, capacity, OptionalInt.of(Integer.MAX_VALUE));
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVEORZERO, capacity, OptionalInt.of(Integer.MAX_VALUE));
 
         this.capacity = capacity;
     }
