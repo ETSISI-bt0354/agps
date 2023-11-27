@@ -7,12 +7,13 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAdde
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
-public class UserViewTest implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
+public class UserViewTest implements ES.UPM.ETSISI.CITIT21G6.view.UserView
+{
 
     @Override
     public String showUser(User user)
     {
-         return "";
+        return "";
     }
 
     @Override
@@ -69,7 +70,8 @@ public class UserViewTest implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
         return "invalidPhoneNumber";
     }
 
-    public String insufficientArguments(int requiredArguments) {
+    public String insufficientArguments(int requiredArguments)
+    {
         return "insufficientArguments";
     }
 }

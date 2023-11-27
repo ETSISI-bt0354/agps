@@ -7,5 +7,6 @@ import ES.UPM.ETSISI.CITIT21G6.model.User;
 public interface UserRepository
 {
     void save(User user) throws UserAlreadyAddedException;
+
     User findByName(String name) throws UserNotFoundException;
 }

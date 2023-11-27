@@ -2,9 +2,7 @@ package ES.UPM.ETSISI.CITIT21G6.model;
 
 public enum ActivityType
 {
-    GENERIC,
-    CINEMA,
-    THEATRE;
+    GENERIC, CINEMA, THEATRE;
 
     public static ActivityType parse(String s)
     {

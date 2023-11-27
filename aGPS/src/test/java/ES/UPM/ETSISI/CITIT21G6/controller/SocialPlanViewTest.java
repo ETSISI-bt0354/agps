@@ -12,99 +12,119 @@ import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 import java.util.List;
 import java.util.OptionalInt;
 
-public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView {
+public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView
+{
     @Override
-    public String create(SocialPlan socialPlan) {
+    public String create(SocialPlan socialPlan)
+    {
         return "";
     }
 
     @Override
-    public String delete(SocialPlanId id) {
+    public String delete(SocialPlanId id)
+    {
         return "";
     }
 
     @Override
-    public String addActivity(Activity activity) {
+    public String addActivity(Activity activity)
+    {
         return "";
     }
 
     @Override
-    public String insufficientArguments(int requiredArguments) {
+    public String insufficientArguments(int requiredArguments)
+    {
         return "insufficientArguments";
     }
 
     @Override
-    public String noLoggedUser() {
+    public String noLoggedUser()
+    {
         return "noLoggedUser";
     }
 
     @Override
-    public String listPlans(List<SocialPlan> socialPlans, ListOrder order) {
+    public String listPlans(List<SocialPlan> socialPlans, ListOrder order)
+    {
         return "";
     }
 
     @Override
-    public String removeParticipant(String participantName) {
+    public String removeParticipant(String participantName)
+    {
         return "";
     }
 
     @Override
-    public String addParticipant(String participantName) {
+    public String addParticipant(String participantName)
+    {
         return "";
     }
 
     @Override
-    public String socialPlanNotFound(SocialPlanNotFoundException e) {
+    public String socialPlanNotFound(SocialPlanNotFoundException e)
+    {
         return "socialPlanNotFound";
     }
 
     @Override
-    public String price(double price) {
+    public String price(double price)
+    {
         return String.valueOf(price);
     }
 
     @Override
-    public String invalidCapacity(InvalidCapacityException e) {
+    public String invalidCapacity(InvalidCapacityException e)
+    {
         return "invalidCapacity";
     }
 
     @Override
-    public String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e) {
+    public String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e)
+    {
         return "socialPlanAlreadyAdded";
     }
 
     @Override
-    public String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e) {
+    public String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e)
+    {
         return "activityAlreadyInSocialPlan";
     }
 
     @Override
-    public String fullSocialPlan(FullSocialPlanException e) {
+    public String fullSocialPlan(FullSocialPlanException e)
+    {
         return "fullSocialPlan";
     }
 
     @Override
-    public String userAlreadyInSocialPlan(UserAlreadyInSocialPlanException e) {
+    public String userAlreadyInSocialPlan(UserAlreadyInSocialPlanException e)
+    {
         return "userAlreadyInSocialPlan";
     }
 
     @Override
-    public String wrongListOrder(ListOrderException e) {
+    public String wrongListOrder(ListOrderException e)
+    {
         return "wrongListOrder";
     }
 
     @Override
-    public String ticketNotFound(TicketNotFoundException e) {
+    public String ticketNotFound(TicketNotFoundException e)
+    {
         return "ticketNotFound";
     }
 
     @Override
-    public String invalidScore(InvalidScoreException e) {
+    public String invalidScore(InvalidScoreException e)
+    {
         return "invalidScore";
     }
 
     @Override
-    public String setScore(OptionalInt score) {
+    public String setScore(OptionalInt score)
+    {
         return "";
     }
 

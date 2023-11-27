@@ -17,27 +17,50 @@ import java.util.OptionalInt;
 public interface SocialPlanView
 {
     String create(SocialPlan socialPlan);
+
     String delete(SocialPlanId id);
+
     String addActivity(Activity activity);
+
     String insufficientArguments(int requiredArguments);
+
     String noLoggedUser();
+
     String listPlans(List<SocialPlan> socialPlans, ListOrder order);
+
     String removeParticipant(String participantName);
+
     String addParticipant(String participantName);
+
     String socialPlanNotFound(SocialPlanNotFoundException e);
+
     String price(double price);
+
     String invalidCapacity(InvalidCapacityException e);
+
     String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e);
+
     String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e);
+
     String fullSocialPlan(FullSocialPlanException e);
+
     String userAlreadyInSocialPlan(UserAlreadyInSocialPlanException e);
+
     String wrongListOrder(ListOrderException e);
+
     String ticketNotFound(TicketNotFoundException e);
+
     String invalidScore(InvalidScoreException e);
+
     String setScore(OptionalInt score);
+
     String colisionWithOtherSocialPlan();
+
     String joinPastSocialPlan();
+
     String setScoreFutureSocialPlan();
+
     String participantNotFound(ParticipantNotFoundException e);
+
     String createSocialPlanPastDate(PastDateException e);
 }

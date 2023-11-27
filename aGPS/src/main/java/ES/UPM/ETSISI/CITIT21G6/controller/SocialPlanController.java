@@ -33,32 +33,30 @@ public class SocialPlanController extends SessionController
         this.view = view;
     }
 
-    public String createSocialPlan(String[] args) {
-        if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
+    public String createSocialPlan(String[] args)
+    {
+        if (args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
-        if(loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlan newPlan;
         try
         {
-             newPlan = new SocialPlan(loggedUser.getName(), args[0], LocalDateTime.parse(args[1]), args[2]);
-        }
-        catch (PastDateException e)
+            newPlan = new SocialPlan(loggedUser.getName(), args[0], LocalDateTime.parse(args[1]), args[2]);
+        } catch (PastDateException e)
         {
             return view.createSocialPlanPastDate(e);
         }
 
-        if(args.length > MINIMUM_CREATION_ARGUMENT_LENGTH)
+        if (args.length > MINIMUM_CREATION_ARGUMENT_LENGTH)
         {
             try
             {
                 newPlan.setCapacity(OptionalInt.of(Integer.parseInt(args[3])));
-            }
-            catch (InvalidCapacityException e)
+            } catch (InvalidCapacityException e)
             {
                 return view.invalidCapacity(e);
             }
@@ -68,8 +66,7 @@ public class SocialPlanController extends SessionController
         {
             repository.save(newPlan);
             return view.create(newPlan);
-        }
-        catch(SocialPlanAlreadyAddedException e)
+        } catch (SocialPlanAlreadyAddedException e)
         {
             return view.socialPlanAlreadyAdded(e);
         }
@@ -78,23 +75,21 @@ public class SocialPlanController extends SessionController
 
     public String deleteSocialPlan(String[] args)
     {
-        if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
         {
             return view.insufficientArguments(MINIMUM_DELETE_ARGUMENT_LENGTH);
         }
 
         User loggedUser = getLoggedUser();
 
-        if(loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlanId socialPlanId = new SocialPlanId(loggedUser.getName(), args[0]);
         try
         {
             repository.delete(socialPlanId);
             return view.delete(socialPlanId);
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
@@ -103,20 +98,18 @@ public class SocialPlanController extends SessionController
 
     public String addActivity(String[] args)
     {
-        if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
-        if (loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlan socialPlan;
         try
         {
             socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
@@ -128,8 +121,7 @@ public class SocialPlanController extends SessionController
             {
                 if (args.length > MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
                     activity.setCapacity(OptionalInt.of(Integer.parseInt(args[6])));
-            }
-            catch (InvalidCapacityException e)
+            } catch (InvalidCapacityException e)
             {
                 return view.invalidCapacity(e);
             }
@@ -139,16 +131,13 @@ public class SocialPlanController extends SessionController
             repository.update(socialPlan);
 
             return view.addActivity(activity);
-        }
-        catch (InvalidCapacityException e)
+        } catch (InvalidCapacityException e)
         {
             return view.invalidCapacity(e);
-        }
-        catch (ActivityAlreadyInSocialPlanException e)
+        } catch (ActivityAlreadyInSocialPlanException e)
         {
             return view.activityAlreadyInSocialPlan(e);
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
@@ -156,99 +145,83 @@ public class SocialPlanController extends SessionController
 
     public String checkPlanCost(String[] args)
     {
-        if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
         String result;
         User loggedUser = getLoggedUser();
 
-        if (loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlan socialPlan;
         try
         {
             socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
 
-        double price = socialPlan.getActivities()
-                .stream()
-                .reduce(0.0, (subtotal, activity) ->
-                        subtotal + ActivityPriceCalculator.calculate(activity, loggedUser.getAge()), Double::sum
-                );
+        double price = socialPlan.getActivities().stream().reduce(0.0, (subtotal, activity) -> subtotal + ActivityPriceCalculator.calculate(activity, loggedUser.getAge()), Double::sum);
 
         return view.price(price);
     }
 
     public String addParticipant(String[] args)
     {
-        if(args.length < MINIMUM_ADD_PARTICIPANTS_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_ADD_PARTICIPANTS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_ADD_PARTICIPANTS_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
-        if (loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlan socialPlan;
         try
         {
             socialPlan = repository.fetch(new SocialPlanId(args[0], args[1]));
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
 
-        if (socialPlan.getDate().isBefore(LocalDateTime.now()))
-            return view.joinPastSocialPlan();
+        if (socialPlan.getDate().isBefore(LocalDateTime.now())) return view.joinPastSocialPlan();
 
-        boolean collision = repository.fetchAllSocialPlans()
-                .stream()
-                .filter(plan -> plan.getParticipants()
-                        .stream()
-                        .anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName())))
-                .anyMatch(plan -> socialPlanCollision(socialPlan, plan));
+        boolean collision = repository.fetchAllSocialPlans().stream().filter(plan -> plan.getParticipants().stream().anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))).anyMatch(plan -> socialPlanCollision(socialPlan, plan));
 
-        if (collision)
-            return view.colisionWithOtherSocialPlan();
+        if (collision) return view.colisionWithOtherSocialPlan();
 
-        try{
+        try
+        {
             socialPlan.addParticipant(loggedUser.getName());
             repository.update(socialPlan);
             return view.addParticipant(loggedUser.getName());
-        }
-        catch (UserAlreadyInSocialPlanException e){
+        } catch (UserAlreadyInSocialPlanException e)
+        {
             return view.userAlreadyInSocialPlan(e);
-        }
-        catch (FullSocialPlanException e)
+        } catch (FullSocialPlanException e)
         {
             return view.fullSocialPlan(e);
-        }
-        catch (SocialPlanNotFoundException e) {
+        } catch (SocialPlanNotFoundException e)
+        {
             return view.socialPlanNotFound(e);
         }
     }
+
     public String removeParticipant(String[] args)
     {
-        if(args.length < MINIMUM_REMOVE_PARTICIPANTS_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_REMOVE_PARTICIPANTS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_REMOVE_PARTICIPANTS_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
-        if (loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlan socialPlan;
         try
         {
             socialPlan = repository.fetch(new SocialPlanId(args[0], args[1]));
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
@@ -256,8 +229,7 @@ public class SocialPlanController extends SessionController
         try
         {
             socialPlan.removeParticipant(loggedUser.getName());
-        }
-        catch (ParticipantNotFoundException e)
+        } catch (ParticipantNotFoundException e)
         {
             return view.participantNotFound(e);
         }
@@ -265,21 +237,21 @@ public class SocialPlanController extends SessionController
         try
         {
             repository.update(socialPlan);
+        } catch (SocialPlanNotFoundException ignored)
+        {
         }
-        catch (SocialPlanNotFoundException ignored) {}
 
         return view.removeParticipant(loggedUser.getName());
     }
 
     public String listSocialPlans(String[] args)
     {
-        if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
-        if (loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         try
         {
@@ -287,18 +259,10 @@ public class SocialPlanController extends SessionController
             List<SocialPlan> socialPlans = repository.fetchAllSocialPlans();
 
             if (args.length > MINIMUM_LIST_PLANS_ARGUMENT_LENGTH && args[1].equalsIgnoreCase("ONLY-SUBSCRIBED"))
-                socialPlans = socialPlans
-                        .stream()
-                        .filter(plan -> plan
-                                .getParticipants()
-                                .stream()
-                                .anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))
-                        )
-                        .toList();
+                socialPlans = socialPlans.stream().filter(plan -> plan.getParticipants().stream().anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))).toList();
 
             return view.listPlans(socialPlans, order);
-        }
-        catch (ListOrderException e)
+        } catch (ListOrderException e)
         {
             return view.wrongListOrder(e);
         }
@@ -311,28 +275,21 @@ public class SocialPlanController extends SessionController
 
         User loggedUser = getLoggedUser();
 
-        if (loggedUser == null)
-            return view.noLoggedUser();
+        if (loggedUser == null) return view.noLoggedUser();
 
         SocialPlan socialPlan;
         try
         {
             socialPlan = repository.fetch(new SocialPlanId(args[0], args[1]));
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
 
-        if (socialPlan.getDate().isAfter(LocalDateTime.now()))
-            return view.setScoreFutureSocialPlan();
+        if (socialPlan.getDate().isAfter(LocalDateTime.now())) return view.setScoreFutureSocialPlan();
         try
         {
-            Ticket ticket = socialPlan.getParticipants()
-                    .stream()
-                    .filter(t -> loggedUser.getName().equals(t.getUserName()))
-                    .findFirst()
-                    .orElseThrow(() -> new TicketNotFoundException(loggedUser.getName()));
+            Ticket ticket = socialPlan.getParticipants().stream().filter(t -> loggedUser.getName().equals(t.getUserName())).findFirst().orElseThrow(() -> new TicketNotFoundException(loggedUser.getName()));
 
             OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
             ticket.setScore(score);
@@ -340,16 +297,13 @@ public class SocialPlanController extends SessionController
             repository.update(socialPlan);
 
             return view.setScore(score);
-        }
-        catch (TicketNotFoundException e)
+        } catch (TicketNotFoundException e)
         {
             return view.ticketNotFound(e);
-        }
-        catch (InvalidScoreException e)
+        } catch (InvalidScoreException e)
         {
             return view.invalidScore(e);
-        }
-        catch (SocialPlanNotFoundException e)
+        } catch (SocialPlanNotFoundException e)
         {
             return view.socialPlanNotFound(e);
         }
@@ -360,9 +314,7 @@ public class SocialPlanController extends SessionController
         int duration = 0;
         if (!socialPlan.getActivities().isEmpty())
         {
-            int durationWithoutTrip = socialPlan.getActivities()
-                    .stream()
-                    .reduce(0, (x, activity) -> x + activity.getDuration(), Integer::sum);
+            int durationWithoutTrip = socialPlan.getActivities().stream().reduce(0, (x, activity) -> x + activity.getDuration(), Integer::sum);
 
             duration = durationWithoutTrip + 20 * socialPlan.getActivities().size() - 1;
         }
@@ -378,7 +330,6 @@ public class SocialPlanController extends SessionController
         LocalDateTime socialPlan2StartDate = socialPlan2.getDate();
         LocalDateTime socialPlan2EndDate = socialPlan2.getDate().plusMinutes(calculateSocialPlanDuration(socialPlan2));
 
-        return socialPlan1StartDate.isBefore(socialPlan2EndDate)
-                && socialPlan1EndDate.isAfter(socialPlan2StartDate);
+        return socialPlan1StartDate.isBefore(socialPlan2EndDate) && socialPlan1EndDate.isAfter(socialPlan2StartDate);
     }
 }

@@ -4,6 +4,7 @@ public class InvalidPasswordException extends Exception
 {
     private final String password;
     private final int minimumPasswordlength;
+
     public InvalidPasswordException(String password, int minimumPasswordlength)
     {
         super();

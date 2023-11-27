@@ -13,8 +13,7 @@ public class User
     private Password password;
     private PhoneNumber phoneNumber;
 
-    public User(String name, String password, LocalDate birthday, String phoneNumber)
-            throws InvalidPasswordException, InvalidAgeException, InvalidPhoneNumberException
+    public User(String name, String password, LocalDate birthday, String phoneNumber) throws InvalidPasswordException, InvalidAgeException, InvalidPhoneNumberException
     {
         this.name = name;
         this.password = new Password(password);
@@ -42,6 +41,7 @@ public class User
     {
         return phoneNumber.getPhoneNumber();
     }
+
     public int getAge()
     {
         return age.getAge();

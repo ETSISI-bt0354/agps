@@ -20,11 +20,11 @@ public class UserControllerTest
         UserRepository repository = new InMemoryUserRepository();
         UserController controller = new UserController(repository, new UserViewTest());
 
-        controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
         assertDoesNotThrow(() -> repository.findByName("a"));
 
 
-        controller.registerUser(new String[] {"b", "12345", LocalDate.now().minusYears(30).toString(), "987654321"});
+        controller.registerUser(new String[]{"b", "12345", LocalDate.now().minusYears(30).toString(), "987654321"});
         assertDoesNotThrow(() -> repository.findByName("b"));
     }
 
@@ -34,9 +34,9 @@ public class UserControllerTest
         UserRepository repository = new InMemoryUserRepository();
         UserController controller = new UserController(repository, new UserViewTest());
 
-        controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
-        String result = controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        String result = controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
         assertEquals("userAlreadyAdded", result);
     }
 
@@ -46,9 +46,9 @@ public class UserControllerTest
         UserRepository repository = new InMemoryUserRepository();
         UserController controller = new UserController(repository, new UserViewTest());
 
-        controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
-        String result = controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "987654321"});
+        String result = controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "987654321"});
         assertEquals("userAlreadyAdded", result);
     }
 
@@ -58,9 +58,9 @@ public class UserControllerTest
         UserRepository repository = new InMemoryUserRepository();
         UserController controller = new UserController(repository, new UserViewTest());
 
-        controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
-        String result = controller.registerUser(new String[] {"b", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        String result = controller.registerUser(new String[]{"b", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
         assertEquals("userAlreadyAdded", result);
     }
 

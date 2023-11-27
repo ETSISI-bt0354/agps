@@ -24,9 +24,10 @@ public class UserController extends SessionController
         this.repository = repository;
         this.view = view;
     }
+
     public String registerUser(String[] args)
     {
-        if(args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_REGISTER_ARGUMENT_LENGTH);
 
         String name = args[0];
@@ -38,16 +39,13 @@ public class UserController extends SessionController
         try
         {
             user = new User(name, password, birthday, phoneNumber);
-        }
-        catch (InvalidPasswordException e)
+        } catch (InvalidPasswordException e)
         {
             return view.invalidPassword(e);
-        }
-        catch (InvalidAgeException e)
+        } catch (InvalidAgeException e)
         {
             return view.invalidAge(e);
-        }
-        catch (InvalidPhoneNumberException e)
+        } catch (InvalidPhoneNumberException e)
         {
             return view.invalidPhoneNumber(e);
         }
@@ -56,15 +54,15 @@ public class UserController extends SessionController
         {
             repository.save(user);
             return view.showUser(user);
-        }
-        catch (UserAlreadyAddedException e)
+        } catch (UserAlreadyAddedException e)
         {
             return view.userAlreadyAdded(e);
         }
     }
+
     public String loginUser(String[] args)
     {
-        if(args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LOGIN_ARGUMENT_LENGTH);
 
         String name = args[0];
@@ -74,8 +72,7 @@ public class UserController extends SessionController
         try
         {
             user = repository.findByName(name);
-        }
-        catch (UserNotFoundException e)
+        } catch (UserNotFoundException e)
         {
             return view.userNotFound(e);
         }
@@ -84,18 +81,17 @@ public class UserController extends SessionController
         {
             setLoggedUser(user);
             return view.loggedInUser(user);
-        }
-        else
+        } else
         {
             return view.passwordError();
         }
 
     }
+
     public String logoutUser(String[] args)
     {
         User user = getLoggedUser();
-        if (user == null)
-            return view.noLoggedUser();
+        if (user == null) return view.noLoggedUser();
 
         setLoggedUser(null);
         return view.loggedOutUser(user);

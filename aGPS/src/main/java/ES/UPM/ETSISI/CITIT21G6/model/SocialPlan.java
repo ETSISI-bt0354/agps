@@ -19,8 +19,7 @@ public class SocialPlan
     public SocialPlan(String ownerName, String name, LocalDateTime date, String location) throws PastDateException
     {
         this.id = new SocialPlanId(ownerName, name);
-        if (date.isBefore(LocalDateTime.now()))
-            throw new PastDateException(date);
+        if (date.isBefore(LocalDateTime.now())) throw new PastDateException(date);
         this.date = date;
         this.location = location;
         this.capacity = OptionalInt.empty();
@@ -66,12 +65,9 @@ public class SocialPlan
         int numberOfParticipants = participants.size();
 
         if (capacity.orElse(Integer.MAX_VALUE) < numberOfParticipants)
-            throw  new InvalidCapacityException(InvalidCapacity.TOOSMALL, capacity, this.capacity);
+            throw new InvalidCapacityException(InvalidCapacity.TOOSMALL, capacity, this.capacity);
 
-        OptionalInt minimumPossibleCapacity = activities.stream()
-                .map(Activity::getCapacity)
-                .flatMapToInt(OptionalInt::stream)
-                .min();
+        OptionalInt minimumPossibleCapacity = activities.stream().map(Activity::getCapacity).flatMapToInt(OptionalInt::stream).min();
 
         if (capacity.orElse(Integer.MAX_VALUE) > minimumPossibleCapacity.orElse(Integer.MAX_VALUE))
             throw new InvalidCapacityException(InvalidCapacity.TOOBIG, capacity, minimumPossibleCapacity);
@@ -81,8 +77,7 @@ public class SocialPlan
 
     public void addActivity(Activity activity) throws InvalidCapacityException, ActivityAlreadyInSocialPlanException
     {
-        if (activities.contains(activity))
-            throw new ActivityAlreadyInSocialPlanException(activity);
+        if (activities.contains(activity)) throw new ActivityAlreadyInSocialPlanException(activity);
 
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < participants.size())
             throw new InvalidCapacityException(InvalidCapacity.TOOSMALL, activity.getCapacity(), OptionalInt.of(participants.size()));
@@ -100,11 +95,9 @@ public class SocialPlan
     public void addParticipant(String participantName) throws FullSocialPlanException, UserAlreadyInSocialPlanException
     {
         Ticket ticket = new Ticket(participantName);
-        if (participants.contains(ticket))
-            throw new UserAlreadyInSocialPlanException(participantName);
+        if (participants.contains(ticket)) throw new UserAlreadyInSocialPlanException(participantName);
 
-        if (capacity.isPresent() && participants.size() == capacity.getAsInt())
-            throw new FullSocialPlanException();
+        if (capacity.isPresent() && participants.size() == capacity.getAsInt()) throw new FullSocialPlanException();
 
         participants.add(ticket);
     }
@@ -116,8 +109,7 @@ public class SocialPlan
 
     public void removeParticipant(String participanName) throws ParticipantNotFoundException
     {
-        if (!participants.remove(new Ticket(participanName)))
-            throw new ParticipantNotFoundException(participanName);
+        if (!participants.remove(new Ticket(participanName))) throw new ParticipantNotFoundException(participanName);
     }
 
     @Override

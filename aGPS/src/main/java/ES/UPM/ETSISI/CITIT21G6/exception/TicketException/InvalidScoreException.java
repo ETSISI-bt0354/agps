@@ -3,7 +3,7 @@ package ES.UPM.ETSISI.CITIT21G6.exception.TicketException;
 public class InvalidScoreException extends Exception
 {
     private final int score;
-    private  final int minimumScore;
+    private final int minimumScore;
     private final int maximumScore;
 
     public InvalidScoreException(int score, int minimumScore, int maximumScore)
