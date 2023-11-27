@@ -6,12 +6,12 @@ public abstract class SessionController
 {
     private static User loggedUser = null;
 
-    public User getLoggedUser()
+    protected User getLoggedUser()
     {
         return loggedUser;
     }
 
-    public void setLoggedUser(User loggedUser)
+    protected void setLoggedUser(User loggedUser)
     {
         SessionController.loggedUser = loggedUser;
     }
