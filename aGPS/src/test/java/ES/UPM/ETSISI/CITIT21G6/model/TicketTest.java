@@ -12,30 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class TicketTest
 {
     @Test
-    void deleteTicket() throws Exception
-    {
-        SocialPlan socialPlan = generateSocialPlan();
-        User[] users = generateUsers();
-        for (User user : users)
-        {
-            Ticket ticket = new Ticket(user, socialPlan);
-            socialPlan.addParticipant(ticket);
-            user.addJoinedEvent(ticket);
-        }
-
-        Ticket ticket = socialPlan.getParticipants().get(1);
-        ticket.delete();
-
-        assertFalse(socialPlan.getParticipants().contains(ticket));
-        assertFalse(users[1].getJoinedEvents().contains(ticket));
-    }
-
-    @Test
     void setNegativeScore() throws Exception
     {
         SocialPlan socialPlan = generateSocialPlan();
         User[] users = generateUsers();
-        Ticket ticket = new Ticket(users[0], socialPlan);
+        Ticket ticket = new Ticket(users[0].getName());
 
         assertThrows(Exception.class, () -> ticket.setScore(OptionalInt.of(-5)));
     }
@@ -45,7 +26,7 @@ class TicketTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         User[] users = generateUsers();
-        Ticket ticket = new Ticket(users[0], socialPlan);
+        Ticket ticket = new Ticket(users[0].getName());
 
         assertThrows(Exception.class, () -> ticket.setScore(OptionalInt.of(15)));
     }

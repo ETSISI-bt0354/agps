@@ -1,13 +1,14 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.OptionalInt;
 
 public class MockData
 {
     static SocialPlan generateSocialPlan()
     {
-        return new SocialPlan("Prueba", LocalDate.now(), "prueba");
+        return new SocialPlan("A", "Prueba", LocalDateTime.now(), "prueba");
     }
 
     static User[] generateUsers() throws Exception

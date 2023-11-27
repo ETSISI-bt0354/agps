@@ -1,5 +1,7 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacity;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacityException;
 import org.junit.jupiter.api.Test;
 
 import java.util.OptionalInt;
@@ -12,13 +14,13 @@ class ActivityTest
     void setNegativeCapacity()
     {
         Activity activity = new Activity("A", "a", 1, 2, null);
-        assertThrows(Exception.class, () -> activity.setCapacity(OptionalInt.of(-5)));
+        assertThrows(InvalidCapacityException.class, () -> activity.setCapacity(OptionalInt.of(-5)));
     }
 
     @Test
     void setZeroCapacity()
     {
         Activity activity = new Activity("A", "a", 1, 2, null);
-        assertThrows(Exception.class, () -> activity.setCapacity(OptionalInt.of(0)));
+        assertThrows(InvalidCapacityException.class, () -> activity.setCapacity(OptionalInt.of(0)));
     }
 }
