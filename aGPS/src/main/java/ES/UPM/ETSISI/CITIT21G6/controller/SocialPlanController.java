@@ -17,12 +17,12 @@ public class SocialPlanController extends SessionController
 {
     private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_LIST_PLANS_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
-    private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 3;
     private SocialPlanRepository repository;
     private SocialPlanView view;
 
@@ -197,7 +197,7 @@ public class SocialPlanController extends SessionController
         SocialPlan socialPlan;
         try
         {
-            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+            socialPlan = repository.fetch(new SocialPlanId(args[0], args[1]));
         }
         catch (SocialPlanNotFoundException e)
         {
@@ -246,7 +246,7 @@ public class SocialPlanController extends SessionController
         SocialPlan socialPlan;
         try
         {
-            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+            socialPlan = repository.fetch(new SocialPlanId(args[0], args[1]));
         }
         catch (SocialPlanNotFoundException e)
         {
@@ -317,7 +317,7 @@ public class SocialPlanController extends SessionController
         SocialPlan socialPlan;
         try
         {
-            socialPlan = repository.fetch(new SocialPlanId(loggedUser.getName(), args[0]));
+            socialPlan = repository.fetch(new SocialPlanId(args[0], args[1]));
         }
         catch (SocialPlanNotFoundException e)
         {
@@ -334,7 +334,7 @@ public class SocialPlanController extends SessionController
                     .findFirst()
                     .orElseThrow(() -> new TicketNotFoundException(loggedUser.getName()));
 
-            OptionalInt score = OptionalInt.of(Integer.parseInt(args[1]));
+            OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
             ticket.setScore(score);
 
             repository.update(socialPlan);
