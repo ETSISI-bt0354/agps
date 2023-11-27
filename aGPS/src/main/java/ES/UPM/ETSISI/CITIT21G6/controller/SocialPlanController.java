@@ -12,7 +12,6 @@ import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.OptionalInt;
-import java.util.PrimitiveIterator;
 
 public class SocialPlanController extends SessionController
 {
@@ -205,7 +204,7 @@ public class SocialPlanController extends SessionController
                 .filter(plan -> plan.getParticipants()
                         .stream()
                         .anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName())))
-                .anyMatch(plan -> socialPlancollision(socialPlan, plan));
+                .anyMatch(plan -> socialPlanCollision(socialPlan, plan));
 
         if (collision)
             return view.colisionWithOtherSocialPlan();
@@ -358,7 +357,7 @@ public class SocialPlanController extends SessionController
         return duration;
     }
 
-    private static boolean socialPlancollision(SocialPlan socialPlan1, SocialPlan socialPlan2)
+    private static boolean socialPlanCollision(SocialPlan socialPlan1, SocialPlan socialPlan2)
     {
         LocalDateTime socialPlan1StartDate = socialPlan1.getDate();
         LocalDateTime socialPlan1EndDate = socialPlan1.getDate().plusMinutes(calculateSocialPlanDuration(socialPlan1));
