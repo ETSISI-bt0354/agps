@@ -23,7 +23,6 @@ class UserTest
                 new User("A", "aaa",
                         LocalDate.now().minusYears(200), "123456789"));
     }
-
     @Test
     void createUserWithInvalidPassword()
     {
@@ -46,5 +45,12 @@ class UserTest
         assertThrows(Exception.class, () ->
                 new User("A", "aaa",
                         LocalDate.now().minusYears(30), "1234a6789"));
+    }
+
+    @Test
+    void createUser() throws Exception
+    {
+        new User("A", "password",
+                LocalDate.now().minusYears(30), "123456789");
     }
 }
