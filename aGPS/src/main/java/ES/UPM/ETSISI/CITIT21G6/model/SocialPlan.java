@@ -111,9 +111,10 @@ public class SocialPlan
         return participants;
     }
 
-    public void removeParticipant(Ticket ticket)
+    public void removeParticipant(Ticket ticket) throws ParticipantNotFoundException
     {
-        participants.remove(ticket);
+        if (!participants.remove(ticket))
+            throw new ParticipantNotFoundException(ticket.getUserName());
     }
 
     @Override

@@ -2854,6 +2854,7 @@
 <ref refid="f160ed41-8cb1-11ee-983c-378c1cdd3322"/>
 <ref refid="62505a98-8cb5-11ee-8912-378c1cdd3322"/>
 <ref refid="6864cd9a-8cb5-11ee-8aab-378c1cdd3322"/>
+<ref refid="b729cc8a-8cbd-11ee-b65a-378c1cdd3322"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -2876,7 +2877,7 @@
 <val>478.0</val>
 </width>
 <height>
-<val>464.0</val>
+<val>482.0</val>
 </height>
 <diagram>
 <ref refid="9735aa8e-69eb-11ee-a158-00155df7ccfe"/>
@@ -3007,7 +3008,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2116.5714210032447, -502.87191590757374)</val>
 </matrix>
 <points>
-<val>[(-295.57930575234286, -141.60112286964892), (-461.27353051810564, -381.88459279731507)]</val>
+<val>[(-295.57930575234286, -141.60112286964892), (-461.27353051810564, -363.88459279731507)]</val>
 </points>
 <head-connection>
 <ref refid="f24e2494-8474-11ee-bc87-c10b697df068"/>
@@ -6437,5 +6438,41 @@
 <typeValue>
 <val>int</val>
 </typeValue>
+</Parameter>
+<Operation id="b729cc8a-8cbd-11ee-b65a-378c1cdd3322">
+<interface_>
+<ref refid="8ba805b8-8475-11ee-8603-c10b697df068"/>
+</interface_>
+<name>
+<val>participantNotFound</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="b734c5d1-8cbd-11ee-90f6-378c1cdd3322"/>
+<ref refid="b73fccb6-8cbd-11ee-bbd3-378c1cdd3322"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="b734c5d1-8cbd-11ee-90f6-378c1cdd3322">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="b729cc8a-8cbd-11ee-b65a-378c1cdd3322"/>
+</ownerFormalParam>
+<typeValue>
+<val>String</val>
+</typeValue>
+</Parameter>
+<Parameter id="b73fccb6-8cbd-11ee-bbd3-378c1cdd3322">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>ParticipantNotFoundException e</val>
+</name>
+<ownerFormalParam>
+<ref refid="b729cc8a-8cbd-11ee-b65a-378c1cdd3322"/>
+</ownerFormalParam>
 </Parameter>
 </gaphor>

@@ -38,4 +38,5 @@ public interface SocialPlanView
     String colisionWithOtherSocialPlan();
     String joinPastSocialPlan();
     String setScoreFutureSocialPlan();
+    String participantNotFound(ParticipantNotFoundException e);
 }

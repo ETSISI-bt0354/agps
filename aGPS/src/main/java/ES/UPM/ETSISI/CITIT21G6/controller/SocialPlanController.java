@@ -247,7 +247,14 @@ public class SocialPlanController extends SessionController
         }
 
         Ticket ticket = new Ticket(loggedUser.getName());
-        socialPlan.removeParticipant(ticket);
+        try
+        {
+            socialPlan.removeParticipant(ticket);
+        }
+        catch (ParticipantNotFoundException e)
+        {
+            return view.participantNotFound(e);
+        }
 
         try
         {
