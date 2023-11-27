@@ -68,4 +68,8 @@ public class UserViewTest implements ES.UPM.ETSISI.CITIT21G6.view.UserView {
     {
         return "invalidPhoneNumber";
     }
+
+    public String insufficientArguments(int requiredArguments) {
+        return "insufficientArguments";
+    }
 }

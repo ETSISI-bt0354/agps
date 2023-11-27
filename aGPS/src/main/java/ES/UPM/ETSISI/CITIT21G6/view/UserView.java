@@ -19,4 +19,5 @@ public interface UserView
     String invalidPassword(InvalidPasswordException exception);
     String invalidAge(InvalidAgeException exception);
     String invalidPhoneNumber(InvalidPhoneNumberException exception);
+    String insufficientArguments(int requiredArguments);
 }

@@ -2327,6 +2327,8 @@
 </name>
 <ownedAttribute>
 <reflist>
+<ref refid="1c1c5eac-8cc2-11ee-a980-378c1cdd3322"/>
+<ref refid="22ccf910-8cc2-11ee-be59-378c1cdd3322"/>
 <ref refid="5241d80c-8475-11ee-801f-c10b697df068"/>
 <ref refid="4f7f6b82-8475-11ee-a829-c10b697df068"/>
 </reflist>
@@ -2550,6 +2552,7 @@
 <ref refid="a7359b82-8cb5-11ee-8f43-378c1cdd3322"/>
 <ref refid="aeffc838-8cb5-11ee-a086-378c1cdd3322"/>
 <ref refid="b46448d5-8cb5-11ee-a188-378c1cdd3322"/>
+<ref refid="4055fcd6-8cc2-11ee-afeb-378c1cdd3322"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -2563,7 +2566,7 @@
 </Interface>
 <InterfaceItem id="472e22ca-8475-11ee-b458-c10b697df068">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 819.2117733884021, -896.0129304510881)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 819.2117733884022, -896.0129304510882)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -2572,7 +2575,7 @@
 <val>456.0</val>
 </width>
 <height>
-<val>248.0</val>
+<val>266.0</val>
 </height>
 <diagram>
 <ref refid="9735aa8e-69eb-11ee-a158-00155df7ccfe"/>
@@ -2703,7 +2706,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 727.91920732878, -477.00863336904376)</val>
 </matrix>
 <points>
-<val>[(82.05777008198913, -28.50659473686062), (206.6216502415474, -171.00429708204433)]</val>
+<val>[(82.05777008198913, -28.50659473686062), (206.6216502415474, -153.00429708204445)]</val>
 </points>
 <head-connection>
 <ref refid="eb778b05-8474-11ee-b6d1-c10b697df068"/>
@@ -6473,6 +6476,76 @@
 </name>
 <ownerFormalParam>
 <ref refid="b729cc8a-8cbd-11ee-b65a-378c1cdd3322"/>
+</ownerFormalParam>
+</Parameter>
+<Property id="1c1c5eac-8cc2-11ee-a980-378c1cdd3322">
+<class_>
+<ref refid="eb764abb-8474-11ee-8153-c10b697df068"/>
+</class_>
+<isStatic>
+<val>1</val>
+</isStatic>
+<name>
+<val>MINIMUM_REGISTER_ARGUMENT_LENGTH</val>
+</name>
+<typeValue>
+<val>final int</val>
+</typeValue>
+<visibility>
+<val>private</val>
+</visibility>
+</Property>
+<Property id="22ccf910-8cc2-11ee-be59-378c1cdd3322">
+<class_>
+<ref refid="eb764abb-8474-11ee-8153-c10b697df068"/>
+</class_>
+<isStatic>
+<val>1</val>
+</isStatic>
+<name>
+<val>MINIMUM_LOGIN_ARGUMENT_LENGTH</val>
+</name>
+<typeValue>
+<val>final int</val>
+</typeValue>
+<visibility>
+<val>private</val>
+</visibility>
+</Property>
+<Operation id="4055fcd6-8cc2-11ee-afeb-378c1cdd3322">
+<interface_>
+<ref refid="472d1626-8475-11ee-896c-c10b697df068"/>
+</interface_>
+<name>
+<val>insufficientArguments</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="40626bb2-8cc2-11ee-8b80-378c1cdd3322"/>
+<ref refid="406d56f3-8cc2-11ee-b31a-378c1cdd3322"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="40626bb2-8cc2-11ee-8b80-378c1cdd3322">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="4055fcd6-8cc2-11ee-afeb-378c1cdd3322"/>
+</ownerFormalParam>
+<typeValue>
+<val>String</val>
+</typeValue>
+</Parameter>
+<Parameter id="406d56f3-8cc2-11ee-b31a-378c1cdd3322">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>int requiredArguments</val>
+</name>
+<ownerFormalParam>
+<ref refid="4055fcd6-8cc2-11ee-afeb-378c1cdd3322"/>
 </ownerFormalParam>
 </Parameter>
 </gaphor>

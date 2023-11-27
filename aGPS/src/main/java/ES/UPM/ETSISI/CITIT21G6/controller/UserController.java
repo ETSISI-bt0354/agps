@@ -13,6 +13,8 @@ import java.time.LocalDate;
 
 public class UserController extends SessionController
 {
+    private static final int MINIMUM_REGISTER_ARGUMENT_LENGTH = 4;
+    private static final int MINIMUM_LOGIN_ARGUMENT_LENGTH = 2;
     private UserRepository repository;
     private UserView view;
 
@@ -24,6 +26,9 @@ public class UserController extends SessionController
     }
     public String registerUser(String[] args)
     {
+        if(args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_REGISTER_ARGUMENT_LENGTH);
+
         String name = args[0];
         String password = args[1];
         LocalDate birthday = LocalDate.parse(args[2]);
@@ -59,7 +64,9 @@ public class UserController extends SessionController
     }
     public String loginUser(String[] args)
     {
-        String result;
+        if(args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_LOGIN_ARGUMENT_LENGTH);
+
         String name = args[0];
         String password = args[1];
 
@@ -75,36 +82,20 @@ public class UserController extends SessionController
 
         if (user.getPassword().equals(password))
         {
-            result = view.loggedInUser(user);
+            return view.loggedInUser(user);
         }
         else
         {
-            result = view.passwordError();
+            return view.passwordError();
         }
 
-        return result;
     }
     public String logoutUser(String[] args)
     {
-        String name = args[0];
-        String result;
+        User user = getLoggedUser();
+        if (user == null)
+            return view.noLoggedUser();
 
-        User user;
-        try
-        {
-            user = repository.findByName(name);
-        }
-        catch (UserNotFoundException e)
-        {
-            return view.userNotFound(e);
-        }
-
-        if (user != null) {
-            result = view.loggedOutUser(user);
-        } else {
-            result = view.noLoggedUser();
-        }
-
-        return result;
+        return view.loggedOutUser(user);
     }
 }
