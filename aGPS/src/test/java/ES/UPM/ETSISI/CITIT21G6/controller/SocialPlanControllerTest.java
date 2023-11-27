@@ -76,7 +76,7 @@ public class SocialPlanControllerTest {
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 
-        assertEquals("", controller.addParticipant(new String[] {"test"}));
+        assertEquals("", controller.addParticipant(new String[] {"test", "test"}));
         assertEquals(loggedUserName, repository.fetchAllSocialPlans().get(0).getParticipants().get(0).getUserName());
     }
 
@@ -88,7 +88,7 @@ public class SocialPlanControllerTest {
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 
-        assertEquals("participantNotFound", controller.removeParticipant(new String[] {"test"}));
+        assertEquals("participantNotFound", controller.removeParticipant(new String[] {"test", "test"}));
     }
 
     @Test
@@ -98,10 +98,10 @@ public class SocialPlanControllerTest {
         SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
-
+        assertEquals("", controller.addParticipant(new String[] {"test", "test"}));
         controller.addParticipant(new String[] {"test"});
 
-        assertDoesNotThrow(() -> controller.removeParticipant(new String[] {"test"}));
+        assertDoesNotThrow(() -> controller.removeParticipant(new String[] {"test", "test"}));
     }
 }
 

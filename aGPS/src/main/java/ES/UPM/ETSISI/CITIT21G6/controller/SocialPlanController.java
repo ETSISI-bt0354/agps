@@ -17,8 +17,8 @@ public class SocialPlanController extends SessionController
 {
     private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 2;
-    private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_REMOVE_PARTICIPANTS_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_ADD_PARTICIPANTS_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_LIST_PLANS_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
@@ -186,8 +186,8 @@ public class SocialPlanController extends SessionController
 
     public String addParticipant(String[] args)
     {
-        if(args.length < MINIMUM_ADD_USER_ARGUMENT_LENGTH)
-            return view.insufficientArguments(MINIMUM_ADD_USER_ARGUMENT_LENGTH);
+        if(args.length < MINIMUM_ADD_PARTICIPANTS_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_ADD_PARTICIPANTS_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
@@ -235,8 +235,8 @@ public class SocialPlanController extends SessionController
     }
     public String removeParticipant(String[] args)
     {
-        if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
-            return view.insufficientArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
+        if(args.length < MINIMUM_REMOVE_PARTICIPANTS_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_REMOVE_PARTICIPANTS_ARGUMENT_LENGTH);
 
         User loggedUser = getLoggedUser();
 
