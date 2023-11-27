@@ -1,12 +1,14 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.PastDateException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.OptionalInt;
 
 public class MockData
 {
-    static SocialPlan generateSocialPlan()
+    static SocialPlan generateSocialPlan() throws PastDateException
     {
         return new SocialPlan("A", "Prueba", LocalDateTime.now(), "prueba");
     }

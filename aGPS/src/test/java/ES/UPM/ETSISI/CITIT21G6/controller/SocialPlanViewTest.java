@@ -35,7 +35,7 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
 
     @Override
     public String noLoggedUser() {
-        return "E";
+        return "noLoggedUser";
     }
 
     @Override

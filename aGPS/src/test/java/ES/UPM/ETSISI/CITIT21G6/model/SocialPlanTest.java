@@ -3,6 +3,7 @@ package ES.UPM.ETSISI.CITIT21G6.model;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.ActivityAlreadyInSocialPlanException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.FullSocialPlanException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacityException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.PastDateException;
 import org.junit.jupiter.api.Test;
 
 import java.util.OptionalInt;
@@ -15,14 +16,14 @@ class SocialPlanTest
 {
 
     @Test
-    void setNegativeCapacity()
+    void setNegativeCapacity() throws PastDateException
     {
         SocialPlan socialPlan = generateSocialPlan();
         assertThrows(InvalidCapacityException.class, () -> socialPlan.setCapacity(OptionalInt.of(-3)));
     }
 
     @Test
-    void setZeroCapacity()
+    void setZeroCapacity() throws PastDateException
     {
         SocialPlan socialPlan = generateSocialPlan();
         assertThrows(InvalidCapacityException.class, () -> socialPlan.setCapacity(OptionalInt.of(0)));
