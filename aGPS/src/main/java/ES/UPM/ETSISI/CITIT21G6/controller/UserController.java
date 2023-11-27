@@ -82,6 +82,7 @@ public class UserController extends SessionController
 
         if (user.getPassword().equals(password))
         {
+            setLoggedUser(user);
             return view.loggedInUser(user);
         }
         else
@@ -96,6 +97,7 @@ public class UserController extends SessionController
         if (user == null)
             return view.noLoggedUser();
 
+        setLoggedUser(null);
         return view.loggedOutUser(user);
     }
 }
