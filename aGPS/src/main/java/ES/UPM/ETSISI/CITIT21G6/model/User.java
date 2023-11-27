@@ -5,13 +5,11 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class User
 {
     private final String name;
-    private Age birthday;
+    private Age age;
     private Password password;
     private PhoneNumber phoneNumber;
 
@@ -20,7 +18,7 @@ public class User
     {
         this.name = name;
         this.password = new Password(password);
-        this.birthday = new Age(birthday);
+        this.age = new Age(birthday);
         this.phoneNumber = new PhoneNumber(phoneNumber);
     }
 
@@ -37,7 +35,7 @@ public class User
 
     public LocalDate getBirthday()
     {
-        return birthday.getBirthday();
+        return age.getBirthday();
     }
 
     public String getPhoneNumber()
@@ -46,7 +44,7 @@ public class User
     }
     public int getAge()
     {
-        return birthday.getAge();
+        return age.getAge();
     }
 
     @Override
