@@ -102,7 +102,7 @@ public class SocialPlanControllerTest
         SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
-        controller.addParticipant(new String[]{"test"});
+        controller.addParticipant(new String[]{"test", "test"});
 
         assertEquals("", controller.removeParticipant(new String[]{"test", "test"}));
     }
