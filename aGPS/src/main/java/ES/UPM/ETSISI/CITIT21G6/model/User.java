@@ -44,6 +44,10 @@ public class User
     {
         return phoneNumber.getPhoneNumber();
     }
+    public int getAge()
+    {
+        return birthday.getAge();
+    }
 
     @Override
     public boolean equals(Object o)

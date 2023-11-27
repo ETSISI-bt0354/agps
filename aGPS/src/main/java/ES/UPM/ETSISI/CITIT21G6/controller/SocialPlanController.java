@@ -12,6 +12,7 @@ import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.PrimitiveIterator;
 
 public class SocialPlanController extends SessionController
 {
@@ -167,7 +168,12 @@ public class SocialPlanController extends SessionController
             return view.socialPlanNotFound(e);
         }
 
-        double price = socialPlan.getActivities().stream().reduce(0.0, (subtotal, activity) -> subtotal + activity.getPrice(), Double::sum);
+        double price = socialPlan.getActivities()
+                .stream()
+                .reduce(0.0, (subtotal, activity) ->
+                        subtotal + ActivityPriceCalculator.calculate(activity, loggedUser.getAge()), Double::sum
+                );
+
         return view.price(price);
     }
 

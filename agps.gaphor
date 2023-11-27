@@ -127,7 +127,8 @@
 <ref refid="8c33fa83-6f76-11ee-98b5-91b787512d32"/>
 <ref refid="91abc5b5-6f76-11ee-b1b7-91b787512d32"/>
 <ref refid="b09a8ab0-6f76-11ee-b544-91b787512d32"/>
-<ref refid="b36ae3fd-6f76-11ee-8eee-91b787512d32"/>
+<ref refid="e943d8d5-8cb7-11ee-a5c1-378c1cdd3322"/>
+<ref refid="ebd73820-8cb7-11ee-a370-378c1cdd3322"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -1565,12 +1566,11 @@
 <ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
 </class_>
 <name>
-<val>equals</val>
+<val>getAge</val>
 </name>
 <ownedParameter>
 <reflist>
 <ref refid="b0a03751-6f76-11ee-86e4-91b787512d32"/>
-<ref refid="b0a578a3-6f76-11ee-b486-91b787512d32"/>
 </reflist>
 </ownedParameter>
 </Operation>
@@ -1580,41 +1580,6 @@
 </direction>
 <ownerFormalParam>
 <ref refid="b09a8ab0-6f76-11ee-b544-91b787512d32"/>
-</ownerFormalParam>
-<typeValue>
-<val>boolean</val>
-</typeValue>
-</Parameter>
-<Parameter id="b0a578a3-6f76-11ee-b486-91b787512d32">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>Object o</val>
-</name>
-<ownerFormalParam>
-<ref refid="b09a8ab0-6f76-11ee-b544-91b787512d32"/>
-</ownerFormalParam>
-</Parameter>
-<Operation id="b36ae3fd-6f76-11ee-8eee-91b787512d32">
-<class_>
-<ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
-</class_>
-<name>
-<val>hasCode</val>
-</name>
-<ownedParameter>
-<reflist>
-<ref refid="b370a7e1-6f76-11ee-be03-91b787512d32"/>
-</reflist>
-</ownedParameter>
-</Operation>
-<Parameter id="b370a7e1-6f76-11ee-be03-91b787512d32">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="b36ae3fd-6f76-11ee-8eee-91b787512d32"/>
 </ownerFormalParam>
 <typeValue>
 <val>int</val>
@@ -6408,6 +6373,66 @@
 </direction>
 <ownerFormalParam>
 <ref refid="3368dab9-8cb7-11ee-8f97-378c1cdd3322"/>
+</ownerFormalParam>
+<typeValue>
+<val>int</val>
+</typeValue>
+</Parameter>
+<Operation id="e943d8d5-8cb7-11ee-a5c1-378c1cdd3322">
+<class_>
+<ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
+</class_>
+<name>
+<val>equals</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="e951039f-8cb7-11ee-8166-378c1cdd3322"/>
+<ref refid="e95b3d20-8cb7-11ee-8e6c-378c1cdd3322"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="e951039f-8cb7-11ee-8166-378c1cdd3322">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="e943d8d5-8cb7-11ee-a5c1-378c1cdd3322"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
+</typeValue>
+</Parameter>
+<Parameter id="e95b3d20-8cb7-11ee-8e6c-378c1cdd3322">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>Object o</val>
+</name>
+<ownerFormalParam>
+<ref refid="e943d8d5-8cb7-11ee-a5c1-378c1cdd3322"/>
+</ownerFormalParam>
+</Parameter>
+<Operation id="ebd73820-8cb7-11ee-a370-378c1cdd3322">
+<class_>
+<ref refid="98ee4e62-69eb-11ee-a7be-00155df7ccfe"/>
+</class_>
+<name>
+<val>hasCode</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="ebe45caa-8cb7-11ee-a39b-378c1cdd3322"/>
+</reflist>
+</ownedParameter>
+</Operation>
+<Parameter id="ebe45caa-8cb7-11ee-a39b-378c1cdd3322">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="ebd73820-8cb7-11ee-a370-378c1cdd3322"/>
 </ownerFormalParam>
 <typeValue>
 <val>int</val>
