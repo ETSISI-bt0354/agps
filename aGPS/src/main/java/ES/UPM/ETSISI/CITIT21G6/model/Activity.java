@@ -1,5 +1,8 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacity;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacityException;
+
 import java.util.OptionalInt;
 
 public class Activity
@@ -9,16 +12,16 @@ public class Activity
     private int duration;
     private OptionalInt capacity;
     private double price;
-    private PriceCalculator priceCalculator;
+    private ActivityType type;
 
-    public Activity(String name, String description, int duration, double price, PriceCalculator priceCalculator)
+    public Activity(String name, String description, int duration, double price, ActivityType type)
     {
         this.name = name;
         this.description = description;
         this.duration = duration;
         this.capacity = OptionalInt.empty();
         this.price = price;
-        this.priceCalculator = priceCalculator;
+        this.type = type;
     }
 
     public String getName()
@@ -41,10 +44,10 @@ public class Activity
         return capacity;
     }
 
-    public void setCapacity(OptionalInt capacity) throws Exception
+    public void setCapacity(OptionalInt capacity) throws InvalidCapacityException
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new Exception("Capacity must be greater than 0.");
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVEORZERO, capacity, OptionalInt.of(Integer.MAX_VALUE));
 
         this.capacity = capacity;
     }
@@ -54,8 +57,8 @@ public class Activity
         return price;
     }
 
-    public double calculatePrice(int age)
+    public ActivityType getType()
     {
-        return priceCalculator.calculatePrice(price, age);
+        return type;
     }
 }

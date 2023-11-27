@@ -1,22 +1,25 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
-import java.time.LocalDate;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
 public class SocialPlan
 {
-    private String name;
-    private LocalDate date;
+    private final SocialPlanId id;
+    private LocalDateTime date;
     private String location;
     private OptionalInt capacity;
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String name, LocalDate date, String location)
+    public SocialPlan(String ownerName, String name, LocalDateTime date, String location) throws PastDateException
     {
-        this.name = name;
+        this.id = new SocialPlanId(ownerName, name);
+        if (date.isBefore(LocalDateTime.now())) throw new PastDateException(date);
         this.date = date;
         this.location = location;
         this.capacity = OptionalInt.empty();
@@ -24,12 +27,22 @@ public class SocialPlan
         this.participants = new ArrayList<>();
     }
 
-    public String getName()
+    public SocialPlanId getId()
     {
-        return name;
+        return id;
     }
 
-    public LocalDate getDate()
+    public String getOwnerName()
+    {
+        return id.ownerName();
+    }
+
+    public String getName()
+    {
+        return id.name();
+    }
+
+    public LocalDateTime getDate()
     {
         return date;
     }
@@ -44,46 +57,31 @@ public class SocialPlan
         return capacity;
     }
 
-    public void setCapacity(OptionalInt capacity) throws Exception
+    public void setCapacity(OptionalInt capacity) throws InvalidCapacityException
     {
         if (capacity.isPresent() && capacity.getAsInt() <= 0)
-            throw new Exception("Capacity must be greater than 0.");
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVEORZERO, capacity, this.capacity);
 
         int numberOfParticipants = participants.size();
 
         if (capacity.orElse(Integer.MAX_VALUE) < numberOfParticipants)
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The minimum plan capacity is ");
-            errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
-            errorMessage.append(".");
-            throw new Exception(errorMessage.toString());
-        }
+            throw new InvalidCapacityException(InvalidCapacity.TOOSMALL, capacity, this.capacity);
 
-        OptionalInt minimumPossibleCapacity = activities.stream()
-                .map(Activity::getCapacity)
-                .flatMapToInt(OptionalInt::stream)
-                .min();
+        OptionalInt minimumPossibleCapacity = activities.stream().map(Activity::getCapacity)
+                .flatMapToInt(OptionalInt::stream).min();
 
         if (capacity.orElse(Integer.MAX_VALUE) > minimumPossibleCapacity.orElse(Integer.MAX_VALUE))
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The maximum plan capacity is ");
-            errorMessage.append(this.capacity.orElse(Integer.MAX_VALUE));
-            errorMessage.append(".");
-            throw new Exception(errorMessage.toString());
-        }
+            throw new InvalidCapacityException(InvalidCapacity.TOOBIG, capacity, minimumPossibleCapacity);
 
         this.capacity = capacity;
     }
 
-    public void addActivity(Activity activity) throws Exception
+    public void addActivity(Activity activity) throws InvalidCapacityException, ActivityAlreadyInSocialPlanException
     {
-        if (activities.contains(activity))
-            throw new Exception("The activity is already added.");
+        if (activities.contains(activity)) throw new ActivityAlreadyInSocialPlanException(activity);
 
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < participants.size())
-            throw new Exception("There are too many user on the plan for this activity.");
+            throw new InvalidCapacityException(InvalidCapacity.TOOSMALL, activity.getCapacity(), OptionalInt.of(participants.size()));
 
         activities.add(activity);
         if (activity.getCapacity().orElse(Integer.MAX_VALUE) < capacity.orElse(Integer.MAX_VALUE))
@@ -95,13 +93,12 @@ public class SocialPlan
         return activities;
     }
 
-    public void addParticipant(Ticket ticket) throws Exception
+    public void addParticipant(String participantName) throws FullSocialPlanException, UserAlreadyInSocialPlanException
     {
-        if (participants.contains(ticket))
-            throw new Exception("The user is already on the social plan.");
+        Ticket ticket = new Ticket(participantName);
+        if (participants.contains(ticket)) throw new UserAlreadyInSocialPlanException(participantName);
 
-        if (capacity.isPresent() && participants.size() == capacity.getAsInt())
-            throw new Exception("The social plan is full.");
+        if (capacity.isPresent() && participants.size() == capacity.getAsInt()) throw new FullSocialPlanException();
 
         participants.add(ticket);
     }
@@ -111,8 +108,25 @@ public class SocialPlan
         return participants;
     }
 
-    protected void removeParticipant(Ticket ticket)
+    public void removeParticipant(String participanName) throws ParticipantNotFoundException
     {
-        participants.remove(ticket);
+        if (!participants.remove(new Ticket(participanName))) throw new ParticipantNotFoundException(participanName);
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SocialPlan that = (SocialPlan) o;
+
+        return getId().equals(that.getId());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return getId().hashCode();
     }
 }

@@ -1,42 +1,25 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
+
 import java.util.OptionalInt;
 
 public class Ticket
 {
     private static final int MINIMUM_SCORE = 0;
     private static final int MAXIMUM_SCORE = 10;
-    private final User user;
-    private final SocialPlan socialPlan;
+    private final String userName;
     private OptionalInt score;
 
-    public Ticket(User user, SocialPlan socialPlan) throws NullPointerException
+    public Ticket(String userName)
     {
-        if (user == null)
-            throw new NullPointerException("User cannot be null");
-
-        if (socialPlan == null)
-            throw new NullPointerException("SocialPlan cannot be null");
-
-        this.user = user;
-        this.socialPlan = socialPlan;
+        this.userName = userName;
         this.score = OptionalInt.empty();
     }
 
-    public void delete()
+    public String getUserName()
     {
-        user.removeJoinedEvent(this);
-        socialPlan.removeParticipant(this);
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public SocialPlan getSocialPlan()
-    {
-        return socialPlan;
+        return userName;
     }
 
     public OptionalInt getScore()
@@ -44,19 +27,10 @@ public class Ticket
         return score;
     }
 
-    public void setScore(OptionalInt score) throws Exception
+    public void setScore(OptionalInt score) throws InvalidScoreException
     {
         if (score.isPresent() && (score.getAsInt() < MINIMUM_SCORE || score.getAsInt() > MAXIMUM_SCORE))
-        {
-            StringBuilder errorMessage = new StringBuilder();
-            errorMessage.append("The score must be between");
-            errorMessage.append(MINIMUM_SCORE);
-            errorMessage.append(" and ");
-            errorMessage.append(MAXIMUM_SCORE);
-            errorMessage.append(".");
-
-            throw new Exception(errorMessage.toString());
-        }
+            throw new InvalidScoreException(score.getAsInt(), MINIMUM_SCORE, MAXIMUM_SCORE);
 
         this.score = score;
     }
@@ -69,15 +43,12 @@ public class Ticket
 
         Ticket ticket = (Ticket) o;
 
-        if (!getUser().equals(ticket.getUser())) return false;
-        return getSocialPlan().equals(ticket.getSocialPlan());
+        return getUserName().equals(ticket.getUserName());
     }
 
     @Override
     public int hashCode()
     {
-        int result = getUser().hashCode();
-        result = 31 * result + getSocialPlan().hashCode();
-        return result;
+        return getUserName().hashCode();
     }
 }
