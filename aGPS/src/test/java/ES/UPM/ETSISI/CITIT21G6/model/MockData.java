@@ -10,7 +10,7 @@ public class MockData
 {
     static SocialPlan generateSocialPlan() throws PastDateException
     {
-        return new SocialPlan("A", "Prueba", LocalDateTime.now(), "prueba");
+        return new SocialPlan("A", "Prueba", LocalDateTime.now().plusDays(15), "prueba");
     }
 
     static User[] generateUsers() throws Exception
