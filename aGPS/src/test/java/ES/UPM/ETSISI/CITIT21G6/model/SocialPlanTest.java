@@ -44,7 +44,7 @@ class SocialPlanTest
         SocialPlan socialPlan = generateSocialPlan();
         User[] users = generateUsers();
         for (User user : users)
-            socialPlan.addParticipant(new Ticket(user.getName()));
+            socialPlan.addParticipant(user.getName());
 
         assertThrows(InvalidCapacityException.class, () -> socialPlan.setCapacity(OptionalInt.of(2)));
     }
@@ -93,7 +93,7 @@ class SocialPlanTest
 
         User[] users = generateUsers();
         for (User user : users)
-            socialPlan.addParticipant(new Ticket(user.getName()));
+            socialPlan.addParticipant(user.getName());
 
         Activity activity = new Activity("D", "d", 60, 60, null);
         activity.setCapacity(OptionalInt.of(2));
@@ -108,10 +108,10 @@ class SocialPlanTest
         socialPlan.setCapacity(OptionalInt.of(2));
 
         User[] users = generateUsers();
-        socialPlan.addParticipant(new Ticket(users[0].getName()));
-        socialPlan.addParticipant(new Ticket(users[1].getName()));
+        socialPlan.addParticipant(users[0].getName());
+        socialPlan.addParticipant(users[1].getName());
 
-        assertThrows(FullSocialPlanException.class, () -> socialPlan.addParticipant(new Ticket(users[2].getName())));
+        assertThrows(FullSocialPlanException.class, () -> socialPlan.addParticipant(users[2].getName()));
     }
 
     @Test
@@ -119,8 +119,8 @@ class SocialPlanTest
     {
         SocialPlan socialPlan = generateSocialPlan();
         User[] users = generateUsers();
-        socialPlan.addParticipant(new Ticket(users[0].getName()));
+        socialPlan.addParticipant(users[0].getName());
 
-        assertThrows(Exception.class, () -> socialPlan.addParticipant(new Ticket(users[0].getName())));
+        assertThrows(Exception.class, () -> socialPlan.addParticipant(users[0].getName()));
     }
 }

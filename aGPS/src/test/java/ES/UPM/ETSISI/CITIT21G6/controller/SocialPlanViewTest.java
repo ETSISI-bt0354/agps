@@ -8,7 +8,6 @@ import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.Activity;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
-import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -16,28 +15,22 @@ import java.util.OptionalInt;
 public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView {
     @Override
     public String create(SocialPlan socialPlan) {
-        if(socialPlan == null)
-            return "E";
         return "";
     }
 
     @Override
     public String delete(SocialPlanId id) {
-        if(id == null)
-            return "E";
         return "";
     }
 
     @Override
     public String addActivity(Activity activity) {
-        if(activity == null)
-            return "E";
         return "";
     }
 
     @Override
     public String insufficientArguments(int requiredArguments) {
-        return "E";
+        return "insufficientArguments";
     }
 
     @Override
@@ -51,18 +44,18 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
     }
 
     @Override
-    public String removeUser(Ticket ticket) {
+    public String removeParticipant(String participantName) {
         return "";
     }
 
     @Override
-    public String addUser(Ticket ticket) {
+    public String addParticipant(String participantName) {
         return "";
     }
 
     @Override
     public String socialPlanNotFound(SocialPlanNotFoundException e) {
-        return "E";
+        return "socialPlanNotFound";
     }
 
     @Override
@@ -72,49 +65,67 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
 
     @Override
     public String invalidCapacity(InvalidCapacityException e) {
-        return "E";
+        return "invalidCapacity";
     }
 
     @Override
     public String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e) {
-        return "E";
+        return "socialPlanAlreadyAdded";
     }
 
     @Override
     public String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e) {
-        return "E";
+        return "activityAlreadyInSocialPlan";
     }
 
     @Override
     public String fullSocialPlan(FullSocialPlanException e) {
-        return "E";
+        return "fullSocialPlan";
     }
 
     @Override
     public String userAlreadyInSocialPlan(UserAlreadyInSocialPlanException e) {
-        return "E";
+        return "userAlreadyInSocialPlan";
     }
 
     @Override
-    public String wrongLister(ListOrderException e) {
-        return "E";
+    public String wrongListOrder(ListOrderException e) {
+        return "wrongListOrder";
     }
 
     @Override
     public String ticketNotFound(TicketNotFoundException e) {
-        return "E";
+        return "ticketNotFound";
     }
 
     @Override
     public String invalidScore(InvalidScoreException e) {
-        return "E";
+        return "invalidScore";
     }
 
     @Override
     public String setScore(OptionalInt score) {
-        if (score.isEmpty())
-            return "E";
         return "";
-        //TODO: should I be doing this?
+    }
+
+    public String colisionWithOtherSocialPlan()
+    {
+        return "colisionWithOtherSocialPlan";
+    }
+
+    public String joinPastSocialPlan()
+    {
+        return "joinPastSocialPlan";
+    }
+
+
+    public String setScoreFutureSocialPlan()
+    {
+        return "setScoreFutureSocialPlan";
+    }
+
+    public String participantNotFound(ParticipantNotFoundException e)
+    {
+        return "participantNotFound";
     }
 }
