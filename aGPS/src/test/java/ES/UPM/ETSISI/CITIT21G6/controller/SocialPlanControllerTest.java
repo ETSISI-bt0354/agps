@@ -30,7 +30,8 @@ public class SocialPlanControllerTest
     public static void setLoggedUser() throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException
     {
         UserController userController = new UserController(new InMemoryUserRepository(), new UserViewTest());
-        userController.registerUser(new String[]{loggedUserName, "1234", LocalDate.now().minusYears(30).toString(), "123456789"});
+        userController.registerUser(new String[]{loggedUserName, "1234", LocalDate.now()
+                .minusYears(30).toString(), "123456789"});
         userController.loginUser(new String[]{loggedUserName, "1234"});
     }
 
@@ -41,7 +42,8 @@ public class SocialPlanControllerTest
         SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
 
 
-        assertEquals("", controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"}));
+        assertEquals("", controller.createSocialPlan(new String[]{"test", LocalDateTime.now()
+                .plusDays(15).toString(), "test"}));
         assertDoesNotThrow(() -> repository.fetch(new SocialPlanId(loggedUserName, "test")));
 
     }

@@ -162,7 +162,8 @@ public class SocialPlanController extends SessionController
             return view.socialPlanNotFound(e);
         }
 
-        double price = socialPlan.getActivities().stream().reduce(0.0, (subtotal, activity) -> subtotal + ActivityPriceCalculator.calculate(activity, loggedUser.getAge()), Double::sum);
+        double price = socialPlan.getActivities().stream()
+                .reduce(0.0, (subtotal, activity) -> subtotal + ActivityPriceCalculator.calculate(activity, loggedUser.getAge()), Double::sum);
 
         return view.price(price);
     }
@@ -187,7 +188,9 @@ public class SocialPlanController extends SessionController
 
         if (socialPlan.getDate().isBefore(LocalDateTime.now())) return view.joinPastSocialPlan();
 
-        boolean collision = repository.fetchAllSocialPlans().stream().filter(plan -> plan.getParticipants().stream().anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))).anyMatch(plan -> socialPlanCollision(socialPlan, plan));
+        boolean collision = repository.fetchAllSocialPlans().stream().filter(plan -> plan.getParticipants().stream()
+                        .anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName())))
+                .anyMatch(plan -> socialPlanCollision(socialPlan, plan));
 
         if (collision) return view.colisionWithOtherSocialPlan();
 
@@ -259,7 +262,8 @@ public class SocialPlanController extends SessionController
             List<SocialPlan> socialPlans = repository.fetchAllSocialPlans();
 
             if (args.length > MINIMUM_LIST_PLANS_ARGUMENT_LENGTH && args[1].equalsIgnoreCase("ONLY-SUBSCRIBED"))
-                socialPlans = socialPlans.stream().filter(plan -> plan.getParticipants().stream().anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))).toList();
+                socialPlans = socialPlans.stream().filter(plan -> plan.getParticipants().stream()
+                        .anyMatch(ticket -> loggedUser.getName().equals(ticket.getUserName()))).toList();
 
             return view.listPlans(socialPlans, order);
         } catch (ListOrderException e)
@@ -289,7 +293,9 @@ public class SocialPlanController extends SessionController
         if (socialPlan.getDate().isAfter(LocalDateTime.now())) return view.setScoreFutureSocialPlan();
         try
         {
-            Ticket ticket = socialPlan.getParticipants().stream().filter(t -> loggedUser.getName().equals(t.getUserName())).findFirst().orElseThrow(() -> new TicketNotFoundException(loggedUser.getName()));
+            Ticket ticket = socialPlan.getParticipants().stream()
+                    .filter(t -> loggedUser.getName().equals(t.getUserName())).findFirst()
+                    .orElseThrow(() -> new TicketNotFoundException(loggedUser.getName()));
 
             OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
             ticket.setScore(score);
@@ -314,7 +320,8 @@ public class SocialPlanController extends SessionController
         int duration = 0;
         if (!socialPlan.getActivities().isEmpty())
         {
-            int durationWithoutTrip = socialPlan.getActivities().stream().reduce(0, (x, activity) -> x + activity.getDuration(), Integer::sum);
+            int durationWithoutTrip = socialPlan.getActivities().stream()
+                    .reduce(0, (x, activity) -> x + activity.getDuration(), Integer::sum);
 
             duration = durationWithoutTrip + 20 * socialPlan.getActivities().size() - 1;
         }

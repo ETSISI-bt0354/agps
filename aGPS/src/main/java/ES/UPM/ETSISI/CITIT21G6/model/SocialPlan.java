@@ -67,7 +67,8 @@ public class SocialPlan
         if (capacity.orElse(Integer.MAX_VALUE) < numberOfParticipants)
             throw new InvalidCapacityException(InvalidCapacity.TOOSMALL, capacity, this.capacity);
 
-        OptionalInt minimumPossibleCapacity = activities.stream().map(Activity::getCapacity).flatMapToInt(OptionalInt::stream).min();
+        OptionalInt minimumPossibleCapacity = activities.stream().map(Activity::getCapacity)
+                .flatMapToInt(OptionalInt::stream).min();
 
         if (capacity.orElse(Integer.MAX_VALUE) > minimumPossibleCapacity.orElse(Integer.MAX_VALUE))
             throw new InvalidCapacityException(InvalidCapacity.TOOBIG, capacity, minimumPossibleCapacity);

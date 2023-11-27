@@ -28,6 +28,7 @@ public class InMemoryUserRepository implements UserRepository
     @Override
     public User findByName(String name) throws UserNotFoundException
     {
-        return users.stream().filter(user -> name.equals(user.getName())).findFirst().orElseThrow(() -> new UserNotFoundException(name));
+        return users.stream().filter(user -> name.equals(user.getName())).findFirst()
+                .orElseThrow(() -> new UserNotFoundException(name));
     }
 }

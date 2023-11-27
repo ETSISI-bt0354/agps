@@ -26,7 +26,8 @@ public class InMemorySocialPlanRepository implements SocialPlanRepository
     @Override
     public void delete(SocialPlanId id) throws SocialPlanNotFoundException
     {
-        SocialPlan socialPlan = socialPlans.stream().filter(plan -> id.equals(plan.getId())).findFirst().orElseThrow(() -> new SocialPlanNotFoundException(id));
+        SocialPlan socialPlan = socialPlans.stream().filter(plan -> id.equals(plan.getId())).findFirst()
+                .orElseThrow(() -> new SocialPlanNotFoundException(id));
         socialPlans.remove(socialPlan);
     }
 
@@ -41,7 +42,8 @@ public class InMemorySocialPlanRepository implements SocialPlanRepository
     @Override
     public SocialPlan fetch(SocialPlanId id) throws SocialPlanNotFoundException
     {
-        return socialPlans.stream().filter(socialPlan -> socialPlan.getId().equals(id)).findFirst().orElseThrow(() -> new SocialPlanNotFoundException(id));
+        return socialPlans.stream().filter(socialPlan -> socialPlan.getId().equals(id)).findFirst()
+                .orElseThrow(() -> new SocialPlanNotFoundException(id));
     }
 
     @Override

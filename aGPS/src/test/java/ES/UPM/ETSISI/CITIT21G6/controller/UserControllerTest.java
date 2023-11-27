@@ -36,7 +36,8 @@ public class UserControllerTest
 
         controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
-        String result = controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        String result = controller.registerUser(new String[]{"a", "12345", LocalDate.now()
+                .minusYears(30).toString(), "123456789"});
         assertEquals("userAlreadyAdded", result);
     }
 
@@ -48,7 +49,8 @@ public class UserControllerTest
 
         controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
-        String result = controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "987654321"});
+        String result = controller.registerUser(new String[]{"a", "12345", LocalDate.now()
+                .minusYears(30).toString(), "987654321"});
         assertEquals("userAlreadyAdded", result);
     }
 
@@ -60,7 +62,8 @@ public class UserControllerTest
 
         controller.registerUser(new String[]{"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
-        String result = controller.registerUser(new String[]{"b", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
+        String result = controller.registerUser(new String[]{"b", "12345", LocalDate.now()
+                .minusYears(30).toString(), "123456789"});
         assertEquals("userAlreadyAdded", result);
     }
 
