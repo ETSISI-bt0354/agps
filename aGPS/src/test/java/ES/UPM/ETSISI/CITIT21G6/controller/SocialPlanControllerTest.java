@@ -101,7 +101,7 @@ public class SocialPlanControllerTest {
         assertEquals("", controller.addParticipant(new String[] {"test", "test"}));
         controller.addParticipant(new String[] {"test"});
 
-        assertDoesNotThrow(() -> controller.removeParticipant(new String[] {"test", "test"}));
+        assertEquals("", controller.removeParticipant(new String[] {"test", "test"}));
     }
 }
 
