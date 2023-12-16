@@ -12,6 +12,7 @@ import ES.UPM.ETSISI.CITIT21G6.repository.InMemorySocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.InMemoryUserRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 
+import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,8 @@ public class SocialPlanControllerTest {
     @BeforeAll
     public static void setLoggedUser() throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException
     {
-        UserController userController = new UserController(new InMemoryUserRepository(), new UserViewTest());
+        UserService userService = new UserService(new InMemoryUserRepository());
+        UserController userController = new UserController(userService, new UserViewTest());
         userController.registerUser(new String[] {loggedUserName, "1234", LocalDate.now().minusYears(30).toString(), "123456789"});
         userController.loginUser(new String[] {loggedUserName, "1234"});
     }

@@ -7,6 +7,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAdde
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 import ES.UPM.ETSISI.CITIT21G6.repository.UserRepository;
+import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import ES.UPM.ETSISI.CITIT21G6.view.UserView;
 
 import java.time.LocalDate;
@@ -15,13 +16,13 @@ public class UserController extends SessionController
 {
     private static final int MINIMUM_REGISTER_ARGUMENT_LENGTH = 4;
     private static final int MINIMUM_LOGIN_ARGUMENT_LENGTH = 2;
-    private UserRepository repository;
+    private UserService service;
     private UserView view;
 
-    public UserController(UserRepository repository, UserView view)
+    public UserController(UserService service, UserView view)
     {
         super();
-        this.repository = repository;
+        this.service = service;
         this.view = view;
     }
     public String registerUser(String[] args)
@@ -34,10 +35,10 @@ public class UserController extends SessionController
         LocalDate birthday = LocalDate.parse(args[2]);
         String phoneNumber = args[3];
 
-        User user;
         try
         {
-            user = new User(name, password, birthday, phoneNumber);
+            User user = service.registerUser(name, password, birthday, phoneNumber);
+            return view.showUser(user);
         }
         catch (InvalidPasswordException e)
         {
@@ -50,12 +51,6 @@ public class UserController extends SessionController
         catch (InvalidPhoneNumberException e)
         {
             return view.invalidPhoneNumber(e);
-        }
-
-        try
-        {
-            repository.save(user);
-            return view.showUser(user);
         }
         catch (UserAlreadyAddedException e)
         {
@@ -73,7 +68,7 @@ public class UserController extends SessionController
         User user;
         try
         {
-            user = repository.findByName(name);
+            user = service.findByName(name);
         }
         catch (UserNotFoundException e)
         {

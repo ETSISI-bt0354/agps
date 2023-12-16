@@ -3,6 +3,7 @@ package ES.UPM.ETSISI.CITIT21G6.controller;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 import ES.UPM.ETSISI.CITIT21G6.repository.InMemoryUserRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.UserRepository;
+import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import ES.UPM.ETSISI.CITIT21G6.view.UserView;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,8 @@ public class UserControllerTest
     void registerUser()
     {
         UserRepository repository = new InMemoryUserRepository();
-        UserController controller = new UserController(repository, new UserViewTest());
+        UserService service = new UserService(repository);
+        UserController controller = new UserController(service, new UserViewTest());
 
         controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
         assertDoesNotThrow(() -> repository.findByName("a"));
@@ -32,7 +34,8 @@ public class UserControllerTest
     void registedDuplicateUser()
     {
         UserRepository repository = new InMemoryUserRepository();
-        UserController controller = new UserController(repository, new UserViewTest());
+        UserService service = new UserService(repository);
+        UserController controller = new UserController(service, new UserViewTest());
 
         controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
@@ -44,7 +47,8 @@ public class UserControllerTest
     void registedDuplicateName()
     {
         UserRepository repository = new InMemoryUserRepository();
-        UserController controller = new UserController(repository, new UserViewTest());
+        UserService service = new UserService(repository);
+        UserController controller = new UserController(service, new UserViewTest());
 
         controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
@@ -56,7 +60,8 @@ public class UserControllerTest
     void registedDuplicatePhone()
     {
         UserRepository repository = new InMemoryUserRepository();
-        UserController controller = new UserController(repository, new UserViewTest());
+        UserService service = new UserService(repository);
+        UserController controller = new UserController(service, new UserViewTest());
 
         controller.registerUser(new String[] {"a", "12345", LocalDate.now().minusYears(30).toString(), "123456789"});
 
