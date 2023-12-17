@@ -30,12 +30,8 @@ public class SocialPlanService
     public SocialPlan createSocialPlan(String ownerName, String socialPlanName, LocalDateTime date, String location, OptionalInt capacity)
             throws PastDateException, InvalidCapacityException, SocialPlanAlreadyAddedException
     {
-        SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, location);
-        if (capacity.isPresent())
-            socialPlan.setCapacity(capacity);
-
+        SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, capacity, location);
         repository.save(socialPlan);
-
         return socialPlan;
     }
 
@@ -51,9 +47,7 @@ public class SocialPlanService
         if (isPastSocialPlan(socialPlan))
             throw new PastSocialPlanException(socialPlan);
 
-        Activity activity = new Activity(activityName, description, duration, price, type);
-        if (capacity.isPresent())
-            activity.setCapacity(capacity);
+        Activity activity = new Activity(activityName, description, duration, capacity, price, type);
 
         socialPlan.addActivity(activity);
         repository.update(socialPlan);

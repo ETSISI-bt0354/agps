@@ -16,14 +16,16 @@ public class SocialPlan
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String ownerName, String name, LocalDateTime date, String location) throws PastDateException
+    public SocialPlan(String ownerName, String name, LocalDateTime date, OptionalInt capacity, String location) throws PastDateException, InvalidCapacityException
     {
         this.id = new SocialPlanId(ownerName, name);
         if (date.isBefore(LocalDateTime.now()))
             throw new PastDateException(date);
         this.date = date;
         this.location = location;
-        this.capacity = OptionalInt.empty();
+        if (capacity.isPresent() && capacity.getAsInt() <= 0)
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVEORZERO, capacity, this.capacity);
+        this.capacity = capacity;
         this.activities = new ArrayList<>();
         this.participants = new ArrayList<>();
     }
