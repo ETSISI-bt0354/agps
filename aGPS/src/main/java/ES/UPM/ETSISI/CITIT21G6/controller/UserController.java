@@ -88,11 +88,10 @@ public class UserController extends SessionController
     }
     public String logoutUser(String[] args)
     {
-        User user = getLoggedUser();
-        if (user == null)
+        if (!isUserLogged())
             return view.noLoggedUser();
 
         setLoggedUser(null);
-        return view.loggedOutUser(user);
+        return view.loggedOutUser(getLoggedUser());
     }
 }
