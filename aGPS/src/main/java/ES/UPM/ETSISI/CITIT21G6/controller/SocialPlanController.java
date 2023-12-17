@@ -24,7 +24,7 @@ public class SocialPlanController extends SessionController
     private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_LIST_PLANS_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
     private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 2;
     private SocialPlanService service;
@@ -140,10 +140,7 @@ public class SocialPlanController extends SessionController
         if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
-        if (!isUserLogged())
-            return view.noLoggedUser();
-
-        SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
 
         try
         {
@@ -227,9 +224,6 @@ public class SocialPlanController extends SessionController
     {
         if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
-
-        if (!isUserLogged())
-            return view.noLoggedUser();
 
         try
         {
