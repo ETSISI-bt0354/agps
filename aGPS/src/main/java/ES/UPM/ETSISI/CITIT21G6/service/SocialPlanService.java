@@ -41,7 +41,7 @@ public class SocialPlanService
         return socialPlan;
     }
 
-    public void deleteSoialPlan(SocialPlanId id) throws SocialPlanNotFoundException
+    public void deleteSocialPlan(SocialPlanId id) throws SocialPlanNotFoundException
     {
         repository.delete(id);
     }

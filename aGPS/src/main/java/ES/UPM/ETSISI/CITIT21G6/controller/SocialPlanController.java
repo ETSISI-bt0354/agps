@@ -83,7 +83,7 @@ public class SocialPlanController extends SessionController
         SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
         try
         {
-            service.deleteSoialPlan(socialPlanId);
+            service.deleteSocialPlan(socialPlanId);
             return view.delete(socialPlanId);
         }
         catch (SocialPlanNotFoundException e)
