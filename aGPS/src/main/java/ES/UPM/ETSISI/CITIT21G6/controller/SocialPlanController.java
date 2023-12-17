@@ -153,7 +153,7 @@ public class SocialPlanController extends SessionController
         }
     }
 
-    public String addParticipant(String[] args)
+    public String joinSocialPlan(String[] args)
     {
         if(args.length < MINIMUM_ADD_USER_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_ADD_USER_ARGUMENT_LENGTH);
@@ -190,7 +190,7 @@ public class SocialPlanController extends SessionController
         }
     }
 
-    public String removeParticipant(String[] args)
+    public String unjoinSocialPlan(String[] args)
     {
         if(args.length < MINIMUM_REMOVE_USER_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_REMOVE_USER_ARGUMENT_LENGTH);
@@ -246,7 +246,7 @@ public class SocialPlanController extends SessionController
         return view.listPlans(socialPlans);
     }
 
-    public String setSocialPlanScore(String[] args)
+    public String scoreSocialPlan(String[] args)
     {
         if (args.length < MINIMUM_SET_SCORE_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_SET_SCORE_ARGUMENT_LENGTH);
