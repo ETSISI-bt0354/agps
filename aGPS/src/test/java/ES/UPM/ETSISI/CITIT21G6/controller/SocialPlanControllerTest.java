@@ -12,6 +12,7 @@ import ES.UPM.ETSISI.CITIT21G6.repository.InMemorySocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.InMemoryUserRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 
+import ES.UPM.ETSISI.CITIT21G6.service.SocialPlanService;
 import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,8 @@ public class SocialPlanControllerTest {
     void createSocialPlan() throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
+        SocialPlanService socialPlanService = new SocialPlanService(repository);
+        SocialPlanController controller = new SocialPlanController(socialPlanService, new SocialPlanViewTest());
 
 
         assertEquals("", controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"}));
@@ -50,7 +52,8 @@ public class SocialPlanControllerTest {
     void deleteSocialPlan()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
+        SocialPlanService socialPlanService = new SocialPlanService(repository);
+        SocialPlanController controller = new SocialPlanController(socialPlanService, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 
@@ -62,7 +65,8 @@ public class SocialPlanControllerTest {
     void addActivity() throws SocialPlanNotFoundException
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
+        SocialPlanService socialPlanService = new SocialPlanService(repository);
+        SocialPlanController controller = new SocialPlanController(socialPlanService, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 
@@ -74,7 +78,8 @@ public class SocialPlanControllerTest {
     void addParticipant()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
+        SocialPlanService socialPlanService = new SocialPlanService(repository);
+        SocialPlanController controller = new SocialPlanController(socialPlanService, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 
@@ -86,7 +91,8 @@ public class SocialPlanControllerTest {
     void removeNonExistantParticipant()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
+        SocialPlanService socialPlanService = new SocialPlanService(repository);
+        SocialPlanController controller = new SocialPlanController(socialPlanService, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 
@@ -97,7 +103,8 @@ public class SocialPlanControllerTest {
     void removeExistantParticipant()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanController controller = new SocialPlanController(repository, new SocialPlanViewTest());
+        SocialPlanService socialPlanService = new SocialPlanService(repository);
+        SocialPlanController controller = new SocialPlanController(socialPlanService, new SocialPlanViewTest());
 
         controller.createSocialPlan(new String[]{"test", LocalDateTime.now().plusDays(15).toString(), "test"});
 

@@ -4,6 +4,9 @@ import ES.UPM.ETSISI.CITIT21G6.exception.ListOrderException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.FutureSocialPlanException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.PastSocialPlanException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.SocialPlanCollisionException;
 import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.Activity;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
@@ -39,7 +42,8 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
     }
 
     @Override
-    public String listPlans(List<SocialPlan> socialPlans, ListOrder order) {
+    public String listPlans(List<SocialPlan> socialPlans)
+    {
         return "";
     }
 
@@ -94,11 +98,6 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
     }
 
     @Override
-    public String ticketNotFound(TicketNotFoundException e) {
-        return "ticketNotFound";
-    }
-
-    @Override
     public String invalidScore(InvalidScoreException e) {
         return "invalidScore";
     }
@@ -108,6 +107,24 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
         return "";
     }
 
+    @Override
+    public String colisionWithOtherSocialPlan(SocialPlanCollisionException e)
+    {
+        return null;
+    }
+
+    @Override
+    public String pastSocialPlan(PastSocialPlanException e)
+    {
+        return null;
+    }
+
+    @Override
+    public String setScoreFutureSocialPlan(FutureSocialPlanException e)
+    {
+        return null;
+    }
+
     public String colisionWithOtherSocialPlan()
     {
         return "colisionWithOtherSocialPlan";
@@ -115,7 +132,7 @@ public class SocialPlanViewTest implements ES.UPM.ETSISI.CITIT21G6.view.SocialPl
 
     public String joinPastSocialPlan()
     {
-        return "joinPastSocialPlan";
+        return "pastSocialPlan";
     }
 
 
