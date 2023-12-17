@@ -97,11 +97,11 @@ public class SocialPlan
         return activities;
     }
 
-    public void addParticipant(String participantName) throws FullSocialPlanException, UserAlreadyInSocialPlanException
+    public void addParticipant(String participantName) throws FullSocialPlanException, ParticipantAlreadyInSocialPlanException
     {
         Ticket ticket = new Ticket(participantName);
         if (participants.contains(ticket))
-            throw new UserAlreadyInSocialPlanException(participantName);
+            throw new ParticipantAlreadyInSocialPlanException(participantName);
 
         if (capacity.isPresent() && participants.size() == capacity.getAsInt())
             throw new FullSocialPlanException();

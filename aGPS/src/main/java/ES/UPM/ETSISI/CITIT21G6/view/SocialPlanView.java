@@ -31,7 +31,7 @@ public interface SocialPlanView
     String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e);
     String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e);
     String fullSocialPlan(FullSocialPlanException e);
-    String userAlreadyInSocialPlan(UserAlreadyInSocialPlanException e);
+    String userAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e);
     String wrongListOrder(ListOrderException e);
     String invalidScore(InvalidScoreException e);
     String setScore(OptionalInt score);

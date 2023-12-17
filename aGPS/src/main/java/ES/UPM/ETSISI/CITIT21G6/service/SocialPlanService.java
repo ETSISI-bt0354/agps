@@ -72,7 +72,7 @@ public class SocialPlanService
     }
 
     public void addParticipant(SocialPlanId id, String participantName)
-            throws SocialPlanNotFoundException, PastSocialPlanException, SocialPlanCollisionException, UserAlreadyInSocialPlanException, FullSocialPlanException
+            throws SocialPlanNotFoundException, PastSocialPlanException, SocialPlanCollisionException, ParticipantAlreadyInSocialPlanException, FullSocialPlanException
     {
         SocialPlan socialPlan = repository.fetch(id);
         if (isPastSocialPlan(socialPlan))
