@@ -21,12 +21,12 @@ public class SocialPlanController extends SessionController
 {
     private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 1;
-    private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 1;
+    private static final int MINIMUM_REMOVE_USER_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_ADD_USER_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_LIST_PLANS_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
-    private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 3;
     private SocialPlanService service;
     private SocialPlanView view;
 
@@ -161,7 +161,7 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         String participantName = getLoggedUser().getName();
 
         try
@@ -198,7 +198,7 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         String participantName = getLoggedUser().getName();
 
         try
@@ -254,11 +254,12 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
-        OptionalInt score = OptionalInt.of(Integer.parseInt(args[1]));
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
+        String participantName = getLoggedUser().getName();
+        OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
         try
         {
-            service.setSocialPlanScore(socialPlanId, getLoggedUser().getName(), score);
+            service.setSocialPlanScore(socialPlanId, participantName, score);
             return view.setScore(score);
         }
         catch (SocialPlanNotFoundException e)
