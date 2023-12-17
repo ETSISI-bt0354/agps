@@ -4,7 +4,6 @@ import ES.UPM.ETSISI.CITIT21G6.exception.ListOrderException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
-import ES.UPM.ETSISI.CITIT21G6.controller.ListOrder;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.FutureSocialPlanException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.PastSocialPlanException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.SocialPlanCollisionException;

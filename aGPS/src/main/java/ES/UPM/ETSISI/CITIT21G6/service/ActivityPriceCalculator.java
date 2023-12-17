@@ -1,4 +1,4 @@
-package ES.UPM.ETSISI.CITIT21G6.controller;
+package ES.UPM.ETSISI.CITIT21G6.service;
 
 import ES.UPM.ETSISI.CITIT21G6.model.Activity;
 

@@ -1,7 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.service;
 
-import ES.UPM.ETSISI.CITIT21G6.controller.ActivityPriceCalculator;
-import ES.UPM.ETSISI.CITIT21G6.controller.ListOrder;
+import ES.UPM.ETSISI.CITIT21G6.repository.ListOrder;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
@@ -17,7 +16,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class SocialPlanService
