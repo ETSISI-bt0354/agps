@@ -154,15 +154,7 @@ public class SocialPlanService
                 .stream()
                 .filter(plan -> ownerName.equals(plan.getOwnerName()))
                 .filter(SocialPlanService::isPastSocialPlan)
-                .mapToDouble(plan ->
-                    plan
-                            .getParticipants()
-                            .stream()
-                            .filter(ticket -> ticket.getScore().isPresent())
-                            .mapToInt(ticket -> ticket.getScore().getAsInt())
-                            .average()
-                            .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0)
-                )
+                .mapToDouble(SocialPlanService::averageScore)
                 .average()
                 .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
     }
@@ -175,7 +167,7 @@ public class SocialPlanService
                 .filter(ticket -> ticket.getScore().isPresent())
                 .mapToInt(ticket -> ticket.getScore().getAsInt())
                 .average()
-                .orElse(0);
+                .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
     }
 
     private static int calculateSocialPlanDuration(SocialPlan socialPlan)
