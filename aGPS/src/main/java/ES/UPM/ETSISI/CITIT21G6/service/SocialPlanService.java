@@ -65,7 +65,7 @@ public class SocialPlanService
                 );
     }
 
-    public void addParticipant(SocialPlanId id, String participantName)
+    public void joinSocialPlan(SocialPlanId id, String participantName)
             throws SocialPlanNotFoundException, PastSocialPlanException, SocialPlanCollisionException, ParticipantAlreadyInSocialPlanException, FullSocialPlanException
     {
         SocialPlan socialPlan = repository.fetch(id);
@@ -87,7 +87,7 @@ public class SocialPlanService
         repository.update(socialPlan);
     }
 
-    public void removeParticipant(SocialPlanId id, String participantName)
+    public void unjoinSocialPlan(SocialPlanId id, String participantName)
             throws SocialPlanNotFoundException, ParticipantNotFoundException, PastSocialPlanException
     {
         SocialPlan socialPlan = repository.fetch(id);
@@ -124,7 +124,7 @@ public class SocialPlanService
                 .toList();
     }
 
-    public void setSocialPlanScore(SocialPlanId id, String participantName, OptionalInt score)
+    public void scoreSocialPlan(SocialPlanId id, String participantName, OptionalInt score)
             throws SocialPlanNotFoundException, ParticipantNotFoundException, InvalidScoreException, FutureSocialPlanException
     {
         SocialPlan socialPlan = repository.fetch(id);

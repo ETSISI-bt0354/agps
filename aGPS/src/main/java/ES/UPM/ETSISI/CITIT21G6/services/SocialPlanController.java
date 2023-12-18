@@ -1,4 +1,4 @@
-package ES.UPM.ETSISI.CITIT21G6.controller;
+package ES.UPM.ETSISI.CITIT21G6.services;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.ListOrderException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
@@ -166,7 +166,7 @@ public class SocialPlanController extends SessionController
 
         try
         {
-            service.addParticipant(socialPlanId, participantName);
+            service.joinSocialPlan(socialPlanId, participantName);
             return view.addParticipant(participantName);
         }
         catch (SocialPlanNotFoundException e)
@@ -203,7 +203,7 @@ public class SocialPlanController extends SessionController
 
         try
         {
-            service.removeParticipant(socialPlanId, participantName);
+            service.unjoinSocialPlan(socialPlanId, participantName);
             return view.removeParticipant(participantName);
         }
         catch (SocialPlanNotFoundException e)
@@ -259,7 +259,7 @@ public class SocialPlanController extends SessionController
         OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
         try
         {
-            service.setSocialPlanScore(socialPlanId, participantName, score);
+            service.scoreSocialPlan(socialPlanId, participantName, score);
             return view.setScore(score);
         }
         catch (SocialPlanNotFoundException e)

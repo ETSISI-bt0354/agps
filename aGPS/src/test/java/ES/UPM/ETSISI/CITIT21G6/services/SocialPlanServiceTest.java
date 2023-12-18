@@ -1,4 +1,4 @@
-package ES.UPM.ETSISI.CITIT21G6.controller;
+package ES.UPM.ETSISI.CITIT21G6.services;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.ParticipantNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
@@ -7,7 +7,6 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
 import ES.UPM.ETSISI.CITIT21G6.model.ActivityType;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
-import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 import ES.UPM.ETSISI.CITIT21G6.repository.InMemorySocialPlanRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.InMemoryUserRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
@@ -87,7 +86,7 @@ public class SocialPlanServiceTest
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 
         SocialPlanId socialPlanId = new SocialPlanId("test", "test");
-        assertDoesNotThrow(() -> service.addParticipant(socialPlanId, "test"));
+        assertDoesNotThrow(() -> service.joinSocialPlan(socialPlanId, "test"));
         assertEquals(loggedUserName, repository.fetchAllSocialPlans().get(0).getParticipants().get(0).getUserName());
     }
 
@@ -101,7 +100,7 @@ public class SocialPlanServiceTest
 
         SocialPlanId socialPlanId = new SocialPlanId("test", "test");
         assertThrows(ParticipantNotFoundException.class,
-                () -> service.removeParticipant(socialPlanId, "test"));
+                () -> service.unjoinSocialPlan(socialPlanId, "test"));
     }
 
     @Test
@@ -113,8 +112,8 @@ public class SocialPlanServiceTest
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 
         SocialPlanId socialPlanId = new SocialPlanId("test", "test");
-        assertDoesNotThrow(() -> service.addParticipant(socialPlanId, "test"));
-        assertDoesNotThrow(() -> service.removeParticipant(socialPlanId, "test"));
+        assertDoesNotThrow(() -> service.joinSocialPlan(socialPlanId, "test"));
+        assertDoesNotThrow(() -> service.unjoinSocialPlan(socialPlanId, "test"));
     }
 }
 
