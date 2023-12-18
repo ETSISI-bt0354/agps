@@ -142,11 +142,6 @@ public class SocialPlanService
         repository.update(socialPlan);
     }
 
-    private static boolean isPastSocialPlan(SocialPlan socialPlan)
-    {
-        return socialPlan.getDate().isBefore(LocalDateTime.now());
-    }
-
     private double ownerScore(String ownerName)
     {
         return repository
@@ -168,6 +163,11 @@ public class SocialPlanService
                 .mapToInt(ticket -> ticket.getScore().getAsInt())
                 .average()
                 .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
+    }
+
+    private static boolean isPastSocialPlan(SocialPlan socialPlan)
+    {
+        return socialPlan.getDate().isBefore(LocalDateTime.now());
     }
 
     private static int calculateSocialPlanDuration(SocialPlan socialPlan)
