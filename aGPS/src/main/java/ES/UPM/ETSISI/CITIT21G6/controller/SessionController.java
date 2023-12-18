@@ -1,4 +1,4 @@
-package ES.UPM.ETSISI.CITIT21G6.services;
+package ES.UPM.ETSISI.CITIT21G6.controller;
 
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
