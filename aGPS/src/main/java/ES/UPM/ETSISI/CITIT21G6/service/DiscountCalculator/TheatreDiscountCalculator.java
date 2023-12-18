@@ -12,7 +12,7 @@ public class TheatreDiscountCalculator implements DiscountCalculator
     @Override
     public double getDiscount(int age)
     {
-       if (age < YOUNG_AGE_THEATRE)
+       if (age <= YOUNG_AGE_THEATRE)
            return YOUNG_AGE_DISCOUNT_THEATRE;
 
        if (age >= OLD_AGE_THEATRE)
