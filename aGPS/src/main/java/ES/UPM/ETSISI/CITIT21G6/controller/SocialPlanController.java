@@ -179,10 +179,10 @@ public class SocialPlanController extends SessionController
         }
         catch (SocialPlanCollisionException e)
         {
-            return view.colisionWithOtherSocialPlan(e);
+            return view.collisionWithOtherSocialPlan(e);
         }
         catch (ParticipantAlreadyInSocialPlanException e){
-            return view.userAlreadyInSocialPlan(e);
+            return view.ParticipantAlreadyInSocialPlan(e);
         }
         catch (FullSocialPlanException e)
         {

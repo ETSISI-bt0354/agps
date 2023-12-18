@@ -31,11 +31,11 @@ public interface SocialPlanView
     String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e);
     String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e);
     String fullSocialPlan(FullSocialPlanException e);
-    String userAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e);
+    String ParticipantAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e);
     String wrongListOrder(ListOrderException e);
     String invalidScore(InvalidScoreException e);
     String setScore(OptionalInt score);
-    String colisionWithOtherSocialPlan(SocialPlanCollisionException e);
+    String collisionWithOtherSocialPlan(SocialPlanCollisionException e);
     String pastSocialPlan(PastSocialPlanException e);
     String setScoreFutureSocialPlan(FutureSocialPlanException e);
     String participantNotFound(ParticipantNotFoundException e);
