@@ -228,7 +228,7 @@ public class SocialPlanController extends SessionController
         try
         {
             ListOrder order = ListOrder.parse(args[0]);
-            List<SocialPlan> socialPlans = service.listSocialPlan(order);
+            List<SocialPlan> socialPlans = service.listSocialPlans(order);
             return view.listPlans(socialPlans);
         }
         catch (ListOrderException e)
@@ -242,7 +242,7 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        List<SocialPlan> socialPlans = service.listSubscribedSocialPlan(getLoggedUser().getName());
+        List<SocialPlan> socialPlans = service.listSubscribedSocialPlans(getLoggedUser().getName());
         return view.listPlans(socialPlans);
     }
 

@@ -97,7 +97,7 @@ public class SocialPlanService
         repository.update(socialPlan);
     }
 
-    public List<SocialPlan> listSocialPlan(ListOrder order)
+    public List<SocialPlan> listSocialPlans(ListOrder order)
     {
         Stream<SocialPlan> socialPlans = repository.fetchAllSocialPlans()
                 .stream()
@@ -112,7 +112,7 @@ public class SocialPlanService
         return socialPlans.toList();
     }
 
-    public List<SocialPlan> listSubscribedSocialPlan(String participantName)
+    public List<SocialPlan> listSubscribedSocialPlans(String participantName)
     {
         return repository
                 .fetchAllSocialPlans()
