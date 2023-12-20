@@ -235,30 +235,45 @@ public class CLISocialPlanView implements SocialPlanView
     @Override
     public String collisionWithOtherSocialPlan(SocialPlanCollisionException e)
     {
-        return null;
+        StringBuilder message = new StringBuilder();
+        message.append("This social plan collides with an activity in ");
+        message.append(e.getSocialPlanCollision().getId());
+        message.append(" on date ");
+        message.append(e.getSocialPlanCollision().getDate());
+        message.append(". You cannot join this social plan.");
+        return message.toString();
     }
 
     @Override
     public String pastSocialPlan(PastSocialPlanException e)
     {
-        return null;
+        StringBuilder message = new StringBuilder();
+        message.append("A future activity can't be added to a past social plan.");
+        return message.toString();
     }
 
     @Override
     public String setScoreFutureSocialPlan(FutureSocialPlanException e)
     {
-        return null;
+        return "Hey! Unless you're a time traveller, you can't set a score just yet.";
     }
 
     @Override
     public String participantNotFound(ParticipantNotFoundException e)
     {
-        return null;
+        StringBuilder error = new StringBuilder();
+        error.append("The user ");
+        error.append(e.getParticipantName());
+        error.append(" is not in this social plan, please try again.");
+        return error.toString();
     }
 
     @Override
     public String createSocialPlanPastDate(PastDateException e)
     {
-        return null;
+        StringBuilder error = new StringBuilder("Woah there, this social plan is set for the past (");
+        error.append(e.getDate());
+        error.append("). Check your clock if you think this is a mistake (or change that CMOS battery...)");
+        return error.toString();
     }
 }
