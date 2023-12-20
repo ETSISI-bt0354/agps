@@ -23,8 +23,8 @@ public interface SocialPlanView
     String insufficientArguments(int requiredArguments);
     String noLoggedUser();
     String listPlans(List<SocialPlan> socialPlans);
-    String removeParticipant(String participantName);
-    String addParticipant(String participantName);
+    String unjoinSocialPlan(String participantName);
+    String joinSocialPlan(String participantName);
     String socialPlanNotFound(SocialPlanNotFoundException e);
     String price(double price);
     String invalidCapacity(InvalidCapacityException e);

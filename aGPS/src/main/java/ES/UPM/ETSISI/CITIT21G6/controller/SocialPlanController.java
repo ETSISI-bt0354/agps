@@ -167,7 +167,7 @@ public class SocialPlanController extends SessionController
         try
         {
             service.joinSocialPlan(socialPlanId, participantName);
-            return view.addParticipant(participantName);
+            return view.joinSocialPlan(participantName);
         }
         catch (SocialPlanNotFoundException e)
         {
@@ -204,7 +204,7 @@ public class SocialPlanController extends SessionController
         try
         {
             service.unjoinSocialPlan(socialPlanId, participantName);
-            return view.removeParticipant(participantName);
+            return view.unjoinSocialPlan(participantName);
         }
         catch (SocialPlanNotFoundException e)
         {
