@@ -4,9 +4,9 @@ public class InvalidPasswordException extends Exception
 {
     private final String password;
     private final int minimumPasswordlength;
-    public InvalidPasswordException(String password, int minimumPasswordlength)
+    public InvalidPasswordException(String password, int minimumPasswordlength, String reason)
     {
-        super();
+        super(reason);
         this.password = password;
         this.minimumPasswordlength = minimumPasswordlength;
     }

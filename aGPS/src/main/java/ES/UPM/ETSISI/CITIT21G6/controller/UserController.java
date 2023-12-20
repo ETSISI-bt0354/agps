@@ -37,7 +37,7 @@ public class UserController extends SessionController
         try
         {
             User user = service.registerUser(name, password, birthday, phoneNumber);
-            return view.showUser(user);
+            return view.registerUser(user);
         }
         catch (InvalidPasswordException e)
         {
