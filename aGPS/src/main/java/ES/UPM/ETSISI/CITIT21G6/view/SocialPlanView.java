@@ -11,6 +11,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.Activity;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
+import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -40,4 +41,8 @@ public interface SocialPlanView
     String setScoreFutureSocialPlan(FutureSocialPlanException e);
     String participantNotFound(ParticipantNotFoundException e);
     String createSocialPlanPastDate(PastDateException e);
+    String showActivities(List<Activity> activities);
+    String showParticipants(List<Ticket> participants);
+    String showDuration(int duration);
+    String setSocialPlanCapacity(OptionalInt capacity);
 }
