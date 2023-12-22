@@ -11,7 +11,8 @@ public class InMemoryUserRepository implements UserRepository
 {
     private List<User> users;
 
-    public InMemoryUserRepository() {
+    public InMemoryUserRepository()
+    {
         users = new ArrayList<>();
     }
 
@@ -27,9 +28,7 @@ public class InMemoryUserRepository implements UserRepository
     @Override
     public User findByName(String name) throws UserNotFoundException
     {
-        return users.stream()
-                .filter(user -> name.equals(user.getName()))
-                .findFirst()
+        return users.stream().filter(user -> name.equals(user.getName())).findFirst()
                 .orElseThrow(() -> new UserNotFoundException(name));
     }
 }
