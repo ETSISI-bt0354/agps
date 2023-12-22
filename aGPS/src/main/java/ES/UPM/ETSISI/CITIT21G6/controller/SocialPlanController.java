@@ -140,6 +140,9 @@ public class SocialPlanController extends SessionController
         if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
 
         try
@@ -224,6 +227,9 @@ public class SocialPlanController extends SessionController
     {
         if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
 
         try
         {
