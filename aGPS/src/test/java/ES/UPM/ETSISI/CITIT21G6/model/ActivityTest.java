@@ -11,16 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ActivityTest
 {
     @Test
-    void setNegativeCapacity()
+    void setNegativeCapacity() throws InvalidCapacityException
     {
-        Activity activity = new Activity("A", "a", 1, 2, null);
+        assertThrows(InvalidCapacityException.class, () -> new Activity("A", "a", 1, OptionalInt.of(-5), 2, null));
+        Activity activity = new Activity("A", "a", 1, OptionalInt.empty(), 2, null);
         assertThrows(InvalidCapacityException.class, () -> activity.setCapacity(OptionalInt.of(-5)));
     }
 
     @Test
-    void setZeroCapacity()
+    void setZeroCapacity() throws InvalidCapacityException
     {
-        Activity activity = new Activity("A", "a", 1, 2, null);
+        assertThrows(InvalidCapacityException.class, () -> new Activity("A", "a", 1, OptionalInt.of(0), 2, null));
+        Activity activity = new Activity("A", "a", 1, OptionalInt.empty(), 2, null);
         assertThrows(InvalidCapacityException.class, () -> activity.setCapacity(OptionalInt.of(0)));
     }
 }

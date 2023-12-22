@@ -15,4 +15,8 @@ public abstract class SessionController
     {
         SessionController.loggedUser = loggedUser;
     }
+    protected boolean isUserLogged()
+    {
+        return loggedUser != null;
+    }
 }

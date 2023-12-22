@@ -14,12 +14,14 @@ public class Activity
     private double price;
     private ActivityType type;
 
-    public Activity(String name, String description, int duration, double price, ActivityType type)
+    public Activity(String name, String description, int duration, OptionalInt capacity, double price, ActivityType type) throws InvalidCapacityException
     {
         this.name = name;
         this.description = description;
         this.duration = duration;
-        this.capacity = OptionalInt.empty();
+        if (capacity.isPresent() && capacity.getAsInt() <= 0)
+            throw new InvalidCapacityException(InvalidCapacity.NEGATIVEORZERO, capacity, OptionalInt.of(Integer.MAX_VALUE));
+        this.capacity = capacity;
         this.price = price;
         this.type = type;
     }

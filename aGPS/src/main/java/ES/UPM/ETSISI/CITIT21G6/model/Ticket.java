@@ -6,8 +6,8 @@ import java.util.OptionalInt;
 
 public class Ticket
 {
-    private static final int MINIMUM_SCORE = 0;
-    private static final int MAXIMUM_SCORE = 10;
+    public static final int MINIMUM_SCORE = 0;
+    public static final int MAXIMUM_SCORE = 10;
     private final String userName;
     private OptionalInt score;
 

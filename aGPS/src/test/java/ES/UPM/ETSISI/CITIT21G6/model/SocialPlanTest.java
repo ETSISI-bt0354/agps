@@ -16,14 +16,14 @@ class SocialPlanTest
 {
 
     @Test
-    void setNegativeCapacity() throws PastDateException
+    void setNegativeCapacity() throws PastDateException, InvalidCapacityException
     {
         SocialPlan socialPlan = generateSocialPlan();
         assertThrows(InvalidCapacityException.class, () -> socialPlan.setCapacity(OptionalInt.of(-3)));
     }
 
     @Test
-    void setZeroCapacity() throws PastDateException
+    void setZeroCapacity() throws PastDateException, InvalidCapacityException
     {
         SocialPlan socialPlan = generateSocialPlan();
         assertThrows(InvalidCapacityException.class, () -> socialPlan.setCapacity(OptionalInt.of(0)));
@@ -96,8 +96,7 @@ class SocialPlanTest
         for (User user : users)
             socialPlan.addParticipant(user.getName());
 
-        Activity activity = new Activity("D", "d", 60, 60, null);
-        activity.setCapacity(OptionalInt.of(2));
+        Activity activity = new Activity("D", "d", 60, OptionalInt.of(2), 60, null);
 
         assertThrows(InvalidCapacityException.class, () -> socialPlan.addActivity(activity));
     }
