@@ -11,6 +11,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.Activity;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
+import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -275,5 +276,80 @@ public class CLISocialPlanView implements SocialPlanView
         error.append(e.getDate());
         error.append("). Check your clock if you think this is a mistake (or change that CMOS battery...)");
         return error.toString();
+    }
+
+    @Override
+    public String showActivities(List<Activity> activities)
+    {
+        StringBuilder message = new StringBuilder();
+        message.append("Activities:");
+        for (Activity activity : activities)
+        {
+            message.append("\n");
+            message.append(showActivity(activity));
+        }
+        return message.toString();
+    }
+
+    private String showActivity(Activity activity)
+    {
+        StringBuilder message = new StringBuilder();
+        message.append("\tName: ");
+        message.append(activity.getName());
+        message.append("\n\tDescription: ");
+        message.append(activity.getDescription());
+        message.append("\n\tDuration: ");
+        message.append(activity.getDuration());
+        message.append("\n\tCapacity: ");
+        if(activity.getCapacity().isEmpty())
+            message.append("Unlimited");
+        else
+            message.append(activity.getCapacity().getAsInt());
+        message.append("\n\tPrice: ");
+        message.append(activity.getPrice());
+        message.append("\n\tType: ");
+        String type = switch (activity.getType()) {
+            case GENERIC -> "generic";
+            case CINEMA -> "cinema";
+            case THEATRE -> "theatre";
+        };
+        message.append(type);
+        return message.toString();
+
+    }
+
+    @Override
+    public String showParticipants(List<Ticket> participants)
+    {
+        StringBuilder message = new StringBuilder();
+        message.append("Participants:");
+        for (Ticket participant : participants)
+        {
+            message.append("\n\t");
+            message.append(participant.getUserName());
+        }
+        return message.toString();
+    }
+
+    @Override
+    public String showDuration(int duration)
+    {
+        StringBuilder message = new StringBuilder();
+        message.append("Duration: ");
+        message.append(duration);
+        message.append(".");
+        return message.toString();
+    }
+
+    @Override
+    public String setSocialPlanCapacity(OptionalInt capacity)
+    {
+        StringBuilder message = new StringBuilder();
+        if (capacity.isEmpty())
+            message.append("Unlimited");
+        else
+            message.append(capacity.getAsInt());
+        message.append(".");
+        return message.toString();
     }
 }
