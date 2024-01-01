@@ -2905,6 +2905,9 @@
 </ownerFormalParam>
 </Parameter>
 <Class id="fd864c96-8475-11ee-9a87-c10b697df068">
+<isAbstract>
+<val>1</val>
+</isAbstract>
 <name>
 <val>SessionController</val>
 </name>
@@ -2915,9 +2918,9 @@
 </ownedAttribute>
 <ownedOperation>
 <reflist>
-<ref refid="1e4def76-8476-11ee-9f39-c10b697df068"/>
 <ref refid="22734e00-8ca9-11ee-a2a2-378c1cdd3322"/>
 <ref refid="2d6d6174-8ca9-11ee-992a-378c1cdd3322"/>
+<ref refid="b6b642bf-a8d4-11ee-afb2-73614f236bdf"/>
 </reflist>
 </ownedOperation>
 <package>
@@ -2969,17 +2972,6 @@
 <val>private</val>
 </visibility>
 </Property>
-<Operation id="1e4def76-8476-11ee-9f39-c10b697df068">
-<class_>
-<ref refid="fd864c96-8475-11ee-9a87-c10b697df068"/>
-</class_>
-<name>
-<val>SessionController</val>
-</name>
-<visibility>
-<val>private</val>
-</visibility>
-</Operation>
 <GeneralizationItem id="2ae299da-8476-11ee-9638-c10b697df068">
 <diagram>
 <ref refid="9735aa8e-69eb-11ee-a158-00155df7ccfe"/>
@@ -8560,6 +8552,33 @@
 </ownerFormalParam>
 <typeValue>
 <val>String</val>
+</typeValue>
+</Parameter>
+<Operation id="b6b642bf-a8d4-11ee-afb2-73614f236bdf">
+<class_>
+<ref refid="fd864c96-8475-11ee-9a87-c10b697df068"/>
+</class_>
+<name>
+<val>isUserlogged</val>
+</name>
+<ownedParameter>
+<reflist>
+<ref refid="b6bf7fcb-a8d4-11ee-898e-73614f236bdf"/>
+</reflist>
+</ownedParameter>
+<visibility>
+<val>protected</val>
+</visibility>
+</Operation>
+<Parameter id="b6bf7fcb-a8d4-11ee-898e-73614f236bdf">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="b6b642bf-a8d4-11ee-afb2-73614f236bdf"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
 </typeValue>
 </Parameter>
 </gaphor>
