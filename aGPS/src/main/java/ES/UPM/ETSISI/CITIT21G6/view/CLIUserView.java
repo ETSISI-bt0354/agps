@@ -42,7 +42,7 @@ public class CLIUserView implements UserView {
         StringBuilder message = new StringBuilder();
         message.append("Bye bye ");
         message.append(user.getName());
-        message.append(" !");
+        message.append("!");
         return message.toString();
     }
 
