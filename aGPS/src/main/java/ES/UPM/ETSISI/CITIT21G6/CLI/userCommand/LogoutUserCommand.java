@@ -2,9 +2,9 @@ package ES.UPM.ETSISI.CITIT21G6.CLI.userCommand;
 
 import ES.UPM.ETSISI.CITIT21G6.controller.UserController;
 
-public class loginUserCommand extends UserCommand
+public class LogoutUserCommand extends UserCommand
 {
-    public loginUserCommand(UserController controller)
+    public LogoutUserCommand(UserController controller)
     {
         super(controller);
     }
@@ -12,12 +12,12 @@ public class loginUserCommand extends UserCommand
     @Override
     public String exec(String[] args)
     {
-        return controller.loginUser(args);
+        return controller.logoutUser(args);
     }
 
     @Override
     public String description()
     {
-        return "Log in user.";
+        return "log out user.";
     }
 }
