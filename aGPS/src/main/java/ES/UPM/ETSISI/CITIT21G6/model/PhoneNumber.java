@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 public class PhoneNumber
 {
     private String phoneNumber;
+
     public PhoneNumber(String phoneNumber) throws InvalidPhoneNumberException
     {
-        if (!Pattern.matches("^[0-9]{9}$", phoneNumber))
-            throw new InvalidPhoneNumberException(phoneNumber);
+        if (!Pattern.matches("^[0-9]{9}$", phoneNumber)) throw new InvalidPhoneNumberException(phoneNumber);
 
         this.phoneNumber = phoneNumber;
     }

@@ -142,6 +142,29 @@ public class SocialPlanService
         repository.update(socialPlan);
     }
 
+    public List<Activity> getSocialPlanActivities(SocialPlanId id) throws SocialPlanNotFoundException
+    {
+        return repository.fetch(id).getActivities();
+    }
+
+    public List<Ticket> getParticipants(SocialPlanId id) throws SocialPlanNotFoundException
+    {
+        return repository.fetch(id).getParticipants();
+    }
+
+    public int getDuration(SocialPlanId id) throws SocialPlanNotFoundException
+    {
+        return calculateSocialPlanDuration(repository.fetch(id));
+    }
+
+    public void setSocialPlanCapacity(SocialPlanId id, OptionalInt capacity)
+            throws SocialPlanNotFoundException, InvalidCapacityException
+    {
+        SocialPlan socialPlan = repository.fetch(id);
+        socialPlan.setCapacity(capacity);
+        repository.update(socialPlan);
+    }
+
     private double ownerScore(String ownerName)
     {
         return repository

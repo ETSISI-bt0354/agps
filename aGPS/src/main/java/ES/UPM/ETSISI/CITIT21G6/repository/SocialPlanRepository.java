@@ -10,8 +10,12 @@ import java.util.List;
 public interface SocialPlanRepository
 {
     void save(SocialPlan socialPlan) throws SocialPlanAlreadyAddedException;
+
     void delete(SocialPlanId id) throws SocialPlanNotFoundException;
+
     void update(SocialPlan socialPlan) throws SocialPlanNotFoundException;
+
     SocialPlan fetch(SocialPlanId id) throws SocialPlanNotFoundException;
+
     List<SocialPlan> fetchAllSocialPlans();
 }

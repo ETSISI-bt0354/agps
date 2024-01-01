@@ -27,6 +27,10 @@ public class SocialPlanController extends SessionController
     private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
     private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 3;
+    private static final int MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH = 2;
     private SocialPlanService service;
     private SocialPlanView view;
 
@@ -140,6 +144,9 @@ public class SocialPlanController extends SessionController
         if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
 
         try
@@ -225,6 +232,9 @@ public class SocialPlanController extends SessionController
         if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         try
         {
             ListOrder order = ListOrder.parse(args[0]);
@@ -277,6 +287,93 @@ public class SocialPlanController extends SessionController
         catch (InvalidScoreException e)
         {
             return view.invalidScore(e);
+        }
+    }
+
+    public String showSocialPlanActivities(String[] args)
+    {
+        if (args.length < MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH);
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
+        try
+        {
+            List<Activity> activities = service.getSocialPlanActivities(socialPlanId);
+            return view.showActivities(activities);
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+    }
+
+    public String showParticipants(String[] args)
+    {
+        if (args.length < MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH);
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
+        try
+        {
+            List<Ticket> participants = service.getParticipants(socialPlanId);
+            return view.showParticipants(participants);
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+    }
+
+    public String showSocialPlanDuration(String[] args)
+    {
+        if (args.length < MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH);
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
+        try
+        {
+            int duration = service.getDuration(socialPlanId);
+            return view.showDuration(duration);
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+    }
+
+    public String setSocialPlanCapacity(String[] args)
+    {
+        if (args.length < MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH);
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
+        SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
+        OptionalInt capacity = OptionalInt.empty();
+        if (args.length > MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH)
+            capacity = OptionalInt.of(Integer.parseInt(args[1]));
+        try
+        {
+            service.setSocialPlanCapacity(socialPlanId, capacity);
+            return view.setSocialPlanCapacity(capacity);
+        }
+        catch (SocialPlanNotFoundException e)
+        {
+            return view.socialPlanNotFound(e);
+        }
+        catch (InvalidCapacityException e)
+        {
+            return view.invalidCapacity(e);
         }
     }
 }
