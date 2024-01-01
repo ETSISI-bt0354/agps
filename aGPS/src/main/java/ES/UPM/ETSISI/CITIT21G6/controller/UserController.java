@@ -90,7 +90,8 @@ public class UserController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
+        User loggedUser = getLoggedUser();
         setLoggedUser(null);
-        return view.loggedOutUser(getLoggedUser());
+        return view.loggedOutUser(loggedUser);
     }
 }
