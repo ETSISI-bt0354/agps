@@ -108,7 +108,7 @@ public class SocialPlanService
         socialPlans = switch (order)
         {
             case DATE -> socialPlans.sorted(Comparator.comparing(SocialPlan::getDate));
-            case SCORE -> socialPlans.sorted(Comparator.comparing(plan -> ownerScore(plan.getOwnerName())));
+            case SCORE -> socialPlans.sorted(Comparator.comparing(plan -> -ownerScore(plan.getOwnerName())));
         };
 
         return socialPlans.toList();
