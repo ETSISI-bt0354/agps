@@ -3,6 +3,7 @@ package ES.UPM.ETSISI.CITIT21G6.controller;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.PhoneNumberAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
@@ -59,6 +60,10 @@ public class UserController extends SessionController
         catch (UserAlreadyAddedException e)
         {
             return view.userAlreadyAdded(e);
+        }
+        catch (PhoneNumberAlreadyAddedException e)
+        {
+            return view.phoneNumberAlreadyAdded(e);
         }
     }
     public String loginUser(String[] args)

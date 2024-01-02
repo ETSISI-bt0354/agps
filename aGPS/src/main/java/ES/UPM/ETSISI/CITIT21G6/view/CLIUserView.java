@@ -3,14 +3,15 @@ package ES.UPM.ETSISI.CITIT21G6.view;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.PhoneNumberAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
 import java.time.format.DateTimeParseException;
 
-public class CLIUserView implements UserView {
-
+public class CLIUserView implements UserView
+{
     @Override
     public String registerUser(User user)
     {
@@ -132,5 +133,15 @@ public class CLIUserView implements UserView {
         message.append(e.getParsedString());
         message.append(" is not a valid date or it is in a wrong format (Format: yyyy-mm-dd example: 2023-04-03).");
         return message.toString();
+    }
+
+    @Override
+    public String phoneNumberAlreadyAdded(PhoneNumberAlreadyAddedException e)
+    {
+        StringBuilder error = new StringBuilder();
+        error.append("The phone number ");
+        error.append(e.getPhoneNumber());
+        error.append(" is already in use.");
+        return error.toString();
     }
 }

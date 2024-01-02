@@ -1,5 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.services;
 
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.PhoneNumberAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.repository.InMemoryUserRepository;
 import ES.UPM.ETSISI.CITIT21G6.repository.UserRepository;
@@ -59,7 +60,7 @@ public class UserServiceTest
 
         assertDoesNotThrow(() -> service.registerUser("a", "12345", LocalDate.now().minusYears(30), "123456789"));
 
-        assertThrows(UserAlreadyAddedException.class,
+        assertThrows(PhoneNumberAlreadyAddedException.class,
                 () -> service.registerUser("b", "12345", LocalDate.now().minusYears(30), "123456789"));
     }
 
