@@ -13,6 +13,7 @@ import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -87,7 +88,8 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("\n\tName: ");
         message.append(socialPlan.getName());
         message.append("\n\tDate: ");
-        message.append(socialPlan.getDate());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        message.append(socialPlan.getDate().format(formatter));
         message.append("\n\tLocation: ");
         message.append(socialPlan.getLocation());
         message.append("\n\tCapacity: ");
@@ -211,13 +213,14 @@ public class CLISocialPlanView implements SocialPlanView
         StringBuilder error = new StringBuilder();
         error.append("The score is ");
         if(e.getScore() < e.getMinimumScore())
-            error.append("too small.");
+            error.append("too small");
         else
             error.append("too big");
-        error.append("\n( ");
+        error.append(" ( ");
         error.append(e.getMinimumScore());
         error.append(" - ");
         error.append(e.getMaximumScore());
+        error.append(").");
         return error.toString();
     }
 
@@ -237,26 +240,24 @@ public class CLISocialPlanView implements SocialPlanView
     public String collisionWithOtherSocialPlan(SocialPlanCollisionException e)
     {
         StringBuilder message = new StringBuilder();
-        message.append("This social plan collides with an activity in ");
+        message.append("This social plan collides with teh social plan ");
         message.append(e.getSocialPlanCollision().getId());
         message.append(" on date ");
         message.append(e.getSocialPlanCollision().getDate());
-        message.append(". You cannot join this social plan.");
+        message.append(".\nYou cannot join this social plan.");
         return message.toString();
     }
 
     @Override
     public String pastSocialPlan(PastSocialPlanException e)
     {
-        StringBuilder message = new StringBuilder();
-        message.append("A future activity can't be added to a past social plan.");
-        return message.toString();
+        return "The social plan has already taken place";
     }
 
     @Override
     public String setScoreFutureSocialPlan(FutureSocialPlanException e)
     {
-        return "Hey! Unless you're a time traveller, you can't set a score just yet.";
+        return "Hey! Unless you're a time traveller, you can't set a score just yet. The social plan is in the future.";
     }
 
     @Override
@@ -345,6 +346,7 @@ public class CLISocialPlanView implements SocialPlanView
     public String setSocialPlanCapacity(OptionalInt capacity)
     {
         StringBuilder message = new StringBuilder();
+        message.append("Capacity: ");
         if (capacity.isEmpty())
             message.append("Unlimited");
         else
