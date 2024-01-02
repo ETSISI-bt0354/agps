@@ -22,4 +22,10 @@ public class CheckPlanCostCommand extends SocialPlanCommand
     {
         return "Check cost of social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.checkPlanCostHelp();
+    }
 }

@@ -22,4 +22,10 @@ public class DeleteSocialPlanCommand extends SocialPlanCommand
     {
         return "Delete social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.deleteSocialPlanHelp();
+    }
 }

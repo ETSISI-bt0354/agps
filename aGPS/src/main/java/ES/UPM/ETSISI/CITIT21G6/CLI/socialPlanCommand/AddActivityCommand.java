@@ -22,4 +22,10 @@ public class AddActivityCommand extends SocialPlanCommand
     {
         return "Add activity to social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.addActivityHelp();
+    }
 }

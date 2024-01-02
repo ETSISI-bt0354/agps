@@ -387,4 +387,82 @@ public class CLISocialPlanView implements SocialPlanView
     {
         return "Activity duration must be positive.";
     }
+
+    @Override
+    public String createSocialPlanHelp()
+    {
+        return "plan-name date time location [capacity]\n\tdate format: yyyy-mm-dd\n\ttime format hh:mm\n\tIf capacity is not present, it will be unlimited";
+    }
+
+    @Override
+    public String deleteSocialPlanHelp()
+    {
+        return "plan-name";
+    }
+
+    @Override
+    public String addActivityHelp()
+    {
+        return "plan-name activity-name description duration price activity-type [capacity]\n\tIf capacity is not present, it will be unlimited";
+    }
+
+    @Override
+    public String listSocialPlansHelp()
+    {
+        return "order\n\torder: DATE | SCORE";
+    }
+
+    @Override
+    public String listSubscribedSocialPlansHelp()
+    {
+        return "";
+    }
+
+    @Override
+    public String unjoinSocialPlanHelp()
+    {
+        return "owner-name plan-name";
+    }
+
+    @Override
+    public String joinSocialPlanHelp()
+    {
+        return "owner-name plan-name";
+    }
+
+    @Override
+    public String checkPlanCostHelp()
+    {
+        return "owner-name plan-name";
+    }
+
+    @Override
+    public String setScoreHelp()
+    {
+        return "owner-name plan-name [score]\n\tIf score is not present, it will be unset";
+    }
+
+    @Override
+    public String showActivitiesHelp()
+    {
+        return "owner-name plan-name";
+    }
+
+    @Override
+    public String showParticipantsHelp()
+    {
+        return "owner-name plan-name";
+    }
+
+    @Override
+    public String showDurationHelp()
+    {
+        return "owner-name plan-name";
+    }
+
+    @Override
+    public String setSocialPlanCapacityHelp()
+    {
+        return "plan-name [capacity]\n\tIf capacity is not present, it will be unlimited";
+    }
 }

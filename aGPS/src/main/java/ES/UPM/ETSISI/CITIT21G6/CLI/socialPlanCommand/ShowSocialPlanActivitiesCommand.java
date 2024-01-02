@@ -22,4 +22,10 @@ public class ShowSocialPlanActivitiesCommand extends SocialPlanCommand
     {
         return "Show activities of a social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.showActivitiesHelp();
+    }
 }

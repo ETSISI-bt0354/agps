@@ -22,4 +22,10 @@ public class SetSocialPlanCapacityCommand extends SocialPlanCommand
     {
         return "Set the capacity of a social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.setSocialPlanCapacityHelp();
+    }
 }

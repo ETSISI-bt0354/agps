@@ -50,4 +50,17 @@ public interface SocialPlanView
     String invalidNumber(String input);
     String invalidActivityPrice(InvalidPriceException e);
     String invalidActivityDuration(InvalidDurationException e);
+    String createSocialPlanHelp();
+    String deleteSocialPlanHelp();
+    String addActivityHelp();
+    String listSocialPlansHelp();
+    String listSubscribedSocialPlansHelp();
+    String unjoinSocialPlanHelp();
+    String joinSocialPlanHelp();
+    String checkPlanCostHelp();
+    String setScoreHelp();
+    String showActivitiesHelp();
+    String showParticipantsHelp();
+    String showDurationHelp();
+    String setSocialPlanCapacityHelp();
 }

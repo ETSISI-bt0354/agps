@@ -22,4 +22,10 @@ public class JoinSocialPlanCommand extends SocialPlanCommand
     {
         return "Join to a social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.joinSocialPlanHelp();
+    }
 }

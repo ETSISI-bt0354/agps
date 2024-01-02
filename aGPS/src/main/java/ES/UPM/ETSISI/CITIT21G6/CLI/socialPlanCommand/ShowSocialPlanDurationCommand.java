@@ -22,4 +22,10 @@ public class ShowSocialPlanDurationCommand extends SocialPlanCommand
     {
         return "Show the duration of a social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.showDurationHelp();
+    }
 }

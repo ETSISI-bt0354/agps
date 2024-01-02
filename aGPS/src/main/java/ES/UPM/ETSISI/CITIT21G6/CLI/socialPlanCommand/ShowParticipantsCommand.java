@@ -22,4 +22,10 @@ public class ShowParticipantsCommand extends SocialPlanCommand
     {
         return "Show participants of a social plan";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.showParticipantsHelp();
+    }
 }

@@ -432,4 +432,69 @@ public class SocialPlanController extends SessionController
             return view.invalidCapacity(e);
         }
     }
+
+    public String createSocialPlanHelp()
+    {
+        return view.createSocialPlanHelp();
+    }
+
+    public String deleteSocialPlanHelp()
+    {
+        return view.deleteSocialPlanHelp();
+    }
+
+    public String addActivityHelp()
+    {
+        return view.addActivityHelp();
+    }
+
+    public String listSocialPlansHelp()
+    {
+        return view.listSocialPlansHelp();
+    }
+
+    public String listSubscribedSocialPlansHelp()
+    {
+        return view.listSubscribedSocialPlansHelp();
+    }
+
+    public String unjoinSocialPlanHelp()
+    {
+        return view.unjoinSocialPlanHelp();
+    }
+
+    public String joinSocialPlanHelp()
+    {
+        return view.joinSocialPlanHelp();
+    }
+
+    public String checkPlanCostHelp()
+    {
+        return view.checkPlanCostHelp();
+    }
+
+    public String setScoreHelp()
+    {
+        return view.setScoreHelp();
+    }
+
+    public String showActivitiesHelp()
+    {
+        return view.showActivitiesHelp();
+    }
+
+    public String showParticipantsHelp()
+    {
+        return view.showParticipantsHelp();
+    }
+
+    public String showDurationHelp()
+    {
+        return view.showDurationHelp();
+    }
+
+    public String setSocialPlanCapacityHelp()
+    {
+        return view.setSocialPlanCapacityHelp();
+    }
 }
