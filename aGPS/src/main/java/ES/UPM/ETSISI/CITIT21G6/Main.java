@@ -49,7 +49,8 @@ public class Main
         UserRepository userRepository = new InMemoryUserRepository();
         SocialPlanRepository socialPlanRepository = new InMemorySocialPlanRepository();
 
-        mockData(userRepository, socialPlanRepository);
+        if (argv.length < 1 || !argv[0].equals("no-mock"))
+            mockData(userRepository, socialPlanRepository);
 
         UserController userController = new UserController(new UserService(userRepository), new CLIUserView());
         SocialPlanController socialPlanController = new SocialPlanController(new SocialPlanService(socialPlanRepository, Clock.systemDefaultZone()), new CLISocialPlanView());
