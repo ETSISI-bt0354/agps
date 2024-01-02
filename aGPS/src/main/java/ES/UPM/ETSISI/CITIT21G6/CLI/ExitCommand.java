@@ -16,4 +16,10 @@ public class ExitCommand implements Command
     {
         return "Exit agps";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return "";
+    }
 }
