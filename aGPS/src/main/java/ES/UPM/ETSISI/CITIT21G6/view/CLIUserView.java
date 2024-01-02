@@ -63,7 +63,7 @@ public class CLIUserView implements UserView
     public String userAlreadyAdded(UserAlreadyAddedException exception)
     {
         StringBuilder error = new StringBuilder();
-        error.append("The user");
+        error.append("The user ");
         error.append(exception.getUser().getName());
         error.append(" already exists.");
         return error.toString();
