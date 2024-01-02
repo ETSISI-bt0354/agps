@@ -920,7 +920,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2189.715635118341, 161.68630070840106)</val>
 </matrix>
 <points>
-<val>[(3.439200888506548, 334.76659513867514), (3.439200888506548, 491.13533213336143), (-250.16503337284007, 491.13533213336143)]</val>
+<val>[(-43.97349686198595, 334.76659513867514), (-43.97349686198595, 477.35929280137407), (-250.16503337284007, 477.35929280137407)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -1019,7 +1019,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1979.2740154661974, 144.41155911655957)</val>
 </matrix>
 <points>
-<val>[(69.12243399188173, 143.05033422942483), (-465.2516974344753, 151.72763023421987)]</val>
+<val>[(69.12243399188173, 139.66082712980904), (-465.2516974344753, 151.72763023421987)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -1048,10 +1048,10 @@
 <ref refid="5810fe6c-6e5c-11ee-8846-ef656a1af08a"/>
 </tail_subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1260.8194143804008, 98.96034549872462)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1260.8194143804008, 98.96034549872473)</val>
 </matrix>
 <points>
-<val>[(-19.79709634867868, 197.17884385205474), (-481.11457411909595, 188.50154784725976)]</val>
+<val>[(-19.79709634867868, 197.17884385205474), (-481.11457411909595, 203.77402950127527)]</val>
 </points>
 <head-connection>
 <ref refid="0c4fbff9-6dfa-11ee-93e1-834dafcfcfb6"/>
@@ -1936,7 +1936,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 397.09553487495685, -105.5309884498429)</val>
 </matrix>
 <points>
-<val>[(-39.6078366105001, 258.8113441319445), (-220.79483088062688, 106.8330718999563)]</val>
+<val>[(-39.6078366105001, 258.5482458027641), (-220.79483088062688, 106.8330718999563)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -2029,7 +2029,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 395.841710025831, 60.43188055444807)</val>
 </matrix>
 <points>
-<val>[(-38.35401176137424, 218.34126183163542), (-194.041006031501, 241.2790373297147)]</val>
+<val>[(-38.35401176137424, 217.39098109291376), (-194.041006031501, 241.2790373297147)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -2122,7 +2122,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 393.59036706469357, 220.42616579110125)</val>
 </matrix>
 <points>
-<val>[(-36.10266880023681, 193.22745372684864), (-198.78966307036364, 352.15059729812555)]</val>
+<val>[(-36.10266880023681, 191.53858478947473), (-198.78966307036364, 352.15059729812555)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -3325,7 +3325,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 1816.381711079453, -124.15630163234778)</val>
 </matrix>
 <points>
-<val>[(232.01473837862613, 288.3357590045175), (-1036.676870818148, 277.7139934183722)]</val>
+<val>[(232.01473837862613, 287.3615406935314), (-1036.676870818148, 287.3615406935314)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -3578,7 +3578,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2250.478350414095, -77.18549444629127)</val>
 </matrix>
 <points>
-<val>[(595.9180990439841, 266.5115718114763), (599.0323694565823, 253.70695693208484)]</val>
+<val>[(595.9180990439841, 260.3524127494757), (599.0323694565823, 253.70695693208484)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -3999,7 +3999,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2486.8463992891247, -384.78428698146973)</val>
 </matrix>
 <points>
-<val>[(410.11427041259776, 258.6747819487383), (358.94655605726075, 499.23718282854594)]</val>
+<val>[(410.11427041259776, 258.6747819487383), (358.875937679805, 499.23718282854594)]</val>
 </points>
 <head-connection>
 <ref refid="cce427b7-8ca9-11ee-8fd3-378c1cdd3322"/>
@@ -6611,29 +6611,18 @@
 <ref refid="6aa5bb58-9dc1-11ee-a657-37b0561177bc"/>
 </class_>
 <name>
-<val>ownerScore</val>
+<val>isPastSocialPlan</val>
 </name>
 <ownedParameter>
 <reflist>
-<ref refid="9c26a17b-9dc3-11ee-844a-37b0561177bc"/>
-<ref refid="c9e40db5-9dc3-11ee-9e0f-37b0561177bc"/>
+<ref refid="2414b67c-a9aa-11ee-aabd-f3acdb0fffeb"/>
+<ref refid="241c02f0-a9aa-11ee-940d-f3acdb0fffeb"/>
 </reflist>
 </ownedParameter>
 <visibility>
 <val>private</val>
 </visibility>
 </Operation>
-<Parameter id="9c26a17b-9dc3-11ee-844a-37b0561177bc">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>String ownerName</val>
-</name>
-<ownerFormalParam>
-<ref refid="9c1e116e-9dc3-11ee-b387-37b0561177bc"/>
-</ownerFormalParam>
-</Parameter>
 <Operation id="af3b1fa4-9dc3-11ee-b212-37b0561177bc">
 <class_>
 <ref refid="6aa5bb58-9dc1-11ee-a657-37b0561177bc"/>
@@ -6641,16 +6630,13 @@
 <isAbstract>
 <val>0</val>
 </isAbstract>
-<isStatic>
-<val>1</val>
-</isStatic>
 <name>
-<val>averageScore</val>
+<val>ownerScore</val>
 </name>
 <ownedParameter>
 <reflist>
-<ref refid="c80d76ac-9dc3-11ee-a83a-37b0561177bc"/>
-<ref refid="c81660c6-9dc3-11ee-a7e3-37b0561177bc"/>
+<ref refid="1e24f401-a9aa-11ee-b318-f3acdb0fffeb"/>
+<ref refid="1e2ccdac-a9aa-11ee-99bd-f3acdb0fffeb"/>
 </reflist>
 </ownedParameter>
 <visibility>
@@ -6668,7 +6654,7 @@
 <val>1</val>
 </isStatic>
 <name>
-<val>isPastSocialPlan</val>
+<val>averageScore</val>
 </name>
 <ownedParameter>
 <reflist>
@@ -6688,7 +6674,7 @@
 <ref refid="bf57df0d-9dc3-11ee-b489-37b0561177bc"/>
 </ownerFormalParam>
 <typeValue>
-<val>boolean</val>
+<val>double</val>
 </typeValue>
 </Parameter>
 <Parameter id="c12245b4-9dc3-11ee-a2de-37b0561177bc">
@@ -6696,44 +6682,11 @@
 <val>in</val>
 </direction>
 <name>
-<val>SocialPlan socialPlan</val>
+<val>String ownerName</val>
 </name>
 <ownerFormalParam>
 <ref refid="bf57df0d-9dc3-11ee-b489-37b0561177bc"/>
 </ownerFormalParam>
-</Parameter>
-<Parameter id="c80d76ac-9dc3-11ee-a83a-37b0561177bc">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="af3b1fa4-9dc3-11ee-b212-37b0561177bc"/>
-</ownerFormalParam>
-<typeValue>
-<val>double</val>
-</typeValue>
-</Parameter>
-<Parameter id="c81660c6-9dc3-11ee-a7e3-37b0561177bc">
-<direction>
-<val>in</val>
-</direction>
-<name>
-<val>String ownerName</val>
-</name>
-<ownerFormalParam>
-<ref refid="af3b1fa4-9dc3-11ee-b212-37b0561177bc"/>
-</ownerFormalParam>
-</Parameter>
-<Parameter id="c9e40db5-9dc3-11ee-9e0f-37b0561177bc">
-<direction>
-<val>return</val>
-</direction>
-<ownerFormalParam>
-<ref refid="9c1e116e-9dc3-11ee-b387-37b0561177bc"/>
-</ownerFormalParam>
-<typeValue>
-<val>double</val>
-</typeValue>
 </Parameter>
 <Operation id="d87bbc69-9dc3-11ee-8d06-37b0561177bc">
 <class_>
@@ -7126,7 +7079,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 574.9022868374896, -619.271742457282)</val>
 </matrix>
 <points>
-<val>[(-41.719040697231804, 724.5052592686781), (0.21135937339687416, 33.16223742455088)]</val>
+<val>[(-49.602022154821015, 724.5052592686781), (0.21135937339687416, 33.16223742455088)]</val>
 </points>
 <head-connection>
 <ref refid="98ee8957-69eb-11ee-915b-00155df7ccfe"/>
@@ -7255,7 +7208,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 2223.1994499258, -265.54953226406315)</val>
 </matrix>
 <points>
-<val>[(41.63073524676565, 380.00242811113935), (0.5834731866669927, 153.4400272313319)]</val>
+<val>[(41.61156761920523, 380.00242811113935), (0.5834731866669927, 153.4400272313319)]</val>
 </points>
 <head-connection>
 <ref refid="b66a2ae5-69ed-11ee-a099-00155df7ccfe"/>
@@ -7912,7 +7865,7 @@
 <val>(1.0, 0.0, 0.0, 1.0, 3215.4657343633753, -1086.9703583574783)</val>
 </matrix>
 <points>
-<val>[(23.0013523078228, 22.005435691346264), (251.05435650747356, 234.90257506087107)]</val>
+<val>[(23.0013523078228, 22.005435691346264), (251.00742435089836, 234.90257506087107)]</val>
 </points>
 <head-connection>
 <ref refid="60519340-9dc5-11ee-b060-37b0561177bc"/>
@@ -8590,6 +8543,50 @@
 </name>
 <ownerFormalParam>
 <ref refid="9ed599e4-9dc1-11ee-a0e7-37b0561177bc"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="1e24f401-a9aa-11ee-b318-f3acdb0fffeb">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="af3b1fa4-9dc3-11ee-b212-37b0561177bc"/>
+</ownerFormalParam>
+<typeValue>
+<val>double</val>
+</typeValue>
+</Parameter>
+<Parameter id="1e2ccdac-a9aa-11ee-99bd-f3acdb0fffeb">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>String ownerName</val>
+</name>
+<ownerFormalParam>
+<ref refid="af3b1fa4-9dc3-11ee-b212-37b0561177bc"/>
+</ownerFormalParam>
+</Parameter>
+<Parameter id="2414b67c-a9aa-11ee-aabd-f3acdb0fffeb">
+<direction>
+<val>return</val>
+</direction>
+<ownerFormalParam>
+<ref refid="9c1e116e-9dc3-11ee-b387-37b0561177bc"/>
+</ownerFormalParam>
+<typeValue>
+<val>boolean</val>
+</typeValue>
+</Parameter>
+<Parameter id="241c02f0-a9aa-11ee-940d-f3acdb0fffeb">
+<direction>
+<val>in</val>
+</direction>
+<name>
+<val>SocialPlan socialPlan</val>
+</name>
+<ownerFormalParam>
+<ref refid="9c1e116e-9dc3-11ee-b387-37b0561177bc"/>
 </ownerFormalParam>
 </Parameter>
 </gaphor>

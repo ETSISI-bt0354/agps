@@ -167,13 +167,18 @@ public class SocialPlanService
         repository.update(socialPlan);
     }
 
+    private boolean isPastSocialPlan(SocialPlan socialPlan)
+    {
+        return socialPlan.getDate().isBefore(LocalDateTime.now(clock));
+    }
+
     private double ownerScore(String ownerName)
     {
         return repository
                 .fetchAllSocialPlans()
                 .stream()
                 .filter(plan -> ownerName.equals(plan.getOwnerName()))
-                .filter(SocialPlanService::isPastSocialPlan)
+                .filter(this::isPastSocialPlan)
                 .mapToDouble(SocialPlanService::averageScore)
                 .average()
                 .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
@@ -188,11 +193,6 @@ public class SocialPlanService
                 .mapToInt(ticket -> ticket.getScore().getAsInt())
                 .average()
                 .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
-    }
-
-    private static boolean isPastSocialPlan(SocialPlan socialPlan)
-    {
-        return socialPlan.getDate().isBefore(LocalDateTime.now());
     }
 
     private static int calculateSocialPlanDuration(SocialPlan socialPlan)
