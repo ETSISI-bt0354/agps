@@ -50,9 +50,14 @@ public class CommandHandler implements Command
     {
         StringBuilder message = new StringBuilder();
         commands.forEach((commandName, command) -> {
-            message.append(commandName);
-            message.append("\t\t");
-            message.append(command.description());
+            StringBuilder aux = new StringBuilder();
+            aux.append(commandName);
+            aux.append(" ".repeat(5));
+            if (aux.length() < 30)
+                aux.append(" ".repeat(30 - aux.length()));
+            aux.append(command.description());
+
+            message.append(aux);
             message.append("\n");
         });
 
