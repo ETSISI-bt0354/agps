@@ -7,6 +7,8 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAdde
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
+import java.time.format.DateTimeParseException;
+
 public class CLIUserView implements UserView {
 
     @Override
@@ -60,7 +62,7 @@ public class CLIUserView implements UserView {
     public String userAlreadyAdded(UserAlreadyAddedException exception)
     {
         StringBuilder error = new StringBuilder();
-        error.append("The user ");
+        error.append("The user");
         error.append(exception.getUser().getName());
         error.append(" already exists.");
         return error.toString();
@@ -121,5 +123,14 @@ public class CLIUserView implements UserView {
         error.append(requiredArguments);
         error.append(" arguments.");
         return error.toString();
+    }
+
+    @Override
+    public String invalidLocalDateFormat(DateTimeParseException e)
+    {
+        StringBuilder message = new StringBuilder();
+        message.append(e.getParsedString());
+        message.append(" is not a valid date or it is in a wrong format (Format: yyyy-mm-dd example: 2023-04-03).");
+        return message.toString();
     }
 }

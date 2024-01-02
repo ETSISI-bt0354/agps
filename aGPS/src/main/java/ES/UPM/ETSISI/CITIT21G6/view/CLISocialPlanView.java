@@ -14,6 +14,7 @@ import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -353,5 +354,20 @@ public class CLISocialPlanView implements SocialPlanView
             message.append(capacity.getAsInt());
         message.append(".");
         return message.toString();
+    }
+
+    @Override
+    public String invalidLocalDateTimeFormat(DateTimeParseException e)
+    {
+        StringBuilder message = new StringBuilder();
+        message.append(e.getParsedString());
+        message.append(" is not a valid date or it is in a wrong format (Format: yyyy-mm-dd hh-mm example: 2023-04-03 03:05).");
+        return message.toString();
+    }
+
+    @Override
+    public String invalidNumber(NumberFormatException e)
+    {
+        return e.getMessage();
     }
 }

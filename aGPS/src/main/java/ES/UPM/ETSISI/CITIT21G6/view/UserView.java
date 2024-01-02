@@ -7,6 +7,8 @@ import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAdde
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
 
+import java.time.format.DateTimeParseException;
+
 public interface UserView
 {
     String registerUser(User user);
@@ -20,4 +22,5 @@ public interface UserView
     String invalidAge(InvalidAgeException exception);
     String invalidPhoneNumber(InvalidPhoneNumberException exception);
     String insufficientArguments(int requiredArguments);
+    String invalidLocalDateFormat(DateTimeParseException e);
 }

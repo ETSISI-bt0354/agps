@@ -15,6 +15,7 @@ import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -50,17 +51,26 @@ public class SocialPlanController extends SessionController
             return view.noLoggedUser();
 
         String socialPlanName = args[0];
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime date = LocalDateTime.parse(args[1] + " " + args[2], formatter);
-        String location = args[3];
-        OptionalInt capacity = OptionalInt.empty();
-        if (args.length > MINIMUM_CREATION_ARGUMENT_LENGTH)
-            capacity = OptionalInt.of(Integer.parseInt(args[4]));
 
         try
         {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime date = LocalDateTime.parse(args[1] + " " + args[2], formatter);
+            String location = args[3];
+            OptionalInt capacity = OptionalInt.empty();
+            if (args.length > MINIMUM_CREATION_ARGUMENT_LENGTH)
+                capacity = OptionalInt.of(Integer.parseInt(args[4]));
+
             SocialPlan socialPlan = service.createSocialPlan(getLoggedUser().getName(), socialPlanName, date, location, capacity);
             return view.create(socialPlan);
+        }
+        catch (DateTimeParseException e)
+        {
+            return view.invalidLocalDateTimeFormat(e);
+        }
+        catch (NumberFormatException e)
+        {
+            return view.invalidNumber(e);
         }
         catch (PastDateException e)
         {
@@ -111,17 +121,22 @@ public class SocialPlanController extends SessionController
         SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
         String activityName = args[1];
         String description = args[2];
-        int duration = Integer.parseInt(args[3]);
-        double price = Double.parseDouble(args[4]);
-        ActivityType type = ActivityType.parse(args[5]);
-        OptionalInt capacity = OptionalInt.empty();
-        if (args.length > MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
-            capacity = OptionalInt.of(Integer.parseInt(args[6]));
 
         try
         {
+            int duration = Integer.parseInt(args[3]);
+            double price = Double.parseDouble(args[4]);
+            ActivityType type = ActivityType.parse(args[5]);
+            OptionalInt capacity = OptionalInt.empty();
+            if (args.length > MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
+                capacity = OptionalInt.of(Integer.parseInt(args[6]));
+
             Activity activity = service.addActivity(socialPlanId, activityName, description, duration, price, type, capacity);
             return view.addActivity(activity);
+        }
+        catch (NumberFormatException e)
+        {
+            return view.invalidNumber(e);
         }
         catch (InvalidCapacityException e)
         {
@@ -268,11 +283,16 @@ public class SocialPlanController extends SessionController
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         String participantName = getLoggedUser().getName();
-        OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
+
         try
         {
+            OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
             service.scoreSocialPlan(socialPlanId, participantName, score);
             return view.setScore(score);
+        }
+        catch (NumberFormatException e)
+        {
+            return view.invalidNumber(e);
         }
         catch (SocialPlanNotFoundException e)
         {
@@ -361,13 +381,18 @@ public class SocialPlanController extends SessionController
             return view.noLoggedUser();
 
         SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
-        OptionalInt capacity = OptionalInt.empty();
-        if (args.length > MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH)
-            capacity = OptionalInt.of(Integer.parseInt(args[1]));
         try
         {
+            OptionalInt capacity = OptionalInt.empty();
+            if (args.length > MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH)
+                capacity = OptionalInt.of(Integer.parseInt(args[1]));
+
             service.setSocialPlanCapacity(socialPlanId, capacity);
             return view.setSocialPlanCapacity(capacity);
+        }
+        catch (NumberFormatException e)
+        {
+            return view.invalidNumber(e);
         }
         catch (SocialPlanNotFoundException e)
         {

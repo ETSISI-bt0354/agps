@@ -10,6 +10,7 @@ import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import ES.UPM.ETSISI.CITIT21G6.view.UserView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class UserController extends SessionController
 {
@@ -31,13 +32,17 @@ public class UserController extends SessionController
 
         String name = args[0];
         String password = args[1];
-        LocalDate birthday = LocalDate.parse(args[2]);
         String phoneNumber = args[3];
 
         try
         {
+            LocalDate birthday = LocalDate.parse(args[2]);
             User user = service.registerUser(name, password, birthday, phoneNumber);
             return view.registerUser(user);
+        }
+        catch (DateTimeParseException e)
+        {
+            return view.invalidLocalDateFormat(e);
         }
         catch (InvalidPasswordException e)
         {

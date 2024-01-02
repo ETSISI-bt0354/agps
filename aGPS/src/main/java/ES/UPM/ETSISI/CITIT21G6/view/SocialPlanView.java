@@ -13,6 +13,7 @@ import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -45,4 +46,6 @@ public interface SocialPlanView
     String showParticipants(List<Ticket> participants);
     String showDuration(int duration);
     String setSocialPlanCapacity(OptionalInt capacity);
+    String invalidLocalDateTimeFormat(DateTimeParseException e);
+    String invalidNumber(NumberFormatException e);
 }
