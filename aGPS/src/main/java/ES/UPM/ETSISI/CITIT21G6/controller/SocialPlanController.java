@@ -28,7 +28,7 @@ public class SocialPlanController extends SessionController
     private static final int MINIMUM_LIST_PLANS_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH = 6;
-    private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 3;
+    private static final int MINIMUM_SET_SCORE_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH = 2;
@@ -313,7 +313,9 @@ public class SocialPlanController extends SessionController
 
         try
         {
-            OptionalInt score = OptionalInt.of(Integer.parseInt(args[2]));
+            OptionalInt score = OptionalInt.empty();
+            if (args.length > MINIMUM_SET_SCORE_ARGUMENT_LENGTH)
+                score = OptionalInt.of(Integer.parseInt(args[2]));
             service.scoreSocialPlan(socialPlanId, participantName, score);
             return view.setScore(score);
         }
