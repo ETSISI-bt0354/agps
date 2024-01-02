@@ -2,6 +2,8 @@ package ES.UPM.ETSISI.CITIT21G6.CLI.socialPlanCommand;
 
 import ES.UPM.ETSISI.CITIT21G6.controller.SocialPlanController;
 
+import java.util.List;
+
 public class DeleteSocialPlanCommand extends SocialPlanCommand
 {
     public DeleteSocialPlanCommand(SocialPlanController controller)
@@ -10,9 +12,9 @@ public class DeleteSocialPlanCommand extends SocialPlanCommand
     }
 
     @Override
-    public String exec(String[] args)
+    public String exec(List<String> args)
     {
-        return controller.deleteSocialPlan(args);
+        return controller.deleteSocialPlan(args.toArray(new String[0]));
     }
 
     @Override

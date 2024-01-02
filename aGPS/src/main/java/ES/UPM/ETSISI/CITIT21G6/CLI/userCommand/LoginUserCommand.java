@@ -2,6 +2,8 @@ package ES.UPM.ETSISI.CITIT21G6.CLI.userCommand;
 
 import ES.UPM.ETSISI.CITIT21G6.controller.UserController;
 
+import java.util.List;
+
 public class LoginUserCommand extends UserCommand
 {
     public LoginUserCommand(UserController controller)
@@ -10,9 +12,9 @@ public class LoginUserCommand extends UserCommand
     }
 
     @Override
-    public String exec(String[] args)
+    public String exec(List<String> args)
     {
-        return controller.loginUser(args);
+        return controller.loginUser(args.toArray(new String[0]));
     }
 
     @Override

@@ -2,6 +2,8 @@ package ES.UPM.ETSISI.CITIT21G6.CLI.socialPlanCommand;
 
 import ES.UPM.ETSISI.CITIT21G6.controller.SocialPlanController;
 
+import java.util.List;
+
 public class CreateSocialPlanCommand extends SocialPlanCommand
 {
     public CreateSocialPlanCommand(SocialPlanController controller)
@@ -10,9 +12,9 @@ public class CreateSocialPlanCommand extends SocialPlanCommand
     }
 
     @Override
-    public String exec(String[] args)
+    public String exec(List<String> args)
     {
-        return controller.createSocialPlan(args);
+        return controller.createSocialPlan(args.toArray(new String[0]));
     }
 
     @Override
