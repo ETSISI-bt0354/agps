@@ -70,7 +70,7 @@ public class SocialPlanController extends SessionController
         }
         catch (NumberFormatException e)
         {
-            return view.invalidNumber(e);
+            return view.invalidNumber(args[4]);
         }
         catch (PastDateException e)
         {
@@ -122,10 +122,29 @@ public class SocialPlanController extends SessionController
         String activityName = args[1];
         String description = args[2];
 
+        int duration;
         try
         {
-            int duration = Integer.parseInt(args[3]);
-            double price = Double.parseDouble(args[4]);
+            duration = Integer.parseInt(args[3]);
+        }
+        catch (NumberFormatException e)
+        {
+            return view.invalidNumber(args[3]);
+        }
+
+        double price;
+        try
+        {
+            price = Double.parseDouble(args[4]);
+        }
+        catch (NumberFormatException e)
+        {
+            return view.invalidNumber(args[4]);
+        }
+
+        try
+        {
+
             ActivityType type = ActivityType.parse(args[5]);
             OptionalInt capacity = OptionalInt.empty();
             if (args.length > MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
@@ -136,7 +155,7 @@ public class SocialPlanController extends SessionController
         }
         catch (NumberFormatException e)
         {
-            return view.invalidNumber(e);
+            return view.invalidNumber(args[6]);
         }
         catch (InvalidCapacityException e)
         {
@@ -300,7 +319,7 @@ public class SocialPlanController extends SessionController
         }
         catch (NumberFormatException e)
         {
-            return view.invalidNumber(e);
+            return view.invalidNumber(args[2]);
         }
         catch (SocialPlanNotFoundException e)
         {
@@ -400,7 +419,7 @@ public class SocialPlanController extends SessionController
         }
         catch (NumberFormatException e)
         {
-            return view.invalidNumber(e);
+            return view.invalidNumber(args[1]);
         }
         catch (SocialPlanNotFoundException e)
         {

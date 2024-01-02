@@ -366,9 +366,12 @@ public class CLISocialPlanView implements SocialPlanView
     }
 
     @Override
-    public String invalidNumber(NumberFormatException e)
+    public String invalidNumber(String input)
     {
-        return e.getMessage();
+        StringBuilder error = new StringBuilder();
+        error.append(input);
+        error.append(" is not a valid number.");
+        return error.toString();
     }
 
     @Override
