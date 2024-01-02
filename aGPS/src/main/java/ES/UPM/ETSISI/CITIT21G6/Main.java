@@ -85,7 +85,7 @@ public class Main
         scanner.close();
     }
 
-    public static CommandHandler systemCommandHandler(UserController userController, SocialPlanController socialPlanController)
+    private static CommandHandler systemCommandHandler(UserController userController, SocialPlanController socialPlanController)
     {
         CommandHandler handler = new CommandHandler("System commands");
 
@@ -96,7 +96,7 @@ public class Main
         return handler;
     }
 
-    public static CommandHandler userCommandHandler(UserController controller)
+    private static CommandHandler userCommandHandler(UserController controller)
     {
         CommandHandler handler = new CommandHandler("User commands");
 
@@ -107,7 +107,7 @@ public class Main
         return handler;
     }
 
-    public static CommandHandler socialPlanCommandHandler(SocialPlanController controller)
+    private static CommandHandler socialPlanCommandHandler(SocialPlanController controller)
     {
         CommandHandler handler = new CommandHandler("Social plan commands");
 
