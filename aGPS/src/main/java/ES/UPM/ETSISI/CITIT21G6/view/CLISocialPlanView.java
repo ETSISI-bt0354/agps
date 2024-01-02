@@ -241,10 +241,11 @@ public class CLISocialPlanView implements SocialPlanView
     public String collisionWithOtherSocialPlan(SocialPlanCollisionException e)
     {
         StringBuilder message = new StringBuilder();
-        message.append("This social plan collides with teh social plan ");
+        message.append("This social plan collides with the social plan ");
         message.append(e.getSocialPlanCollision().getId());
         message.append(" on date ");
-        message.append(e.getSocialPlanCollision().getDate());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        message.append(e.getSocialPlanCollision().getDate().format(formatter));
         message.append(".\nYou cannot join this social plan.");
         return message.toString();
     }
@@ -275,7 +276,8 @@ public class CLISocialPlanView implements SocialPlanView
     public String createSocialPlanPastDate(PastDateException e)
     {
         StringBuilder error = new StringBuilder("Woah there, this social plan is set for the past (");
-        error.append(e.getDate());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        error.append(e.getDate().format(formatter));
         error.append("). Check your clock if you think this is a mistake (or change that CMOS battery...)");
         return error.toString();
     }
