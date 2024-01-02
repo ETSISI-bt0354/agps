@@ -76,8 +76,9 @@ public class CLISocialPlanView implements SocialPlanView
         {
             message.append("\n");
             message.append(listPlan(socialPlan));
+            message.append("\n");
         }
-
+        message.deleteCharAt(message.length() - 1);
         return message.toString();
     }
 
@@ -291,7 +292,9 @@ public class CLISocialPlanView implements SocialPlanView
         {
             message.append("\n");
             message.append(showActivity(activity));
+            message.append("\n");
         }
+        message.deleteCharAt(message.length() - 1);
         return message.toString();
     }
 
@@ -313,9 +316,9 @@ public class CLISocialPlanView implements SocialPlanView
         message.append(activity.getPrice());
         message.append("\n\tType: ");
         String type = switch (activity.getType()) {
-            case GENERIC -> "generic";
-            case CINEMA -> "cinema";
-            case THEATRE -> "theatre";
+            case GENERIC -> "Generic";
+            case CINEMA -> "Cinema";
+            case THEATRE -> "Theatre";
         };
         message.append(type);
         return message.toString();
@@ -391,7 +394,7 @@ public class CLISocialPlanView implements SocialPlanView
     @Override
     public String createSocialPlanHelp()
     {
-        return "plan-name date time location [capacity]\n\tdate format: yyyy-mm-dd\n\ttime format hh:mm\n\tIf capacity is not present, it will be unlimited";
+        return "plan-name date time location [capacity]\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited";
     }
 
     @Override
