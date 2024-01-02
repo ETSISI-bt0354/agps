@@ -31,7 +31,7 @@ public class SocialPlanController extends SessionController
     private static final int MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH = 2;
-    private static final int MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH = 2;
+    private static final int MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH = 1;
     private SocialPlanService service;
     private SocialPlanView view;
 
