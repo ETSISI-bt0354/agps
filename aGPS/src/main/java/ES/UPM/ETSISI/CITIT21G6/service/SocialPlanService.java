@@ -41,7 +41,7 @@ public class SocialPlanService
     }
 
     public Activity addActivity(SocialPlanId id, String activityName, String description, int duration, double price, ActivityType type, OptionalInt capacity)
-            throws SocialPlanNotFoundException, InvalidCapacityException, ActivityAlreadyInSocialPlanException, PastSocialPlanException
+            throws SocialPlanNotFoundException, InvalidCapacityException, ActivityAlreadyInSocialPlanException, PastSocialPlanException, InvalidPriceException, InvalidDurationException
     {
         SocialPlan socialPlan = repository.fetch(id);
         if (isPastSocialPlan(socialPlan))

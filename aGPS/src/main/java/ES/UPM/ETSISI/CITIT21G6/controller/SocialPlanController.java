@@ -154,6 +154,14 @@ public class SocialPlanController extends SessionController
         {
             return view.activityAlreadyInSocialPlan(e);
         }
+        catch (InvalidPriceException e)
+        {
+            return view.invalidActivityPrice(e);
+        }
+        catch (InvalidDurationException e)
+        {
+            return view.invalidActivityDuration(e);
+        }
     }
 
     public String checkPlanCost(String[] args)

@@ -48,4 +48,6 @@ public interface SocialPlanView
     String setSocialPlanCapacity(OptionalInt capacity);
     String invalidLocalDateTimeFormat(DateTimeParseException e);
     String invalidNumber(NumberFormatException e);
+    String invalidActivityPrice(InvalidPriceException e);
+    String invalidActivityDuration(InvalidDurationException e);
 }

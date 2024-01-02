@@ -370,4 +370,16 @@ public class CLISocialPlanView implements SocialPlanView
     {
         return e.getMessage();
     }
+
+    @Override
+    public String invalidActivityPrice(InvalidPriceException e)
+    {
+        return "Activity price cannot be negative.";
+    }
+
+    @Override
+    public String invalidActivityDuration(InvalidDurationException e)
+    {
+        return "Activity duration must be positive.";
+    }
 }
