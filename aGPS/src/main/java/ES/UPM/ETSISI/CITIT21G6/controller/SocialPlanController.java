@@ -431,6 +431,10 @@ public class SocialPlanController extends SessionController
         {
             return view.invalidCapacity(e);
         }
+        catch (PastSocialPlanException e)
+        {
+            return view.pastSocialPlan(e);
+        }
     }
 
     public String createSocialPlanHelp()

@@ -160,9 +160,13 @@ public class SocialPlanService
     }
 
     public void setSocialPlanCapacity(SocialPlanId id, OptionalInt capacity)
-            throws SocialPlanNotFoundException, InvalidCapacityException
+            throws SocialPlanNotFoundException, InvalidCapacityException, PastSocialPlanException
     {
+
         SocialPlan socialPlan = repository.fetch(id);
+        if (isPastSocialPlan(socialPlan))
+            throw new PastSocialPlanException(socialPlan);
+
         socialPlan.setCapacity(capacity);
         repository.update(socialPlan);
     }
