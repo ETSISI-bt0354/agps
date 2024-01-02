@@ -32,6 +32,9 @@ public class SocialPlanService
     public SocialPlan createSocialPlan(String ownerName, String socialPlanName, LocalDateTime date, String location, OptionalInt capacity)
             throws PastDateException, InvalidCapacityException, SocialPlanAlreadyAddedException
     {
+        if (date.isBefore(LocalDateTime.now(clock)))
+            throw new PastDateException(date);
+
         SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, capacity, location, clock);
         repository.save(socialPlan);
         return socialPlan;
