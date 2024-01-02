@@ -59,7 +59,10 @@ public class Main
 
         Scanner scanner = new Scanner(System.in);
         boolean finish = false;
-
+        StringBuilder welcomeMessage = new StringBuilder();
+        welcomeMessage.append("Aplicacion de Gestión de Planes Sociales - v1.0\n");
+        welcomeMessage.append("Desarrollado por el grupo 6 de CITIT21\n");
+        System.out.println(welcomeMessage.toString());
         do
         {
             System.out.print("agps> ");
