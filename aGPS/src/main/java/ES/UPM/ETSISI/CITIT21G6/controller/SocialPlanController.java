@@ -14,12 +14,13 @@ import ES.UPM.ETSISI.CITIT21G6.service.SocialPlanService;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.OptionalInt;
 
 public class SocialPlanController extends SessionController
 {
-    private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 3;
+    private static final int MINIMUM_CREATION_ARGUMENT_LENGTH = 4;
     private static final int MINIMUM_DELETE_ARGUMENT_LENGTH = 1;
     private static final int MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH = 2;
     private static final int MINIMUM_ADD_PARTICIPANT_ARGUMENT_LENGTH = 2;
@@ -49,11 +50,12 @@ public class SocialPlanController extends SessionController
             return view.noLoggedUser();
 
         String socialPlanName = args[0];
-        LocalDateTime date = LocalDateTime.parse(args[1]);
-        String location = args[2];
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime date = LocalDateTime.parse(args[1] + " " + args[2], formatter);
+        String location = args[3];
         OptionalInt capacity = OptionalInt.empty();
         if (args.length > MINIMUM_CREATION_ARGUMENT_LENGTH)
-            capacity = OptionalInt.of(Integer.parseInt(args[3]));
+            capacity = OptionalInt.of(Integer.parseInt(args[4]));
 
         try
         {
