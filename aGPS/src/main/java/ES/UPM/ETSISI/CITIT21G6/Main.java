@@ -49,7 +49,7 @@ public class Main
         UserRepository userRepository = new InMemoryUserRepository();
         SocialPlanRepository socialPlanRepository = new InMemorySocialPlanRepository();
 
-        addDataToApp(userRepository, socialPlanRepository);
+        mockData(userRepository, socialPlanRepository);
 
         UserController userController = new UserController(new UserService(userRepository), new CLIUserView());
         SocialPlanController socialPlanController = new SocialPlanController(new SocialPlanService(socialPlanRepository, Clock.systemDefaultZone()), new CLISocialPlanView());
@@ -128,7 +128,7 @@ public class Main
         return handler;
     }
 
-    private static void addDataToApp(UserRepository userRepository, SocialPlanRepository socialPlanRepository)
+    private static void mockData(UserRepository userRepository, SocialPlanRepository socialPlanRepository)
     {
         UserService userService = new UserService(userRepository);
 
