@@ -72,9 +72,14 @@ public class CommandHandler implements Command
         }
 
         StringBuilder helpMessage = new StringBuilder();
-        helpMessage.append(commandName);
-        helpMessage.append(" ");
-        helpMessage.append(command.help(args));
+        if(!args.isEmpty())
+            helpMessage.append(command.help(args));
+        else {
+            helpMessage.append(command.description());
+            helpMessage.append("\n");
+            helpMessage.append(command.help(args));
+        }
+
 
         return helpMessage.toString();
     }
