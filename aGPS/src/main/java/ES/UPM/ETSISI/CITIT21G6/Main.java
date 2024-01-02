@@ -15,6 +15,7 @@ import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import ES.UPM.ETSISI.CITIT21G6.view.CLISocialPlanView;
 import ES.UPM.ETSISI.CITIT21G6.view.CLIUserView;
 
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -24,7 +25,7 @@ public class Main
     public static void main(String[] argv)
     {
         UserController userController = new UserController(new UserService(new InMemoryUserRepository()), new CLIUserView());
-        SocialPlanController socialPlanController = new SocialPlanController(new SocialPlanService(new InMemorySocialPlanRepository()), new CLISocialPlanView());
+        SocialPlanController socialPlanController = new SocialPlanController(new SocialPlanService(new InMemorySocialPlanRepository(), Clock.systemDefaultZone()), new CLISocialPlanView());
 
         CommandHandler cli = systemCommandHandler(userController, socialPlanController);
 

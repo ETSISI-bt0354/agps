@@ -2,6 +2,7 @@ package ES.UPM.ETSISI.CITIT21G6.model;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,10 @@ public class SocialPlan
     private List<Activity> activities;
     private List<Ticket> participants;
 
-    public SocialPlan(String ownerName, String name, LocalDateTime date, OptionalInt capacity, String location) throws PastDateException, InvalidCapacityException
+    public SocialPlan(String ownerName, String name, LocalDateTime date, OptionalInt capacity, String location, Clock clock) throws PastDateException, InvalidCapacityException
     {
         this.id = new SocialPlanId(ownerName, name);
-        if (date.isBefore(LocalDateTime.now()))
+        if (date.isBefore(LocalDateTime.now(clock)))
             throw new PastDateException(date);
         this.date = date;
         this.location = location;

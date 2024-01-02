@@ -17,6 +17,7 @@ import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.OptionalInt;
@@ -44,7 +45,7 @@ public class SocialPlanServiceTest
     void createSocialPlan() throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanService service = new SocialPlanService(repository);
+        SocialPlanService service = new SocialPlanService(repository, Clock.systemDefaultZone());
 
 
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
@@ -56,7 +57,7 @@ public class SocialPlanServiceTest
     void deleteSocialPlan()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanService service = new SocialPlanService(repository);
+        SocialPlanService service = new SocialPlanService(repository, Clock.systemDefaultZone());
 
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 
@@ -69,7 +70,7 @@ public class SocialPlanServiceTest
     void addActivity() throws SocialPlanNotFoundException
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanService service = new SocialPlanService(repository);
+        SocialPlanService service = new SocialPlanService(repository, Clock.systemDefaultZone());
 
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 
@@ -82,7 +83,7 @@ public class SocialPlanServiceTest
     void addParticipant()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanService service = new SocialPlanService(repository);
+        SocialPlanService service = new SocialPlanService(repository, Clock.systemDefaultZone());
 
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 
@@ -95,7 +96,7 @@ public class SocialPlanServiceTest
     void removeNonExistantParticipant()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanService service = new SocialPlanService(repository);
+        SocialPlanService service = new SocialPlanService(repository, Clock.systemDefaultZone());
 
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 
@@ -108,7 +109,7 @@ public class SocialPlanServiceTest
     void removeExistantParticipant()
     {
         SocialPlanRepository repository = new InMemorySocialPlanRepository();
-        SocialPlanService service = new SocialPlanService(repository);
+        SocialPlanService service = new SocialPlanService(repository, Clock.systemDefaultZone());
 
         assertDoesNotThrow(() -> service.createSocialPlan("test", "test", LocalDateTime.now().plusDays(15), "test", OptionalInt.empty()));
 

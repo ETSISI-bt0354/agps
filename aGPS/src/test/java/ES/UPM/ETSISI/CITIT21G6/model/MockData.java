@@ -5,6 +5,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidDurationExce
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidPriceException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.PastDateException;
 
+import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.OptionalInt;
@@ -13,7 +14,7 @@ public class MockData
 {
     static SocialPlan generateSocialPlan() throws PastDateException, InvalidCapacityException
     {
-        return new SocialPlan("A", "Prueba", LocalDateTime.now().plusDays(15), OptionalInt.empty(), "prueba");
+        return new SocialPlan("A", "Prueba", LocalDateTime.now().plusDays(15), OptionalInt.empty(), "prueba", Clock.systemDefaultZone());
     }
 
     static User[] generateUsers() throws Exception

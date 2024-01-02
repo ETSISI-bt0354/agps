@@ -10,6 +10,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.*;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -20,16 +21,18 @@ import java.util.stream.Stream;
 public class SocialPlanService
 {
     private SocialPlanRepository repository;
+    private final Clock clock;
 
-    public SocialPlanService(SocialPlanRepository repository)
+    public SocialPlanService(SocialPlanRepository repository, Clock clock)
     {
         this.repository = repository;
+        this.clock = clock;
     }
 
     public SocialPlan createSocialPlan(String ownerName, String socialPlanName, LocalDateTime date, String location, OptionalInt capacity)
             throws PastDateException, InvalidCapacityException, SocialPlanAlreadyAddedException
     {
-        SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, capacity, location);
+        SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, capacity, location, clock);
         repository.save(socialPlan);
         return socialPlan;
     }
