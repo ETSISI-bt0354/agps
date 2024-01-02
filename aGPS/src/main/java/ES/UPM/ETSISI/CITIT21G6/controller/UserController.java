@@ -104,4 +104,19 @@ public class UserController extends SessionController
         setLoggedUser(null);
         return view.loggedOutUser(loggedUser);
     }
+
+    public String registerUserHelp()
+    {
+        return view.registerUserHelp();
+    }
+
+    public String loginUserHelp()
+    {
+        return view.loginUserHelp();
+    }
+
+    public String logoutUserHelp()
+    {
+        return view.logoutUserHelp();
+    }
 }

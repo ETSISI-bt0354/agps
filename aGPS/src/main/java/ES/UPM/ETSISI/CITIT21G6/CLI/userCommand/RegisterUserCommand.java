@@ -22,4 +22,10 @@ public class RegisterUserCommand extends UserCommand
     {
         return "Register a user.";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.registerUserHelp();
+    }
 }

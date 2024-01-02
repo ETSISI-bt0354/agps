@@ -22,4 +22,10 @@ public class LoginUserCommand extends UserCommand
     {
         return "Log in user.";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.loginUserHelp();
+    }
 }

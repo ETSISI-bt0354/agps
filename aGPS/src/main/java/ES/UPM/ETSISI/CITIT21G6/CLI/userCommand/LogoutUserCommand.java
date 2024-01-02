@@ -22,4 +22,10 @@ public class LogoutUserCommand extends UserCommand
     {
         return "Log out user.";
     }
+
+    @Override
+    public String help(List<String> args)
+    {
+        return controller.logoutUserHelp();
+    }
 }

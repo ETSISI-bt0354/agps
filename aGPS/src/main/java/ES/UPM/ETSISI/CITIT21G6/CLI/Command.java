@@ -6,4 +6,5 @@ public interface Command
 {
     String exec(List<String> args);
     String description();
+    String help(List<String> args);
 }

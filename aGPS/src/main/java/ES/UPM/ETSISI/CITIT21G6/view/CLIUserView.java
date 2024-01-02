@@ -144,4 +144,22 @@ public class CLIUserView implements UserView
         error.append(" is already in use.");
         return error.toString();
     }
+
+    @Override
+    public String registerUserHelp()
+    {
+        return "name password birthday phone-number\n\tbirthday format: yyyy-mm-dd";
+    }
+
+    @Override
+    public String loginUserHelp()
+    {
+        return "name password";
+    }
+
+    @Override
+    public String logoutUserHelp()
+    {
+        return "";
+    }
 }
