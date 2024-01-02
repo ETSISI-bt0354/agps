@@ -117,8 +117,8 @@ public class Main
         handler.addCommand("check-cost", new CheckPlanCostCommand(controller));
         handler.addCommand("join", new JoinSocialPlanCommand(controller));
         handler.addCommand("unjoin", new UnjoinSocialPlanCommand(controller));
-        handler.addCommand("list", new ListSocialPlandCommand(controller));
-        handler.addCommand("list-subscribed", new ListSuscribedSocialPlanCommand(controller));
+        handler.addCommand("list", new ListSocialPlansCommand(controller));
+        handler.addCommand("list-subscribed", new ListSuscribedSocialPlansCommand(controller));
         handler.addCommand("set-score", new ScoreSocialPlanCommand(controller));
         handler.addCommand("show-activities", new ShowSocialPlanActivitiesCommand(controller));
         handler.addCommand("show-participants", new ShowParticipantsCommand(controller));

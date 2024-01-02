@@ -4,9 +4,9 @@ import ES.UPM.ETSISI.CITIT21G6.controller.SocialPlanController;
 
 import java.util.List;
 
-public class ListSuscribedSocialPlanCommand extends SocialPlanCommand
+public class ListSocialPlansCommand extends SocialPlanCommand
 {
-    public ListSuscribedSocialPlanCommand(SocialPlanController controller)
+    public ListSocialPlansCommand(SocialPlanController controller)
     {
         super(controller);
     }
@@ -14,18 +14,18 @@ public class ListSuscribedSocialPlanCommand extends SocialPlanCommand
     @Override
     public String exec(List<String> args)
     {
-        return controller.listSubscribedSocialPlans(args.toArray(new String[0]));
+        return controller.listSocialPlans(args.toArray(new String[0]));
     }
 
     @Override
     public String description()
     {
-        return "List subscribed social plans.";
+        return "List all future social plans";
     }
 
     @Override
     public String help(List<String> args)
     {
-        return controller.listSubscribedSocialPlansHelp();
+        return controller.listSocialPlansHelp();
     }
 }
