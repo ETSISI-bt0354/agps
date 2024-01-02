@@ -20,10 +20,11 @@ public class CommandHandler implements Command
         commands.put(commandName, command);
     }
 
+    @Override
     public String exec(List<String> args)
     {
         if (args.isEmpty())
-            return help();
+            return handlerHelp();
 
         String commandName = args.get(0);
         args.remove(0);
@@ -34,19 +35,47 @@ public class CommandHandler implements Command
             StringBuilder message = new StringBuilder();
             message.append(commandName);
             message.append(" is not a command\n");
-            message.append(help());
+            message.append(handlerHelp());
             return message.toString();
         }
 
         return command.exec(args);
     }
 
+    @Override
     public String description()
     {
         return description;
     }
 
-    private String help()
+    @Override
+    public String help(List<String> args)
+    {
+        if (args.isEmpty())
+            return handlerHelp();
+
+        String commandName = args.get(0);
+        args.remove(0);
+
+        Command command = commands.get(commandName);
+        if (command == null)
+        {
+            StringBuilder message = new StringBuilder();
+            message.append(commandName);
+            message.append(" is not a command\n");
+            message.append(handlerHelp());
+            return message.toString();
+        }
+
+        StringBuilder helpMessage = new StringBuilder();
+        helpMessage.append(commandName);
+        helpMessage.append(" ");
+        helpMessage.append(command.help(args));
+
+        return helpMessage.toString();
+    }
+
+    private String handlerHelp()
     {
         StringBuilder message = new StringBuilder();
         commands.forEach((commandName, command) -> {

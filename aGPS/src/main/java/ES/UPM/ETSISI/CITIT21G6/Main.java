@@ -62,13 +62,22 @@ public class Main
         do
         {
             System.out.print("agps> ");
+
             String input = scanner.nextLine();
             ArrayList<String> args = new ArrayList<>(Arrays.asList(input.split(commandSeparator)));
-            String command = args.get(0);
-            if (command.equals("exit"))
-                finish = true;
 
-            System.out.println(cli.exec(args));
+            String command = args.get(0);
+            if (command.equals("help"))
+            {
+                args.remove(0);
+                System.out.println(cli.help(args));
+            }
+            else
+            {
+                finish = command.equals("exit");
+                System.out.println(cli.exec(args));
+            }
+
             System.out.println();
 
         } while (!finish);
