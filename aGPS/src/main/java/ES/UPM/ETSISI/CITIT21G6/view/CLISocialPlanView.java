@@ -191,7 +191,7 @@ public class CLISocialPlanView implements SocialPlanView
     }
 
     @Override
-    public String ParticipantAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e)
+    public String participantAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e)
     {
         StringBuilder error = new StringBuilder();
         error.append("The participant ");
