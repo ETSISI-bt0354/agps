@@ -1,6 +1,5 @@
 package ES.UPM.ETSISI.CITIT21G6.service;
 
-import ES.UPM.ETSISI.CITIT21G6.repository.ListOrder;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;

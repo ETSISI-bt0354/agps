@@ -9,7 +9,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.PastSocialPl
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanServiceException.SocialPlanCollisionException;
 import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.*;
-import ES.UPM.ETSISI.CITIT21G6.repository.ListOrder;
+import ES.UPM.ETSISI.CITIT21G6.service.ListOrder;
 import ES.UPM.ETSISI.CITIT21G6.service.SocialPlanService;
 import ES.UPM.ETSISI.CITIT21G6.view.SocialPlanView;
 
