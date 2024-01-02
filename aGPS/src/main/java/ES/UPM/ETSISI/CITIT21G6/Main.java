@@ -22,6 +22,8 @@ import java.util.Scanner;
 
 public class Main
 {
+
+    private static final String commandSeparator = " ";
     public static void main(String[] argv)
     {
         UserController userController = new UserController(new UserService(new InMemoryUserRepository()), new CLIUserView());
@@ -36,7 +38,7 @@ public class Main
         {
             System.out.print("agps> ");
             String input = scanner.nextLine();
-            ArrayList<String> args = new ArrayList<>(Arrays.asList(input.split(" ")));
+            ArrayList<String> args = new ArrayList<>(Arrays.asList(input.split(commandSeparator)));
             String command = args.get(0);
             if (command.equals("exit"))
                 finish = true;
