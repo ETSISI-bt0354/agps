@@ -33,8 +33,10 @@ public class CommandHandler implements Command
         if (command == null)
         {
             StringBuilder message = new StringBuilder();
-            message.append(commandName);
-            message.append(" is not a command\n");
+            if(!commandName.isEmpty()){
+                message.append(commandName);
+                message.append(" is not a command\n");
+            }
             message.append(handlerHelp());
             return message.toString();
         }
@@ -61,8 +63,10 @@ public class CommandHandler implements Command
         if (command == null)
         {
             StringBuilder message = new StringBuilder();
-            message.append(commandName);
-            message.append(" is not a command\n");
+            if(!commandName.isEmpty()){
+                message.append(commandName);
+                message.append(" is not a command\n");
+            }
             message.append(handlerHelp());
             return message.toString();
         }
