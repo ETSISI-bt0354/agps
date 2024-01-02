@@ -148,18 +148,31 @@ public class CLIUserView implements UserView
     @Override
     public String registerUserHelp()
     {
-        return "name password birthday phone-number\n\tbirthday format: yyyy-mm-dd";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("user register");
+        message.append("\033[0m");
+        message.append(" name password birthday phone-number\n\tbirthday format: yyyy-mm-dd");
+        return message.toString();
     }
 
     @Override
     public String loginUserHelp()
     {
-        return "name password";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("user login");
+        message.append("\033[0m");
+        message.append(" name password");
+        return message.toString();
     }
 
     @Override
     public String logoutUserHelp()
     {
-        return "";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("user logout");
+        return message.toString();
     }
 }

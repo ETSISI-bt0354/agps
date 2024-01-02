@@ -394,78 +394,141 @@ public class CLISocialPlanView implements SocialPlanView
     @Override
     public String createSocialPlanHelp()
     {
-        return "plan-name date time location [capacity]\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan create");
+        message.append("\033[0m");
+        message.append(" plan-name date time location [capacity]\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited");
+        return message.toString();
     }
 
     @Override
     public String deleteSocialPlanHelp()
     {
-        return "plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan delete");
+        message.append("\033[0m");
+        message.append(" plan-name");
+        return message.toString();
     }
 
     @Override
     public String addActivityHelp()
     {
-        return "plan-name activity-name description duration price activity-type [capacity]\n\tIf capacity is not present, it will be unlimited";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan add-activity");
+        message.append("\033[0m");
+        message.append(" plan-name activity-name description duration price activity-type [capacity]\n\tIf capacity is not present, it will be unlimited");
+        return message.toString();
     }
 
     @Override
     public String listSocialPlansHelp()
     {
-        return "order\n\torder: DATE | SCORE";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan list");
+        message.append("\033[0m");
+        message.append(" order\n\torder: DATE | SCORE");
+        return message.toString();
     }
 
     @Override
     public String listSubscribedSocialPlansHelp()
     {
-        return "";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan list-subscribed");
+        return message.toString();
     }
 
     @Override
     public String unjoinSocialPlanHelp()
     {
-        return "owner-name plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan unjoin");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name");
+        return message.toString();
     }
 
     @Override
     public String joinSocialPlanHelp()
     {
-        return "owner-name plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan join");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name");
+        return message.toString();
     }
 
     @Override
     public String checkPlanCostHelp()
     {
-        return "owner-name plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan check-cost");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name");
+        return message.toString();
     }
 
     @Override
     public String setScoreHelp()
     {
-        return "owner-name plan-name [score]\n\tIf score is not present, it will be unset";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan set-score");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name [score]\n\tIf score is not present, it will be unset");
+        return message.toString();
     }
 
     @Override
     public String showActivitiesHelp()
     {
-        return "owner-name plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan show-activities");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name");
+        return message.toString();
     }
 
     @Override
     public String showParticipantsHelp()
     {
-        return "owner-name plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan show-participants");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name");
+        return message.toString();
     }
 
     @Override
     public String showDurationHelp()
     {
-        return "owner-name plan-name";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan show-duration");
+        message.append("\033[0m");
+        message.append(" owner-name plan-name");
+        return message.toString();
     }
 
     @Override
     public String setSocialPlanCapacityHelp()
     {
-        return "plan-name [capacity]\n\tIf capacity is not present, it will be unlimited";
+        StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
+        message.append("social-plan set-capacity");
+        message.append("\033[0m");
+        message.append(" plan-name [capacity]\n\tIf capacity is not present, it will be unlimited");
+        return message.toString();
     }
 }
