@@ -17,9 +17,11 @@ public class Age
         LocalDate currentDate = LocalDate.now();
         Period age = Period.between(birthday, currentDate);
 
-        if (age.getYears() < MINIMUM_AGE) throw new InvalidAgeException(InvalidAge.TOOYOUNG, MINIMUM_AGE);
+        if (age.getYears() < MINIMUM_AGE)
+            throw new InvalidAgeException(InvalidAge.TOOYOUNG, MINIMUM_AGE, age.getYears());
 
-        if (age.getYears() > MAXIMUM_AGE) throw new InvalidAgeException(InvalidAge.TOOOLD, MAXIMUM_AGE);
+        if (age.getYears() > MAXIMUM_AGE)
+            throw new InvalidAgeException(InvalidAge.TOOOLD, MAXIMUM_AGE, age.getYears());
 
         this.birthday = birthday;
     }

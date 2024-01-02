@@ -1,8 +1,11 @@
 package ES.UPM.ETSISI.CITIT21G6.model;
 
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidCapacityException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidDurationException;
+import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.InvalidPriceException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.PastDateException;
 
+import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.OptionalInt;
@@ -11,7 +14,7 @@ public class MockData
 {
     static SocialPlan generateSocialPlan() throws PastDateException, InvalidCapacityException
     {
-        return new SocialPlan("A", "Prueba", LocalDateTime.now().plusDays(15), OptionalInt.empty(), "prueba");
+        return new SocialPlan("A", "Prueba", LocalDateTime.now().plusDays(15), OptionalInt.empty(), "prueba", Clock.systemDefaultZone());
     }
 
     static User[] generateUsers() throws Exception
@@ -23,7 +26,7 @@ public class MockData
         return users;
     }
 
-    static Activity[] generateActivities() throws InvalidCapacityException
+    static Activity[] generateActivities() throws InvalidCapacityException, InvalidDurationException, InvalidPriceException
     {
         Activity[] activities = new Activity[3];
         activities[0] = new Activity("A", "a", 10, OptionalInt.empty(), 2, null);

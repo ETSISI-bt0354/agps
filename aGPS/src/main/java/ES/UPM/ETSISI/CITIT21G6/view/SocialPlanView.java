@@ -13,6 +13,7 @@ import ES.UPM.ETSISI.CITIT21G6.model.SocialPlan;
 import ES.UPM.ETSISI.CITIT21G6.model.SocialPlanId;
 import ES.UPM.ETSISI.CITIT21G6.model.Ticket;
 
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -24,15 +25,15 @@ public interface SocialPlanView
     String insufficientArguments(int requiredArguments);
     String noLoggedUser();
     String listPlans(List<SocialPlan> socialPlans);
-    String removeParticipant(String participantName);
-    String addParticipant(String participantName);
+    String unjoinSocialPlan(String participantName);
+    String joinSocialPlan(String participantName);
     String socialPlanNotFound(SocialPlanNotFoundException e);
     String price(double price);
     String invalidCapacity(InvalidCapacityException e);
     String socialPlanAlreadyAdded(SocialPlanAlreadyAddedException e);
     String activityAlreadyInSocialPlan(ActivityAlreadyInSocialPlanException e);
     String fullSocialPlan(FullSocialPlanException e);
-    String ParticipantAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e);
+    String participantAlreadyInSocialPlan(ParticipantAlreadyInSocialPlanException e);
     String wrongListOrder(ListOrderException e);
     String invalidScore(InvalidScoreException e);
     String setScore(OptionalInt score);
@@ -45,4 +46,21 @@ public interface SocialPlanView
     String showParticipants(List<Ticket> participants);
     String showDuration(int duration);
     String setSocialPlanCapacity(OptionalInt capacity);
+    String invalidLocalDateTimeFormat(DateTimeParseException e);
+    String invalidNumber(String input);
+    String invalidActivityPrice(InvalidPriceException e);
+    String invalidActivityDuration(InvalidDurationException e);
+    String createSocialPlanHelp();
+    String deleteSocialPlanHelp();
+    String addActivityHelp();
+    String listSocialPlansHelp();
+    String listSubscribedSocialPlansHelp();
+    String unjoinSocialPlanHelp();
+    String joinSocialPlanHelp();
+    String checkPlanCostHelp();
+    String setScoreHelp();
+    String showActivitiesHelp();
+    String showParticipantsHelp();
+    String showDurationHelp();
+    String setSocialPlanCapacityHelp();
 }

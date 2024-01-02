@@ -3,6 +3,7 @@ package ES.UPM.ETSISI.CITIT21G6.controller;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.PhoneNumberAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
@@ -10,6 +11,7 @@ import ES.UPM.ETSISI.CITIT21G6.service.UserService;
 import ES.UPM.ETSISI.CITIT21G6.view.UserView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class UserController extends SessionController
 {
@@ -31,13 +33,17 @@ public class UserController extends SessionController
 
         String name = args[0];
         String password = args[1];
-        LocalDate birthday = LocalDate.parse(args[2]);
         String phoneNumber = args[3];
 
         try
         {
+            LocalDate birthday = LocalDate.parse(args[2]);
             User user = service.registerUser(name, password, birthday, phoneNumber);
-            return view.showUser(user);
+            return view.registerUser(user);
+        }
+        catch (DateTimeParseException e)
+        {
+            return view.invalidLocalDateFormat(e);
         }
         catch (InvalidPasswordException e)
         {
@@ -54,6 +60,10 @@ public class UserController extends SessionController
         catch (UserAlreadyAddedException e)
         {
             return view.userAlreadyAdded(e);
+        }
+        catch (PhoneNumberAlreadyAddedException e)
+        {
+            return view.phoneNumberAlreadyAdded(e);
         }
     }
     public String loginUser(String[] args)
@@ -90,7 +100,23 @@ public class UserController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
+        User loggedUser = getLoggedUser();
         setLoggedUser(null);
-        return view.loggedOutUser(getLoggedUser());
+        return view.loggedOutUser(loggedUser);
+    }
+
+    public String registerUserHelp()
+    {
+        return view.registerUserHelp();
+    }
+
+    public String loginUserHelp()
+    {
+        return view.loginUserHelp();
+    }
+
+    public String logoutUserHelp()
+    {
+        return view.logoutUserHelp();
     }
 }
