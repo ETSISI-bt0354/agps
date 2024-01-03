@@ -160,8 +160,8 @@ public class CLIUserView implements UserView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("user register ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("name password birthday phone-number");
         if(!justArgs) {
             message.append("\n\tbirthday format: yyyy-mm-dd");
@@ -176,8 +176,8 @@ public class CLIUserView implements UserView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("user login ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("name password");
         return message.toString();
     }
@@ -189,6 +189,7 @@ public class CLIUserView implements UserView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("user logout ");
+            message.append("\033[0m");
         }
         return message.toString();
     }
