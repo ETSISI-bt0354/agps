@@ -25,7 +25,7 @@ public interface UserView
     String insufficientArguments(int requiredArguments);
     String invalidLocalDateFormat(DateTimeParseException e);
     String phoneNumberAlreadyAdded(PhoneNumberAlreadyAddedException e);
-    String registerUserHelp();
-    String loginUserHelp();
-    String logoutUserHelp();
+    String registerUserHelp(boolean justArgs);
+    String loginUserHelp(boolean justArgs);
+    String logoutUserHelp(boolean justArgs);
 }

@@ -16,9 +16,11 @@ public class CLIUserView implements UserView
     public String registerUser(User user)
     {
         StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
         message.append("The user ");
         message.append(user.getName());
         message.append(" has been registered successfully.");
+        message.append("\033[0;0m");
         return message.toString();
     }
 
@@ -146,33 +148,39 @@ public class CLIUserView implements UserView
     }
 
     @Override
-    public String registerUserHelp()
+    public String registerUserHelp(boolean justArgs)
     {
         StringBuilder message = new StringBuilder();
-        message.append("\033[0;32m");
-        message.append("user register");
+        if(!justArgs) {
+            message.append("\033[0;32m");
+            message.append("user register ");
+        }
         message.append("\033[0m");
-        message.append(" name password birthday phone-number\n\tbirthday format: yyyy-mm-dd");
+        message.append("name password birthday phone-number\n\tbirthday format: yyyy-mm-dd");
         return message.toString();
     }
 
     @Override
-    public String loginUserHelp()
+    public String loginUserHelp(boolean justArgs)
     {
         StringBuilder message = new StringBuilder();
-        message.append("\033[0;32m");
-        message.append("user login");
+        if(!justArgs) {
+            message.append("\033[0;32m");
+            message.append("user login ");
+        }
         message.append("\033[0m");
-        message.append(" name password");
+        message.append("name password");
         return message.toString();
     }
 
     @Override
-    public String logoutUserHelp()
+    public String logoutUserHelp(boolean justArgs)
     {
         StringBuilder message = new StringBuilder();
-        message.append("\033[0;32m");
-        message.append("user logout");
+        if(!justArgs) {
+            message.append("\033[0;32m");
+            message.append("user logout ");
+        }
         return message.toString();
     }
 }

@@ -28,8 +28,13 @@ public class UserController extends SessionController
     }
     public String registerUser(String[] args)
     {
-        if(args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH)
-            return view.insufficientArguments(MINIMUM_REGISTER_ARGUMENT_LENGTH);
+        if(args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH) {
+            StringBuilder message = new StringBuilder();
+            message.append(view.insufficientArguments(MINIMUM_REGISTER_ARGUMENT_LENGTH));
+            message.append("\n");
+            message.append(view.registerUserHelp(true));
+            return message.toString();
+        }
 
         String name = args[0];
         String password = args[1];
@@ -105,18 +110,18 @@ public class UserController extends SessionController
         return view.loggedOutUser(loggedUser);
     }
 
-    public String registerUserHelp()
+    public String registerUserHelp(boolean justArgs)
     {
-        return view.registerUserHelp();
+        return view.registerUserHelp(justArgs);
     }
 
-    public String loginUserHelp()
+    public String loginUserHelp(boolean justArgs)
     {
-        return view.loginUserHelp();
+        return view.loginUserHelp(justArgs);
     }
 
-    public String logoutUserHelp()
+    public String logoutUserHelp(boolean justArgs)
     {
-        return view.logoutUserHelp();
+        return view.logoutUserHelp(justArgs);
     }
 }

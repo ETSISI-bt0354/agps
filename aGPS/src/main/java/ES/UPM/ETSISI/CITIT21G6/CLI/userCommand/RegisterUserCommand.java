@@ -26,6 +26,6 @@ public class RegisterUserCommand extends UserCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.registerUserHelp();
+        return controller.registerUserHelp(false);
     }
 }

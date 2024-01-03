@@ -26,6 +26,6 @@ public class LoginUserCommand extends UserCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.loginUserHelp();
+        return controller.loginUserHelp(false);
     }
 }

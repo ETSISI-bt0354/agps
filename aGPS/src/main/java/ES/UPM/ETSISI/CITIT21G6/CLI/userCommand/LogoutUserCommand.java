@@ -26,6 +26,6 @@ public class LogoutUserCommand extends UserCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.logoutUserHelp();
+        return controller.logoutUserHelp(false);
     }
 }
