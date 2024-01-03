@@ -89,6 +89,10 @@ public class SocialPlanController extends SessionController
 
     public String deleteSocialPlan(String[] args)
     {
+
+        if(!isUserLogged())
+            return view.noLoggedUser();
+
         if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
         {
             return view.insufficientArguments(MINIMUM_DELETE_ARGUMENT_LENGTH);
@@ -185,6 +189,10 @@ public class SocialPlanController extends SessionController
 
     public String checkPlanCost(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
@@ -243,6 +251,10 @@ public class SocialPlanController extends SessionController
 
     public String unjoinSocialPlan(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if(args.length < MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH);
 
@@ -273,6 +285,10 @@ public class SocialPlanController extends SessionController
 
     public String listSocialPlans(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
@@ -302,6 +318,10 @@ public class SocialPlanController extends SessionController
 
     public String scoreSocialPlan(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if (args.length < MINIMUM_SET_SCORE_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_SET_SCORE_ARGUMENT_LENGTH);
 
@@ -343,6 +363,10 @@ public class SocialPlanController extends SessionController
 
     public String showSocialPlanActivities(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if (args.length < MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH);
 
@@ -363,6 +387,10 @@ public class SocialPlanController extends SessionController
 
     public String showParticipants(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if (args.length < MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH);
 
@@ -383,6 +411,10 @@ public class SocialPlanController extends SessionController
 
     public String showSocialPlanDuration(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if (args.length < MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH);
 
@@ -403,6 +435,10 @@ public class SocialPlanController extends SessionController
 
     public String setSocialPlanCapacity(String[] args)
     {
+
+        if (!isUserLogged())
+            return view.noLoggedUser();
+
         if (args.length < MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH);
 
