@@ -28,7 +28,7 @@ public class UserController extends SessionController
     }
     public String registerUser(String[] args)
     {
-        if(args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_REGISTER_ARGUMENT_LENGTH);
 
         String name = args[0];
@@ -69,7 +69,7 @@ public class UserController extends SessionController
 
     public String loginUser(String[] args)
     {
-        if(args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH)
+        if (args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH)
             return view.insufficientArguments(MINIMUM_LOGIN_ARGUMENT_LENGTH);
 
 
@@ -108,18 +108,18 @@ public class UserController extends SessionController
         return view.loggedOutUser(loggedUser);
     }
 
-    public String registerUserHelp(boolean justArgs)
+    public String registerUserHelp()
     {
-        return view.registerUserHelp(justArgs);
+        return view.registerUserHelp();
     }
 
-    public String loginUserHelp(boolean justArgs)
+    public String loginUserHelp()
     {
-        return view.loginUserHelp(justArgs);
+        return view.loginUserHelp();
     }
 
-    public String logoutUserHelp(boolean justArgs)
+    public String logoutUserHelp()
     {
-        return view.logoutUserHelp(justArgs);
+        return view.logoutUserHelp();
     }
 }

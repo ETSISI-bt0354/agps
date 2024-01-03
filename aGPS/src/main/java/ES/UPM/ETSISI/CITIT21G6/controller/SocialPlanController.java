@@ -449,24 +449,24 @@ public class SocialPlanController extends SessionController
         }
     }
 
-    public String createSocialPlanHelp(boolean justArgs)
+    public String createSocialPlanHelp()
     {
-        return view.createSocialPlanHelp(justArgs);
+        return view.createSocialPlanHelp();
     }
 
-    public String deleteSocialPlanHelp(boolean justArgs)
+    public String deleteSocialPlanHelp()
     {
-        return view.deleteSocialPlanHelp(justArgs);
+        return view.deleteSocialPlanHelp();
     }
 
-    public String addActivityHelp(boolean justArgs)
+    public String addActivityHelp()
     {
-        return view.addActivityHelp(justArgs);
+        return view.addActivityHelp();
     }
 
-    public String listSocialPlansHelp(boolean justArgs)
+    public String listSocialPlansHelp()
     {
-        return view.listSocialPlansHelp(justArgs);
+        return view.listSocialPlansHelp();
     }
 
     public String listSubscribedSocialPlansHelp()
@@ -474,43 +474,43 @@ public class SocialPlanController extends SessionController
         return view.listSubscribedSocialPlansHelp();
     }
 
-    public String unjoinSocialPlanHelp(boolean justArgs)
+    public String unjoinSocialPlanHelp()
     {
-        return view.unjoinSocialPlanHelp(justArgs);
+        return view.unjoinSocialPlanHelp();
     }
 
-    public String joinSocialPlanHelp(boolean justArgs)
+    public String joinSocialPlanHelp()
     {
-        return view.joinSocialPlanHelp(justArgs);
+        return view.joinSocialPlanHelp();
     }
 
-    public String checkPlanCostHelp(boolean justArgs)
+    public String checkPlanCostHelp()
     {
-        return view.checkPlanCostHelp(justArgs);
+        return view.checkPlanCostHelp();
     }
 
-    public String setScoreHelp(boolean justArgs)
+    public String setScoreHelp()
     {
-        return view.setScoreHelp(justArgs);
+        return view.setScoreHelp();
     }
 
-    public String showActivitiesHelp(boolean justArgs)
+    public String showActivitiesHelp()
     {
-        return view.showActivitiesHelp(justArgs);
+        return view.showActivitiesHelp();
     }
 
-    public String showParticipantsHelp(boolean justArgs)
+    public String showParticipantsHelp()
     {
-        return view.showParticipantsHelp(justArgs);
+        return view.showParticipantsHelp();
     }
 
-    public String showDurationHelp(boolean justArgs)
+    public String showDurationHelp()
     {
-        return view.showDurationHelp(justArgs);
+        return view.showDurationHelp();
     }
 
-    public String setSocialPlanCapacityHelp(boolean justArgs)
+    public String setSocialPlanCapacityHelp()
     {
-        return view.setSocialPlanCapacityHelp(justArgs);
+        return view.setSocialPlanCapacityHelp();
     }
 }

@@ -154,45 +154,28 @@ public class CLIUserView implements UserView
     }
 
     @Override
-    public String registerUserHelp(boolean justArgs)
+    public String registerUserHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("user register ");
-            message.append("\033[0m");
-        }
         message.append("name password birthday phone-number");
-        if(!justArgs) {
-            message.append("\033[0;36m");
-            message.append("\n\tbirthday format: yyyy-mm-dd");
-            message.append("\033[0m");
-        }
+        message.append("\033[0;36m");
+        message.append("\n\tbirthday format: yyyy-mm-dd");
+        message.append("\033[0m");
         return message.toString();
     }
 
     @Override
-    public String loginUserHelp(boolean justArgs)
+    public String loginUserHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("user login ");
-            message.append("\033[0m");
-        }
         message.append("name password");
         return message.toString();
     }
 
     @Override
-    public String logoutUserHelp(boolean justArgs)
+    public String logoutUserHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("user logout ");
-            message.append("\033[0m");
-        }
         return message.toString();
     }
 }

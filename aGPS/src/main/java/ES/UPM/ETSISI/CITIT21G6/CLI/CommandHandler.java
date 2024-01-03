@@ -51,7 +51,7 @@ public class CommandHandler implements Command
     }
 
     @Override
-    public String help(List<String> args)
+    public String help(List<String> args, String prefixCommand)
     {
         if (args.isEmpty())
             return handlerHelp();
@@ -64,6 +64,7 @@ public class CommandHandler implements Command
         {
             StringBuilder message = new StringBuilder();
             if(!commandName.isEmpty()){
+                message.append(CommandHelper.prefixCommandBuilder(prefixCommand, " "));
                 message.append(commandName);
                 message.append(" is not a command\n");
             }
@@ -71,16 +72,19 @@ public class CommandHandler implements Command
             return message.toString();
         }
 
+        StringBuilder message = CommandHelper.prefixCommandBuilder(prefixCommand, " ");
+        message.append("\033[0;32m");
+        message.append(commandName);
+        message.append("\033[0m");
+
         StringBuilder helpMessage = new StringBuilder();
-        if(!args.isEmpty())
-            helpMessage.append(command.help(args));
-        else {
+        if (args.isEmpty())
+        {
             helpMessage.append(command.description());
             helpMessage.append("\n");
-            helpMessage.append(command.help(args));
         }
 
-
+        helpMessage.append(command.help(args, message.toString()));
         return helpMessage.toString();
     }
 

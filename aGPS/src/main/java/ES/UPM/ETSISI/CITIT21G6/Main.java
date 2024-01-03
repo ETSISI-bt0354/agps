@@ -71,7 +71,7 @@ public class Main
             if (command.equals("help"))
             {
                 args.remove(0);
-                System.out.println(cli.help(args));
+                System.out.println(cli.help(args, ""));
             }
             else
             {

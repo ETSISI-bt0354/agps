@@ -392,205 +392,124 @@ public class CLISocialPlanView implements SocialPlanView
     }
 
     @Override
-    public String createSocialPlanHelp(boolean justArgs)
+    public String createSocialPlanHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs){
-            message.append("\033[0;32m");
-            message.append("social-plan create ");
-            message.append("\033[0m");
-        }
         message.append("plan-name date time location ");
         message.append("\033[0;33m");
         message.append("[capacity]");
         message.append("\033[0m");
-        if(!justArgs) {
-            message.append("\033[0;36m");
-            message.append("\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited");
-            message.append("\033[0m");
-        }
+        message.append("\033[0;36m");
+        message.append("\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited");
+        message.append("\033[0m");
+
         return message.toString();
     }
 
     @Override
-    public String deleteSocialPlanHelp(boolean justArgs)
+    public String deleteSocialPlanHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs){
-            message.append("\033[0;32m");
-            message.append("social-plan delete ");
-            message.append("\033[0m");
-        }
         message.append("plan-name");
         return message.toString();
     }
 
     @Override
-    public String addActivityHelp(boolean justArgs)
+    public String addActivityHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs){
-            message.append("\033[0;32m");
-            message.append("social-plan add-activity ");
-            message.append("\033[0m");
-        }
         message.append("plan-name activity-name description duration price activity-type ");
         message.append("\033[0;33m");
         message.append("[capacity]");
         message.append("\033[0m");
-        if(!justArgs) {
-            message.append("\033[0;36m");
-            message.append("\n\tIf capacity is not present, it will be unlimited");
-            message.append("\033[0m");
-        }
+        message.append("\033[0;36m");
+        message.append("\n\tIf capacity is not present, it will be unlimited");
+        message.append("\033[0m");
+
         return message.toString();
     }
 
     @Override
-    public String listSocialPlansHelp(boolean justArgs)
+    public String listSocialPlansHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("social-plan list ");
-            message.append("\033[0m");
-        }
         message.append("order");
-        if(!justArgs){
-            message.append("\033[0;36m");
-            message.append("\n\torder: DATE | SCORE");
-            message.append("\033[0m");
-        }
+        message.append("\033[0;36m");
+        message.append("\n\torder: DATE | SCORE");
+        message.append("\033[0m");
+
         return message.toString();
     }
 
     @Override
     public String listSubscribedSocialPlansHelp()
     {
-        StringBuilder message = new StringBuilder();
-        message.append("\033[0;32m");
-        message.append("social-plan list-subscribed");
-        message.append("\033[0m");
-        return message.toString();
+        return "";
     }
 
     @Override
-    public String unjoinSocialPlanHelp(boolean justArgs)
+    public String unjoinSocialPlanHelp()
     {
-        StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("social-plan unjoin ");
-            message.append("\033[0m");
-        }
-        message.append("owner-name plan-name");
-        return message.toString();
+        return "owner-name plan-name";
     }
 
     @Override
-    public String joinSocialPlanHelp(boolean justArgs)
+    public String joinSocialPlanHelp()
     {
-        StringBuilder message = new StringBuilder();
-        if(!justArgs){
-            message.append("\033[0;32m");
-            message.append("social-plan join ");
-            message.append("\033[0m");
-        }
-        message.append("owner-name plan-name");
-        return message.toString();
+        return "owner-name plan-name";
     }
 
     @Override
-    public String checkPlanCostHelp(boolean justArgs)
+    public String checkPlanCostHelp()
     {
-        StringBuilder message = new StringBuilder();
-        if(!justArgs){
-            message.append("\033[0;32m");
-            message.append("social-plan check-cost ");
-            message.append("\033[0m");
-        }
-        message.append("owner-name plan-name");
-        return message.toString();
+        return "owner-name plan-name";
     }
 
     @Override
-    public String setScoreHelp(boolean justArgs)
+    public String setScoreHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("social-plan set-score ");
-            message.append("\033[0m");
-        }
         message.append("owner-name plan-name ");
         message.append("\033[0;33m");
         message.append("[score]");
         message.append("\033[0m");
-        if(!justArgs) {
-            message.append("\033[0;36m");
-            message.append("\n\tIf score is not present, it will be unset");
-            message.append("\033[0m");
-        }
+        message.append("\033[0;36m");
+        message.append("\n\tIf score is not present, it will be unset");
+        message.append("\033[0m");
+
         return message.toString();
     }
 
     @Override
-    public String showActivitiesHelp(boolean justArgs)
+    public String showActivitiesHelp()
     {
-        StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("social-plan show-activities ");
-            message.append("\033[0m");
-        }
-        message.append("owner-name plan-name");
-        return message.toString();
+        return "owner-name plan-name";
     }
 
     @Override
-    public String showParticipantsHelp(boolean justArgs)
+    public String showParticipantsHelp()
     {
-        StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("social-plan show-participants ");
-            message.append("\033[0m");
-        }
-        message.append("owner-name plan-name");
-        return message.toString();
+        return "owner-name plan-name";
     }
 
     @Override
-    public String showDurationHelp(boolean justDuration)
+    public String showDurationHelp()
     {
-        StringBuilder message = new StringBuilder();
-        if(!justDuration) {
-            message.append("\033[0;32m");
-            message.append("social-plan show-duration ");
-            message.append("\033[0m");
-        }
-        message.append("owner-name plan-name");
-        return message.toString();
+        return "owner-name plan-name";
     }
 
     @Override
-    public String setSocialPlanCapacityHelp(boolean justArgs)
+    public String setSocialPlanCapacityHelp()
     {
         StringBuilder message = new StringBuilder();
-        if(!justArgs) {
-            message.append("\033[0;32m");
-            message.append("social-plan set-capacity ");
-            message.append("\033[0m");
-        }
         message.append("plan-name ");
         message.append("\033[0;33m");
         message.append("[capacity]");
         message.append("\033[0m");
-        if(!justArgs) {
-            message.append("\033[0;36m");
-            message.append("\n\tIf capacity is not present, it will be unlimited");
-            message.append("\033[0m");
-        }
+        message.append("\033[0;36m");
+        message.append("\n\tIf capacity is not present, it will be unlimited");
+        message.append("\033[0m");
+
         return message.toString();
     }
 }

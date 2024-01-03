@@ -1,5 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.CLI.userCommand;
 
+import ES.UPM.ETSISI.CITIT21G6.CLI.CommandHelper;
 import ES.UPM.ETSISI.CITIT21G6.controller.UserController;
 
 import java.util.List;
@@ -24,8 +25,10 @@ public class RegisterUserCommand extends UserCommand
     }
 
     @Override
-    public String help(List<String> args)
+    public String help(List<String> args, String prefixCommand)
     {
-        return controller.registerUserHelp(false);
+        StringBuilder message = CommandHelper.prefixCommandBuilder(prefixCommand, " ");
+        message.append(controller.registerUserHelp());
+        return message.toString();
     }
 }

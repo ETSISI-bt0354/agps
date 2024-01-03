@@ -18,8 +18,8 @@ public class ExitCommand implements Command
     }
 
     @Override
-    public String help(List<String> args)
+    public String help(List<String> args, String prefixCommand)
     {
-        return "";
+        return CommandHelper.prefixCommandBuilder(prefixCommand, "").toString();
     }
 }

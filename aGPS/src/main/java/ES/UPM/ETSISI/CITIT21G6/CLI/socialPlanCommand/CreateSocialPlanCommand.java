@@ -1,5 +1,6 @@
 package ES.UPM.ETSISI.CITIT21G6.CLI.socialPlanCommand;
 
+import ES.UPM.ETSISI.CITIT21G6.CLI.CommandHelper;
 import ES.UPM.ETSISI.CITIT21G6.controller.SocialPlanController;
 
 import java.util.List;
@@ -24,8 +25,10 @@ public class CreateSocialPlanCommand extends SocialPlanCommand
     }
 
     @Override
-    public String help(List<String> args)
+    public String help(List<String> args, String prefixCommand)
     {
-        return controller.createSocialPlanHelp(false);
+        StringBuilder message = CommandHelper.prefixCommandBuilder(prefixCommand, " ");
+        message.append(controller.createSocialPlanHelp());
+        return message.toString();
     }
 }
