@@ -59,7 +59,7 @@ public class Main
 
         Scanner scanner = new Scanner(System.in);
         boolean finish = false;
-        System.out.println("Social Plan Management Application - v1.0\nDevelop by group 6 of CITIT21");
+        System.out.println("Social Plan Management Application - v1.0\nDeveloped by CITIT21-G6");
         do
         {
             System.out.print("agps> ");
