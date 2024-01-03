@@ -404,8 +404,11 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("\033[0;33m");
         message.append("[capacity]");
         message.append("\033[0m");
-        if(!justArgs)
+        if(!justArgs) {
+            message.append("\033[0;36m");
             message.append("\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited");
+            message.append("\033[0m");
+        }
         return message.toString();
     }
 
@@ -435,8 +438,11 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("\033[0;33m");
         message.append("[capacity]");
         message.append("\033[0m");
-        if(!justArgs)
+        if(!justArgs) {
+            message.append("\033[0;36m");
             message.append("\n\tIf capacity is not present, it will be unlimited");
+            message.append("\033[0m");
+        }
         return message.toString();
     }
 
@@ -520,8 +526,11 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("\033[0;33m");
         message.append("[score]");
         message.append("\033[0m");
-        if(!justArgs)
+        if(!justArgs) {
+            message.append("\033[0;36m");
             message.append("\n\tIf score is not present, it will be unset");
+            message.append("\033[0m");
+        }
         return message.toString();
     }
 
@@ -577,8 +586,11 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("\033[0;33m");
         message.append("[capacity]");
         message.append("\033[0m");
-        if(!justArgs)
+        if(!justArgs) {
+            message.append("\033[0;36m");
             message.append("\n\tIf capacity is not present, it will be unlimited");
+            message.append("\033[0m");
+        }
         return message.toString();
     }
 }
