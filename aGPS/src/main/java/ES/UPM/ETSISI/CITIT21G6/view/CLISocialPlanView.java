@@ -444,10 +444,17 @@ public class CLISocialPlanView implements SocialPlanView
     public String listSocialPlansHelp(boolean justArgs)
     {
         StringBuilder message = new StringBuilder();
-        message.append("\033[0;32m");
-        message.append("social-plan list");
-        message.append("\033[0m");
-        message.append(" order\n\torder: DATE | SCORE");
+        if(!justArgs) {
+            message.append("\033[0;32m");
+            message.append("social-plan list ");
+            message.append("\033[0m");
+        }
+        message.append("order");
+        if(!justArgs){
+            message.append("\033[0;36m");
+            message.append("\n\torder: DATE | SCORE");
+            message.append("\033[0m");
+        }
         return message.toString();
     }
 
