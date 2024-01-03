@@ -398,8 +398,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs){
             message.append("\033[0;32m");
             message.append("social-plan create ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("plan-name date time location ");
         message.append("\033[0;33m");
         message.append("[capacity]");
@@ -416,8 +416,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs){
             message.append("\033[0;32m");
             message.append("social-plan delete ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("plan-name");
         return message.toString();
     }
@@ -429,8 +429,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs){
             message.append("\033[0;32m");
             message.append("social-plan add-activity ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("plan-name activity-name description duration price activity-type ");
         message.append("\033[0;33m");
         message.append("[capacity]");
@@ -457,6 +457,7 @@ public class CLISocialPlanView implements SocialPlanView
         StringBuilder message = new StringBuilder();
         message.append("\033[0;32m");
         message.append("social-plan list-subscribed");
+        message.append("\033[0m");
         return message.toString();
     }
 
@@ -467,8 +468,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("social-plan unjoin ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name");
         return message.toString();
     }
@@ -480,8 +481,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs){
             message.append("\033[0;32m");
             message.append("social-plan join ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name");
         return message.toString();
     }
@@ -493,8 +494,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs){
             message.append("\033[0;32m");
             message.append("social-plan check-cost ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name");
         return message.toString();
     }
@@ -506,8 +507,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("social-plan set-score ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name ");
         message.append("\033[0;33m");
         message.append("[score]");
@@ -524,8 +525,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("social-plan show-activities ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name");
         return message.toString();
     }
@@ -537,8 +538,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("social-plan show-participants ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name");
         return message.toString();
     }
@@ -550,8 +551,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justDuration) {
             message.append("\033[0;32m");
             message.append("social-plan show-duration ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("owner-name plan-name");
         return message.toString();
     }
@@ -563,8 +564,8 @@ public class CLISocialPlanView implements SocialPlanView
         if(!justArgs) {
             message.append("\033[0;32m");
             message.append("social-plan set-capacity ");
+            message.append("\033[0m");
         }
-        message.append("\033[0m");
         message.append("plan-name ");
         message.append("\033[0;33m");
         message.append("[capacity]");
