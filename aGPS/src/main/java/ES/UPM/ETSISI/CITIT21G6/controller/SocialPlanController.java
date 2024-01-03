@@ -45,18 +45,11 @@ public class SocialPlanController extends SessionController
 
     public String createSocialPlan(String[] args) {
 
-        if(!isUserLogged())
+        if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_CREATION_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_CREATION_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.createSocialPlanHelp(true));
-            message.append(")");
-            return message.toString();
-        }
-
+        if (args.length < MINIMUM_CREATION_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_CREATION_ARGUMENT_LENGTH);
 
         String socialPlanName = args[0];
 
@@ -92,25 +85,16 @@ public class SocialPlanController extends SessionController
         {
             return view.socialPlanAlreadyAdded(e);
         }
-
     }
 
     public String deleteSocialPlan(String[] args)
     {
 
-        if(!isUserLogged())
+        if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
-        {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_DELETE_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.deleteSocialPlanHelp(true));
-            message.append(")");
-            return message.toString();
-        }
-
+        if (args.length < MINIMUM_DELETE_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_DELETE_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
         try
@@ -131,14 +115,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH){
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.addActivityHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_ADD_ACTIVITY_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
         String activityName = args[1];
@@ -211,14 +189,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.checkPlanCostHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_CHECK_PLAN_COST_ARGUMENT_LENGTH);
 
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
@@ -240,14 +212,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_ADD_PARTICIPANT_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_ADD_PARTICIPANT_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.joinSocialPlanHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_ADD_PARTICIPANT_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_ADD_PARTICIPANT_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         String participantName = getLoggedUser().getName();
@@ -284,14 +250,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.joinSocialPlanHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_REMOVE_PARTICIPANT_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         String participantName = getLoggedUser().getName();
@@ -321,14 +281,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if(args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.listSocialPlansHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_LIST_PLANS_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_LIST_PLANS_ARGUMENT_LENGTH);
 
         try
         {
@@ -357,14 +311,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if (args.length < MINIMUM_SET_SCORE_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_SET_SCORE_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.setScoreHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_SET_SCORE_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SET_SCORE_ARGUMENT_LENGTH);
 
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
@@ -406,14 +354,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if (args.length < MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.showActivitiesHelp(true));
-            message.append(")");
-            return message.toString();
-        }
+        if (args.length < MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SHOW_ACTIVITIES_ARGUMENT_LENGTH);
 
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
@@ -434,15 +376,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if (args.length < MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.showParticipantsHelp(true));
-            message.append(")");
-            return message.toString();
-        }
-
+        if (args.length < MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SHOW_PARTICIPANTS_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         try
@@ -462,15 +397,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if (args.length < MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.showDurationHelp(true));
-            message.append(")");
-            return message.toString();
-        }
-
+        if (args.length < MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SHOW_DURATION_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(args[0], args[1]);
         try
@@ -490,15 +418,8 @@ public class SocialPlanController extends SessionController
         if (!isUserLogged())
             return view.noLoggedUser();
 
-        if (args.length < MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH) {
-            StringBuilder message = new StringBuilder();
-            message.append(view.insufficientArguments(MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH));
-            message.append(" (");
-            message.append(view.setSocialPlanCapacityHelp(true));
-            message.append(")");
-            return message.toString();
-        }
-
+        if (args.length < MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH)
+            return view.insufficientArguments(MINIMUM_SET_CAPACITY_ARGUMENT_LENGTH);
 
         SocialPlanId socialPlanId = new SocialPlanId(getLoggedUser().getName(), args[0]);
         try
