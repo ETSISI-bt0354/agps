@@ -164,7 +164,9 @@ public class CLIUserView implements UserView
         }
         message.append("name password birthday phone-number");
         if(!justArgs) {
+            message.append("\033[0;36m");
             message.append("\n\tbirthday format: yyyy-mm-dd");
+            message.append("\033[0m");
         }
         return message.toString();
     }
