@@ -101,12 +101,12 @@ public class CLIUserView implements UserView
             case TOOOLD ->
             {
                 error.append(exception.getCurrentAge() - exception.getProblemAge());
-                error.append(" too late.");
+                error.append(" year too late.");
             }
             case TOOYOUNG ->
             {
                 error.append(exception.getProblemAge() - exception.getCurrentAge());
-                error.append(" too early.");
+                error.append(" year too early.");
             }
         }
         return error.toString();
