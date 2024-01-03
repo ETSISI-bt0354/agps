@@ -31,8 +31,9 @@ public class UserController extends SessionController
         if(args.length < MINIMUM_REGISTER_ARGUMENT_LENGTH) {
             StringBuilder message = new StringBuilder();
             message.append(view.insufficientArguments(MINIMUM_REGISTER_ARGUMENT_LENGTH));
-            message.append("\n");
+            message.append(" (");
             message.append(view.registerUserHelp(true));
+            message.append(")");
             return message.toString();
         }
 
@@ -73,8 +74,14 @@ public class UserController extends SessionController
     }
     public String loginUser(String[] args)
     {
-        if(args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH)
-            return view.insufficientArguments(MINIMUM_LOGIN_ARGUMENT_LENGTH);
+        if(args.length < MINIMUM_LOGIN_ARGUMENT_LENGTH) {
+            StringBuilder message = new StringBuilder();
+            message.append(view.insufficientArguments(MINIMUM_LOGIN_ARGUMENT_LENGTH));
+            message.append(" (");
+            message.append(view.loginUserHelp(true));
+            message.append(")");
+            return message.toString();
+        }
 
         String name = args[0];
         String password = args[1];
