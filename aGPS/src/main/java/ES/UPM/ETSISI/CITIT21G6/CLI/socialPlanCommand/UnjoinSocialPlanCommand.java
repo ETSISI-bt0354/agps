@@ -26,6 +26,6 @@ public class UnjoinSocialPlanCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.unjoinSocialPlanHelp();
+        return controller.unjoinSocialPlanHelp(false);
     }
 }

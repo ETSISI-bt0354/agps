@@ -26,6 +26,6 @@ public class SetSocialPlanCapacityCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.setSocialPlanCapacityHelp();
+        return controller.setSocialPlanCapacityHelp(false);
     }
 }

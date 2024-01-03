@@ -26,6 +26,6 @@ public class AddActivityCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.addActivityHelp();
+        return controller.addActivityHelp(false);
     }
 }

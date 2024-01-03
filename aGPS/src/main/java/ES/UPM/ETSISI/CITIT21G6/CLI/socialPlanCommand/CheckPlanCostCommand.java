@@ -26,6 +26,6 @@ public class CheckPlanCostCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.checkPlanCostHelp();
+        return controller.checkPlanCostHelp(false);
     }
 }

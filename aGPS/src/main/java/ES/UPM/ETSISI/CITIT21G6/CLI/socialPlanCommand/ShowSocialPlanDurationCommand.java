@@ -26,6 +26,6 @@ public class ShowSocialPlanDurationCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.showDurationHelp();
+        return controller.showDurationHelp(false);
     }
 }

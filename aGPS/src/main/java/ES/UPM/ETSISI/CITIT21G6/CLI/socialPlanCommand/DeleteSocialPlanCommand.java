@@ -26,6 +26,6 @@ public class DeleteSocialPlanCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.deleteSocialPlanHelp();
+        return controller.deleteSocialPlanHelp(false);
     }
 }

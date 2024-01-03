@@ -26,6 +26,6 @@ public class JoinSocialPlanCommand extends SocialPlanCommand
     @Override
     public String help(List<String> args)
     {
-        return controller.joinSocialPlanHelp();
+        return controller.joinSocialPlanHelp(false);
     }
 }
