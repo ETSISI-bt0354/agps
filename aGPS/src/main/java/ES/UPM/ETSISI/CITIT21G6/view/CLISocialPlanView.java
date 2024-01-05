@@ -398,7 +398,6 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("plan-name date time location ");
         message.append("\033[0;33m");
         message.append("[capacity]");
-        message.append("\033[0m");
         message.append("\033[0;36m");
         message.append("\n\tdate format: yyyy-mm-dd\n\ttime format: hh:mm\n\tIf capacity is not present, it will be unlimited");
         message.append("\033[0m");
@@ -421,7 +420,6 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("plan-name activity-name description duration price activity-type ");
         message.append("\033[0;33m");
         message.append("[capacity]");
-        message.append("\033[0m");
         message.append("\033[0;36m");
         message.append("\n\tIf capacity is not present, it will be unlimited");
         message.append("\033[0m");
@@ -472,7 +470,6 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("owner-name plan-name ");
         message.append("\033[0;33m");
         message.append("[score]");
-        message.append("\033[0m");
         message.append("\033[0;36m");
         message.append("\n\tIf score is not present, it will be unset");
         message.append("\033[0m");
@@ -505,7 +502,6 @@ public class CLISocialPlanView implements SocialPlanView
         message.append("plan-name ");
         message.append("\033[0;33m");
         message.append("[capacity]");
-        message.append("\033[0m");
         message.append("\033[0;36m");
         message.append("\n\tIf capacity is not present, it will be unlimited");
         message.append("\033[0m");
