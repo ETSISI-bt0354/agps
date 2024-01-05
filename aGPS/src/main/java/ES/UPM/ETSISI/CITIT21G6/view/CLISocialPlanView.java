@@ -141,6 +141,7 @@ public class CLISocialPlanView implements SocialPlanView
         StringBuilder message = new StringBuilder();
         message.append("Price: ");
         message.append(price);
+        message.append("€");
         return message.toString();
     }
 

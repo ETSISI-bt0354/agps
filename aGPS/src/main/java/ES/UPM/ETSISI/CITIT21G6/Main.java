@@ -193,7 +193,7 @@ public class Main
             socialPlanService = new SocialPlanService(socialPlanRepository, futureClock);
 
             socialPlanService.createSocialPlan("Miguel", "Eat", LocalDateTime.now(futureClock).plusMinutes(4), "Sol", OptionalInt.empty());
-            socialPlanService.addActivity(new SocialPlanId("Miguel", "Eat"), "Restaurant", "Eat", 30, 19.0, ActivityType.CINEMA, OptionalInt.empty());
+            socialPlanService.addActivity(new SocialPlanId("Miguel", "Eat"), "Restaurant", "Eat", 30, 19.0, ActivityType.GENERIC, OptionalInt.empty());
 
             socialPlanService.createSocialPlan("Ibai", "Films-2", LocalDateTime.now(futureClock).plusMinutes(5), "La Gavia", OptionalInt.empty());
             socialPlanService.addActivity(new SocialPlanId("Ibai", "Films-2"), "Star-Wars-3", "Watch_third_Star_Wars_film", 130, 9.0, ActivityType.CINEMA, OptionalInt.of(5));
