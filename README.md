@@ -13,6 +13,8 @@ This is a Java-based application that allows users to manage social plans. It pr
 - Scoring social plans
 - Viewing details of social plans, including activities and participants
 
+## Demo
+
 ![](demo.webm)
 
 ## Project Structure
