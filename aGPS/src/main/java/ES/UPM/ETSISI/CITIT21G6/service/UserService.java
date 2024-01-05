@@ -3,6 +3,7 @@ package ES.UPM.ETSISI.CITIT21G6.service;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidAgeException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPasswordException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserException.InvalidPhoneNumberException;
+import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.PhoneNumberAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.UserRepositoryException.UserNotFoundException;
 import ES.UPM.ETSISI.CITIT21G6.model.User;
@@ -21,7 +22,7 @@ public class UserService
     }
 
     public User registerUser(String name, String password, LocalDate birthday, String phoneNumber)
-            throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException, UserAlreadyAddedException
+            throws InvalidAgeException, InvalidPhoneNumberException, InvalidPasswordException, UserAlreadyAddedException, PhoneNumberAlreadyAddedException
     {
         User user = new User(name, password, birthday, phoneNumber);
         repo.save(user);

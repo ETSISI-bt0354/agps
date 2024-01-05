@@ -1,6 +1,5 @@
 package ES.UPM.ETSISI.CITIT21G6.service;
 
-import ES.UPM.ETSISI.CITIT21G6.repository.ListOrder;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanAlreadyAddedException;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanRepositoryException.SocialPlanNotFoundException;
@@ -11,6 +10,7 @@ import ES.UPM.ETSISI.CITIT21G6.exception.TicketException.InvalidScoreException;
 import ES.UPM.ETSISI.CITIT21G6.model.*;
 import ES.UPM.ETSISI.CITIT21G6.repository.SocialPlanRepository;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -21,16 +21,21 @@ import java.util.stream.Stream;
 public class SocialPlanService
 {
     private SocialPlanRepository repository;
+    private final Clock clock;
 
-    public SocialPlanService(SocialPlanRepository repository)
+    public SocialPlanService(SocialPlanRepository repository, Clock clock)
     {
         this.repository = repository;
+        this.clock = clock;
     }
 
     public SocialPlan createSocialPlan(String ownerName, String socialPlanName, LocalDateTime date, String location, OptionalInt capacity)
             throws PastDateException, InvalidCapacityException, SocialPlanAlreadyAddedException
     {
-        SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, capacity, location);
+        if (date.isBefore(LocalDateTime.now(clock)))
+            throw new PastDateException(date);
+
+        SocialPlan socialPlan = new SocialPlan(ownerName, socialPlanName, date, capacity, location, clock);
         repository.save(socialPlan);
         return socialPlan;
     }
@@ -41,7 +46,7 @@ public class SocialPlanService
     }
 
     public Activity addActivity(SocialPlanId id, String activityName, String description, int duration, double price, ActivityType type, OptionalInt capacity)
-            throws SocialPlanNotFoundException, InvalidCapacityException, ActivityAlreadyInSocialPlanException, PastSocialPlanException
+            throws SocialPlanNotFoundException, InvalidCapacityException, ActivityAlreadyInSocialPlanException, PastSocialPlanException, InvalidPriceException, InvalidDurationException
     {
         SocialPlan socialPlan = repository.fetch(id);
         if (isPastSocialPlan(socialPlan))
@@ -106,7 +111,7 @@ public class SocialPlanService
         socialPlans = switch (order)
         {
             case DATE -> socialPlans.sorted(Comparator.comparing(SocialPlan::getDate));
-            case SCORE -> socialPlans.sorted(Comparator.comparing(plan -> ownerScore(plan.getOwnerName())));
+            case SCORE -> socialPlans.sorted(Comparator.comparing(plan -> -ownerScore(plan.getOwnerName())));
         };
 
         return socialPlans.toList();
@@ -158,11 +163,20 @@ public class SocialPlanService
     }
 
     public void setSocialPlanCapacity(SocialPlanId id, OptionalInt capacity)
-            throws SocialPlanNotFoundException, InvalidCapacityException
+            throws SocialPlanNotFoundException, InvalidCapacityException, PastSocialPlanException
     {
+
         SocialPlan socialPlan = repository.fetch(id);
+        if (isPastSocialPlan(socialPlan))
+            throw new PastSocialPlanException(socialPlan);
+
         socialPlan.setCapacity(capacity);
         repository.update(socialPlan);
+    }
+
+    private boolean isPastSocialPlan(SocialPlan socialPlan)
+    {
+        return socialPlan.getDate().isBefore(LocalDateTime.now(clock));
     }
 
     private double ownerScore(String ownerName)
@@ -171,7 +185,7 @@ public class SocialPlanService
                 .fetchAllSocialPlans()
                 .stream()
                 .filter(plan -> ownerName.equals(plan.getOwnerName()))
-                .filter(SocialPlanService::isPastSocialPlan)
+                .filter(this::isPastSocialPlan)
                 .mapToDouble(SocialPlanService::averageScore)
                 .average()
                 .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
@@ -186,11 +200,6 @@ public class SocialPlanService
                 .mapToInt(ticket -> ticket.getScore().getAsInt())
                 .average()
                 .orElse((Ticket.MAXIMUM_SCORE + Ticket.MINIMUM_SCORE) / 2.0);
-    }
-
-    private static boolean isPastSocialPlan(SocialPlan socialPlan)
-    {
-        return socialPlan.getDate().isBefore(LocalDateTime.now());
     }
 
     private static int calculateSocialPlanDuration(SocialPlan socialPlan)

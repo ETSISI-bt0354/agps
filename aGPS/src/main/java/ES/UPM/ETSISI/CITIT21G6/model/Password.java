@@ -10,8 +10,13 @@ public class Password
     public Password(String password) throws InvalidPasswordException
     {
         if (password.length() < MINIMUM_PASSWORD_LENGTH)
-            throw new InvalidPasswordException(password, MINIMUM_PASSWORD_LENGTH);
-
+        {
+            StringBuilder message = new StringBuilder();
+            message.append("The password must have at least ");
+            message.append(MINIMUM_PASSWORD_LENGTH);
+            message.append(" characters.");
+            throw new InvalidPasswordException(password, MINIMUM_PASSWORD_LENGTH, message.toString());
+        }
         this.password = password;
     }
 
