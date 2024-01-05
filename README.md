@@ -55,4 +55,9 @@ After starting the application, you will be presented with a command-line prompt
 - social-plan list: List all social plans.
 - social-plan set-score: Set a score for a social plan.
 - exit: Exit the application.
-Each command has its own set of arguments and options. You can use the help command to get more information about a specific command
+
+
+Each command has its own set of arguments and options. 
+
+
+You can use the help command to get more information about a specific command
