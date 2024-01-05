@@ -214,13 +214,11 @@ public class CLIUserView implements UserView
     @Override
     public String logoutUserHelp()
     {
-        StringBuilder message = new StringBuilder();
-        return message.toString();
+        return "";
     }
 
     @Override
     public String whoIsUserHelp() {
-        StringBuilder message = new StringBuilder();
-        return message.toString();
+        return "";
     }
 }
