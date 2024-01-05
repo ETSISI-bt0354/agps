@@ -1,3 +1,5 @@
+
+
 # Social Plan Management Application
 
 This is a Java-based application that allows users to manage social plans. It provides a command-line interface for users to interact with the system.
@@ -10,6 +12,8 @@ This is a Java-based application that allows users to manage social plans. It pr
 - Joining and leaving social plans
 - Scoring social plans
 - Viewing details of social plans, including activities and participants
+
+![](demo.webm)
 
 ## Project Structure
 
