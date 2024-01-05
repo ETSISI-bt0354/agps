@@ -15,7 +15,7 @@ public class WhoAmICommand extends UserCommand{
 
     @Override
     public String description() {
-        return "Indicates what user is logged in";
+        return "Identify the current user";
     }
 
     @Override
