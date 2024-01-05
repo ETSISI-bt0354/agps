@@ -6,6 +6,7 @@ import ES.UPM.ETSISI.CITIT21G6.CLI.socialPlanCommand.*;
 import ES.UPM.ETSISI.CITIT21G6.CLI.userCommand.LoginUserCommand;
 import ES.UPM.ETSISI.CITIT21G6.CLI.userCommand.LogoutUserCommand;
 import ES.UPM.ETSISI.CITIT21G6.CLI.userCommand.RegisterUserCommand;
+import ES.UPM.ETSISI.CITIT21G6.CLI.userCommand.WhoAmICommand;
 import ES.UPM.ETSISI.CITIT21G6.controller.SocialPlanController;
 import ES.UPM.ETSISI.CITIT21G6.controller.UserController;
 import ES.UPM.ETSISI.CITIT21G6.exception.SocialPlanException.*;
@@ -104,6 +105,7 @@ public class Main
         handler.addCommand("register", new RegisterUserCommand(controller));
         handler.addCommand("login", new LoginUserCommand(controller));
         handler.addCommand("logout", new LogoutUserCommand(controller));
+        handler.addCommand("whoami", new WhoAmICommand(controller));
 
         return handler;
     }

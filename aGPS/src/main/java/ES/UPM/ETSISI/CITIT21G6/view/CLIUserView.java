@@ -52,6 +52,16 @@ public class CLIUserView implements UserView
     }
 
     @Override
+    public String whoIsUser(User user) {
+        StringBuilder message = new StringBuilder();
+        message.append("You're ");
+        message.append("\033[0;36m");
+        message.append(user.getName());
+        message.append("\033[0m");
+        return message.toString();
+    }
+
+    @Override
     public String userNotFound(UserNotFoundException exception)
     {
         StringBuilder error = new StringBuilder();
@@ -175,6 +185,12 @@ public class CLIUserView implements UserView
     @Override
     public String logoutUserHelp()
     {
+        StringBuilder message = new StringBuilder();
+        return message.toString();
+    }
+
+    @Override
+    public String whoIsUserHelp() {
         StringBuilder message = new StringBuilder();
         return message.toString();
     }

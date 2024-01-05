@@ -108,6 +108,14 @@ public class UserController extends SessionController
         return view.loggedOutUser(loggedUser);
     }
 
+    public String whoIsUser(String[] args)
+    {
+        if(!isUserLogged())
+            return view.noLoggedUser();
+        User loggedUser = getLoggedUser();
+        return view.whoIsUser(loggedUser);
+    }
+
     public String registerUserHelp()
     {
         return view.registerUserHelp();
@@ -122,4 +130,6 @@ public class UserController extends SessionController
     {
         return view.logoutUserHelp();
     }
+
+    public String whoIsUserHelp(){return view.whoIsUserHelp();}
 }

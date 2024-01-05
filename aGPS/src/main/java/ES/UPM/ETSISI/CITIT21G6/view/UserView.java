@@ -16,6 +16,7 @@ public interface UserView
     String loggedInUser(User user);
     String passwordError();
     String loggedOutUser(User user);
+    String whoIsUser(User user);
     String userNotFound(UserNotFoundException exception);
     String userAlreadyAdded(UserAlreadyAddedException exception);
     String noLoggedUser();
@@ -28,4 +29,5 @@ public interface UserView
     String registerUserHelp();
     String loginUserHelp();
     String logoutUserHelp();
+    String whoIsUserHelp();
 }
