@@ -21,7 +21,7 @@ public class LogoutUserCommand extends UserCommand
     @Override
     public String description()
     {
-        return "Log out user.";
+        return "Log out user";
     }
 
     @Override

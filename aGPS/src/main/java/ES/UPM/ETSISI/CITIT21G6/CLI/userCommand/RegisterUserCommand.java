@@ -21,7 +21,7 @@ public class RegisterUserCommand extends UserCommand
     @Override
     public String description()
     {
-        return "Register a user.";
+        return "Register a user";
     }
 
     @Override

@@ -21,7 +21,7 @@ public class ListSuscribedSocialPlansCommand extends SocialPlanCommand
     @Override
     public String description()
     {
-        return "List subscribed social plans.";
+        return "List subscribed social plans";
     }
 
     @Override

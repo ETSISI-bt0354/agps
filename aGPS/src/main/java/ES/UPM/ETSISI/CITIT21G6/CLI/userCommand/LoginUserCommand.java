@@ -21,7 +21,7 @@ public class LoginUserCommand extends UserCommand
     @Override
     public String description()
     {
-        return "Log in user.";
+        return "Log in user";
     }
 
     @Override
