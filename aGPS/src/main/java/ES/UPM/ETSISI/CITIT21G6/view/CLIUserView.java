@@ -18,7 +18,9 @@ public class CLIUserView implements UserView
         StringBuilder message = new StringBuilder();
         message.append("\033[0;32m");
         message.append("The user ");
+        message.append("\033[0;36m");
         message.append(user.getName());
+        message.append("\033[0;32m");
         message.append(" has been registered successfully.");
         message.append("\033[0;0m");
         return message.toString();
@@ -28,9 +30,13 @@ public class CLIUserView implements UserView
     public String loggedInUser(User user)
     {
         StringBuilder message = new StringBuilder();
+        message.append("\033[0;32m");
         message.append("The user ");
+        message.append("\033[0;36m");
         message.append(user.getName());
+        message.append("\033[0;32m");
         message.append(" has been logged in successfully.");
+        message.append("\033[0;0m");
         return message.toString();
 
     }
@@ -38,7 +44,11 @@ public class CLIUserView implements UserView
     @Override
     public String passwordError()
     {
-        return "The password is incorrect.";
+        StringBuilder error = new StringBuilder();
+        error.append("\033[0;31m");
+        error.append("The password is incorrect.");
+        error.append("\033[0;0m");
+        return error.toString();
     }
 
     @Override
@@ -46,7 +56,9 @@ public class CLIUserView implements UserView
     {
         StringBuilder message = new StringBuilder();
         message.append("Bye bye ");
+        message.append("\033[0;36m");
         message.append(user.getName());
+        message.append("\033[0;0m");
         message.append("!");
         return message.toString();
     }
@@ -58,6 +70,7 @@ public class CLIUserView implements UserView
         message.append("\033[0;36m");
         message.append(user.getName());
         message.append("\033[0m");
+        message.append("!");
         return message.toString();
     }
 
@@ -65,9 +78,13 @@ public class CLIUserView implements UserView
     public String userNotFound(UserNotFoundException exception)
     {
         StringBuilder error = new StringBuilder();
+        error.append("\033[0;31m");
         error.append("The user ");
+        error.append("\033[0;36m");
         error.append(exception.getUserName());
+        error.append("\033[0;31m");
         error.append(" does not exist, please try again.");
+        error.append("\033[0;0m");
         return error.toString();
     }
 
@@ -75,16 +92,24 @@ public class CLIUserView implements UserView
     public String userAlreadyAdded(UserAlreadyAddedException exception)
     {
         StringBuilder error = new StringBuilder();
+        error.append("\033[0;31m");
         error.append("The user ");
+        error.append("\033[0;36m");
         error.append(exception.getUser().getName());
+        error.append("\033[0;31m");
         error.append(" already exists.");
+        error.append("\033[0;0m");
         return error.toString();
     }
 
     @Override
     public String noLoggedUser()
     {
-        return "You must be logged in to perform this action.";
+        StringBuilder error = new StringBuilder();
+        error.append("\033[0;33m");
+        error.append("You must be logged in to perform this action.");
+        error.append("\033[0;0m");
+        return error.toString();
     }
 
     @Override
@@ -149,7 +174,9 @@ public class CLIUserView implements UserView
     {
         StringBuilder message = new StringBuilder();
         message.append(e.getParsedString());
+        message.append("\033[0;33m");
         message.append(" is not a valid date or it is in a wrong format (Format: yyyy-mm-dd example: 2023-04-03).");
+        message.append("\033[0;0m");
         return message.toString();
     }
 
@@ -157,9 +184,11 @@ public class CLIUserView implements UserView
     public String phoneNumberAlreadyAdded(PhoneNumberAlreadyAddedException e)
     {
         StringBuilder error = new StringBuilder();
+        error.append("\033[0;33m");
         error.append("The phone number ");
         error.append(e.getPhoneNumber());
         error.append(" is already in use.");
+        error.append("\033[0;0m");
         return error.toString();
     }
 
