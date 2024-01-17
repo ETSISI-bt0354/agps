@@ -61,3 +61,9 @@ Each command has its own set of arguments and options.
 
 
 You can use the help command to get more information about a specific command
+
+## What people are saying!
+
+![](e2.png)
+![](e3.png)
+![](e4.png)
